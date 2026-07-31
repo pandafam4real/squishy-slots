@@ -8,22 +8,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-:root{
---bg:#0d0d1a;--pink:#ff6b9d;--mint:#5dd9c1;--lav:#b4a0ff;
---butter:#ffe066;--gold:#ffd700;--peach:#ffb347;
-}
-html,body{
-  min-height:100vh;
-  background:var(--bg);
-  background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(107,91,204,0.18) 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 100%, rgba(255,107,157,0.12) 0%, transparent 55%),
-    radial-gradient(ellipse at 50% 50%, rgba(30,30,60,0.9) 0%, transparent 100%);
-  font-family:'Nunito',sans-serif;color:#fff;overflow-x:hidden
-}
+:root{--bg:#0d0d1a;--pink:#ff6b9d;--mint:#5dd9c1;--lav:#b4a0ff;--butter:#ffe066;--gold:#ffd700;--peach:#ffb347;}
+html,body{min-height:100vh;background:var(--bg);background-image:radial-gradient(ellipse at 20% 0%,rgba(107,91,204,0.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 100%,rgba(255,107,157,0.12) 0%,transparent 55%),radial-gradient(ellipse at 50% 50%,rgba(30,30,60,0.9) 0%,transparent 100%);font-family:'Nunito',sans-serif;color:#fff;overflow-x:hidden}
 body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100px}
-
-/* HEADER */
 .header{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:420px;margin-bottom:20px}
 .coin-wrap{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1a1a3a,#252550);border-radius:24px;padding:10px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(255,215,0,0.2)}
 .coin-icon{width:36px;height:36px;background:linear-gradient(145deg,#fff0a0,#ffd700,#b8860b);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#7a4a00;box-shadow:0 2px 8px rgba(255,215,0,0.5),inset 0 2px 4px rgba(255,255,255,0.4)}
@@ -33,48 +20,23 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 .streak-badge{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1a1a3a,#252550);border-radius:24px;padding:10px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(255,159,79,0.2)}
 .streak-badge svg{width:24px;height:24px}
 #streakText{font-size:14px;font-weight:800;color:var(--peach)}
-
-/* MACHINE */
 .machine-container{perspective:1200px;width:100%;max-width:420px}
-.machine{
-  background:linear-gradient(160deg,#2a2a5a 0%,#1e1e3a 40%,#181830 100%);
-  border-radius:32px;padding:24px 16px 20px;width:100%;
-  box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.06),inset 0 1px 0 rgba(255,255,255,0.1),inset 0 -2px 0 rgba(0,0,0,0.3);
-  transform:rotateX(3deg);transform-style:preserve-3d;position:relative;
-}
+.machine{background:linear-gradient(160deg,#2a2a5a 0%,#1e1e3a 40%,#181830 100%);border-radius:32px;padding:24px 16px 20px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.06),inset 0 1px 0 rgba(255,255,255,0.1),inset 0 -2px 0 rgba(0,0,0,0.3);transform:rotateX(3deg);transform-style:preserve-3d;position:relative}
 .machine::before{content:'';position:absolute;top:0;left:10%;right:10%;height:3px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),rgba(255,255,255,0.3),rgba(255,255,255,0.15),transparent);border-radius:0 0 3px 3px}
-
 .machine-title{text-align:center;font-size:20px;font-weight:900;letter-spacing:3px;margin-bottom:14px;background:linear-gradient(135deg,#ffd700 0%,#ff9f1c 30%,#ff6b9d 60%,#b4a0ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 6px rgba(255,107,157,0.5))}
-
-/* 3D SLOT GRID */
 .slot-grid-wrap{background:linear-gradient(180deg,#080810 0%,#0d0d1a 100%);border-radius:24px;padding:10px;border:3px solid #222;box-shadow:inset 0 6px 24px rgba(0,0,0,0.95),0 0 0 1px rgba(0,0,0,0.4)}
 .slot-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-.slot-cell{
-  aspect-ratio:1;background:linear-gradient(145deg,#141428,#0c0c1e);border-radius:16px;
-  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
-  border:2px solid #1e1e3a;
-  box-shadow:inset 0 3px 8px rgba(0,0,0,0.8),inset 0 0 0 1px rgba(255,255,255,0.02),0 2px 0 rgba(255,255,255,0.03);
-}
-/* Jellycat glass sheen */
+.slot-cell{aspect-ratio:1;background:linear-gradient(145deg,#141428,#0c0c1e);border-radius:16px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;border:2px solid #1e1e3a;box-shadow:inset 0 3px 8px rgba(0,0,0,0.8),inset 0 0 0 1px rgba(255,255,255,0.02),0 2px 0 rgba(255,255,255,0.03)}
 .slot-cell::after{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.09) 0%,transparent 40%,rgba(255,255,255,0.04) 100%);pointer-events:none}
-.slot-cell svg{width:88%;height:88%;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.8))}
+.slot-cell svg{width:88%;height:88%;filter:drop-shadow(0 6px 14px rgba(0,0,0,0.9))}
 .slot-cell.winner{border-color:var(--gold);box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 28px rgba(255,215,0,0.75),0 0 56px rgba(255,215,0,0.35);animation:winBounce3d 0.5s ease-in-out infinite alternate}
 @keyframes winBounce3d{from{transform:scale(1) translateY(0)}to{transform:scale(1.08) translateY(-4px)}}
 .slot-cell.nearmiss{border-color:var(--peach);animation:shake3d 0.4s ease;box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 18px rgba(255,179,71,0.5)}
 @keyframes shake3d{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px) rotate(-2deg)}40%{transform:translateX(5px) rotate(2deg)}60%{transform:translateX(-3px) rotate(-1deg)}80%{transform:translateX(3px) rotate(1deg)}}
-
 .paytable{margin-top:14px;font-size:10px;color:#777;text-align:center;line-height:1.9}
 .paytable span{color:var(--butter);font-weight:800}
-
-/* SPIN BUTTON */
 .spin-wrap{text-align:center;margin-top:18px;perspective:500px}
-#spinBtn{
-  width:92%;max-width:340px;height:76px;border:none;border-radius:38px;
-  background:linear-gradient(160deg,#ff85ad 0%,#ff6b9d 30%,#d44a80 70%,#b33d6a 100%);
-  color:#fff;font-family:'Nunito',sans-serif;font-size:26px;font-weight:900;letter-spacing:3px;cursor:pointer;position:relative;
-  box-shadow:0 8px 0 #8a2250,0 12px 24px rgba(212,74,128,0.5),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15);
-  transform:translateY(0);transition:transform 0.08s,box-shadow 0.08s;text-shadow:0 2px 4px rgba(0,0,0,0.3);overflow:hidden;
-}
+#spinBtn{width:92%;max-width:340px;height:76px;border:none;border-radius:38px;background:linear-gradient(160deg,#ff85ad 0%,#ff6b9d 30%,#d44a80 70%,#b33d6a 100%);color:#fff;font-family:'Nunito',sans-serif;font-size:26px;font-weight:900;letter-spacing:3px;cursor:pointer;position:relative;box-shadow:0 8px 0 #8a2250,0 12px 24px rgba(212,74,128,0.5),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15);transform:translateY(0);transition:transform 0.08s,box-shadow 0.08s;text-shadow:0 2px 4px rgba(0,0,0,0.3);overflow:hidden}
 #spinBtn::before{content:'';position:absolute;top:4px;left:15%;right:15%;height:40%;background:linear-gradient(180deg,rgba(255,255,255,0.28),transparent);border-radius:50% 50% 40% 40%;pointer-events:none}
 #spinBtn:hover{transform:translateY(-3px);box-shadow:0 11px 0 #8a2250,0 16px 32px rgba(212,74,128,0.65),inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -2px 0 rgba(0,0,0,0.15)}
 #spinBtn:active,#spinBtn.pressed{transform:translateY(6px);box-shadow:0 2px 0 #8a2250,0 4px 12px rgba(212,74,128,0.4),inset 0 2px 0 rgba(255,255,255,0.1),inset 0 -1px 0 rgba(0,0,0,0.2)}
@@ -84,16 +46,12 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 #spinBtn.free-spin{background:linear-gradient(160deg,#7ee8d9 0%,#5dd9c1 30%,#2a9d8f 70%,#1e7a6d 100%);box-shadow:0 8px 0 #1a5c4c,0 12px 24px rgba(45,180,155,0.4),inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -2px 0 rgba(0,0,0,0.15)}
 #spinBtn.free-spin::before{background:linear-gradient(180deg,rgba(255,255,255,0.35),transparent)}
 .spin-cost{display:block;font-size:12px;font-weight:700;margin-top:2px;opacity:0.85;letter-spacing:1px}
-
-/* STATUS */
 .status-area{min-height:52px;display:flex;align-items:center;justify-content:center;margin-top:14px}
 #statusMsg{font-size:22px;font-weight:900;text-align:center;transition:opacity 0.3s;letter-spacing:1px}
 .win-text{color:var(--gold)!important;text-shadow:0 0 20px var(--gold),0 0 40px rgba(255,215,0,0.5)}
 .nearmiss-text{color:var(--peach)!important;text-shadow:0 0 15px rgba(255,179,71,0.6)}
 .jackpot-text{color:var(--gold)!important;font-size:30px!important;text-shadow:0 0 30px var(--gold),0 0 60px rgba(255,215,0,0.8);animation:jackpotGlow 0.4s ease-in-out infinite alternate}
 @keyframes jackpotGlow{from{text-shadow:0 0 20px var(--gold),0 0 40px rgba(255,215,0,0.4)}to{text-shadow:0 0 40px var(--gold),0 0 80px rgba(255,215,0,0.8),0 0 120px rgba(255,159,71,0.4)}}
-
-/* FOOTER */
 .footer{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,13,26,0.98) 60%,transparent);padding:20px 16px 28px;display:flex;flex-direction:column;align-items:center;gap:10px;backdrop-filter:blur(10px)}
 .timer-row{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#888}
 .timer-row svg{width:18px;height:18px}
@@ -109,8 +67,6 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 .footer-btn:hover{transform:translateY(-2px)}
 .share-btn{background:linear-gradient(135deg,#7ee8d9,#5dd9c1);color:#0d2e28;box-shadow:0 4px 12px rgba(93,217,193,0.3)}
 .lead-btn{background:linear-gradient(135deg,#c4a8ff,#9b7ce8);color:#fff;box-shadow:0 4px 12px rgba(155,124,232,0.3)}
-
-/* OVERLAYS */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(8px)}
 .overlay.active{opacity:1;pointer-events:all}
 .modal{background:linear-gradient(160deg,#2a2a5a,#1e1e3a);border-radius:28px;padding:32px 24px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 1px 0 rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.08)}
@@ -126,19 +82,16 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 .leader-rank.r2{background:linear-gradient(135deg,#e0e0e0,#a0a0a0);color:#333}
 .leader-rank.r3{background:linear-gradient(135deg,#cd7f32,#a0522d);color:#fff}
 .leader-bal{color:var(--butter);margin-left:auto;font-weight:800}
-
-/* EFFECTS */
 .coin-rain{position:fixed;top:-40px;pointer-events:none;z-index:200;font-size:30px;animation:coinFall3d 1.8s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5))}
 @keyframes coinFall3d{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(110vh) rotate(720deg) scale(0.8);opacity:0}}
 .jackpot-flash{position:fixed;inset:0;background:radial-gradient(circle,rgba(255,215,0,0.7),rgba(255,107,157,0.3),transparent 70%);z-index:150;opacity:0;pointer-events:none;animation:flashIn3d 1.2s forwards}
 @keyframes flashIn3d{0%{opacity:1}100%{opacity:0}}
 .confetti-piece{position:fixed;border-radius:3px;z-index:160;animation:confettiFall3d 2.5s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4))}
 @keyframes confettiFall3d{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(1080deg) scale(0.6);opacity:0}}
-.slot-cell.spinning svg{animation:spinCycle3d 0.12s linear infinite;filter:drop-shadow(0 0 10px rgba(255,255,255,0.3))}
+.slot-cell.spinning svg{animation:spinCycle3d 0.12s linear infinite;filter:drop-shadow(0 0 12px rgba(255,255,255,0.4))}
 @keyframes spinCycle3d{0%{transform:translateY(-100%) scale(0.88);opacity:0.4}50%{transform:translateY(0) scale(1.06);opacity:1}100%{transform:translateY(100%) scale(0.88);opacity:0.4}}
 .nearmiss-float{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:900;color:var(--peach);animation:floatUp3d 0.9s ease-out forwards;white-space:nowrap;z-index:10;text-shadow:0 0 10px rgba(255,179,71,0.8)}
 @keyframes floatUp3d{0%{opacity:1;top:-14px;transform:translateX(-50%) scale(0.8)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}100%{opacity:0;top:-50px;transform:translateX(-50%) scale(0.9)}}
-
 @media(max-width:380px){.machine-title{font-size:17px}#spinBtn{font-size:22px;height:64px}.col-item{width:34px;height:34px}.col-item svg{width:22px;height:22px}#coinBalance{font-size:22px}}
 </style>
 </head>
@@ -189,160 +142,177 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 
 <script>
 // ================================================================
-// YUM SUM SQUISHIES — Jellycat × Dim Sum
-// Material system: SSS gel bodies, corduroy boots, beaded safety eyes,
-// embroidered smiles, ribbed textures, soft pastel gradients
+// YUM SUM SQUISHIES — Deep-3D Jellycat × Dim Sum
+// Material system:
+//  - feSpecularLighting key light (top-left, high intensity)
+//  - Multi-stop radialGradient SSS (core → mid → rim → shadow)
+//  - feDropShadow hard depth shadows
+//  - Rim/fresnel glow on lit edges
+//  - Beaded safety eyes, embroidered smiles, corduroy boots
 // ================================================================
 
-// ── Jellycat eye factory (beaded plastic safety eye) ──────────
+// ── Jellycat eye (beaded plastic, 3-layer highlight) ────────────
 function eye(cx, cy, r) {
-  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#111"/>
-  <circle cx="${cx-r*0.3}" cy="${cy-r*0.3}" r="${r*0.45}" fill="rgba(255,255,255,0.9)"/>
-  <circle cx="${cx-r*0.55}" cy="${cy-r*0.55}" r="${r*0.18}" fill="rgba(255,255,255,0.6)"/>`;
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#0a0a0a"/>
+  <circle cx="${cx-r*0.28}" cy="${cy-r*0.28}" r="${r*0.48}" fill="rgba(255,255,255,0.95)"/>
+  <circle cx="${cx-r*0.58}" cy="${cy-r*0.58}" r="${r*0.20}" fill="rgba(255,255,255,0.7)"/>`;
 }
 
-// ── Embroidered smile ──────────────────────────────────────
+// ── Embroidered smile ──────────────────────────────────────────
 function smile(x, y, w) {
-  return `<path d="M${x} ${y} Q${x+w*0.5} ${y+w*0.38} ${x+w} ${y}" stroke="#1a0a00" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
+  return `<path d="M${x} ${y} Q${x+w*0.5} ${y+w*0.40} ${x+w} ${y}" stroke="#180800" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
 }
 
-// ── Blush cheeks ─────────────────────────────────────────────
+// ── Blush cheeks (soft pink ovals) ─────────────────────────────
 function blush(cx, cy) {
-  return `<ellipse cx="${cx-7}" cy="${cy}" rx="5.5" ry="3.5" fill="rgba(255,130,148,0.45)"/>
-  <ellipse cx="${cx+7}" cy="${cy}" rx="5.5" ry="3.5" fill="rgba(255,130,148,0.45)"/>`;
+  return `<ellipse cx="${cx-7}" cy="${cy}" rx="5.5" ry="3.5" fill="rgba(255,115,130,0.50)"/>
+  <ellipse cx="${cx+7}" cy="${cy}" rx="5.5" ry="3.5" fill="rgba(255,115,130,0.50)"/>`;
 }
 
-// ── Corduroy boots ────────────────────────────────────────────
+// ── Corduroy boots (ribbed capsule + horizontal lines) ────────
 function boots(x, y, color) {
   let s = `<rect x="${x}" y="${y}" width="8" height="13" rx="4" fill="${color}"/>`;
-  for(let i=0;i<3;i++){
-    const lx = x + 2 + i*2.2;
-    s += `<line x1="${lx}" y1="${y+1}" x2="${lx}" y2="${y+12}" stroke="rgba(0,0,0,0.18)" stroke-width="0.8"/>`;
+  for (let i = 0; i < 4; i++) {
+    const lx = x + 1.5 + i * 1.8;
+    s += `<line x1="${lx}" y1="${y+1.5}" x2="${lx}" y2="${y+11.5}" stroke="rgba(0,0,0,0.22)" stroke-width="0.9"/>`;
   }
   return s;
 }
 
-// ── SSS Gel base ───────────────────────────────────────────────
-// Returns SVG ellipse for SSS underglow
-function sssUnderglow(SSSColor, opacity) {
-  return `<ellipse cx="32" cy="54" rx="18" ry="7" fill="${SSSColor}" opacity="${opacity}" style="mix-blend-mode:multiply"/>`;
-}
-
-// ── SSS shine overlay ─────────────────────────────────────────
-function sssShine() {
-  return `<ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.72)"/>`;
+// ── Specular highlight factory ─────────────────────────────────
+function specHighlight(cx, cy, rx, ry, intensity) {
+  return `<ellipse cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}" fill="rgba(255,255,255,${intensity})"/>`;
 }
 
 // ── Slot symbols ───────────────────────────────────────────────
 const SYMBOLS = {
 
   // ── BAO-BAO — Common ─────────────────────────────────────
-  // XL Soupy Xiaolongbao — translucent maltose gel, pinched pleats,
-  // blush pink gradient, dangling corduroy boots
+  // XL Xiaolongbao: SSS maltose gel body, pinched pleat top,
+  // translucent soup glow inside, dangling corduroy boots
   baobao: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="baoSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff8f2"/>
-      <stop offset="35%" stop-color="#fce4d6"/>
-      <stop offset="70%" stop-color="#f5c8a8"/>
-      <stop offset="100%" stop-color="#c88860"/>
+    <!-- Deep SSS gel gradient: white-hot core → pink mid → amber rim → deep shadow -->
+    <radialGradient id="baoBody" cx="35%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="22%"  stop-color="#fde8dc"/>
+      <stop offset="50%"  stop-color="#f5c4a8"/>
+      <stop offset="75%"  stop-color="#d4886a"/>
+      <stop offset="100%" stop-color="#8a4830"/>
     </radialGradient>
-    <radialGradient id="baoInner" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,200,100,0.35)"/>
-      <stop offset="100%" stop-color="rgba(255,180,80,0)"/>
+    <!-- SSS soup glow from interior -->
+    <radialGradient id="baoSoup" cx="50%" cy="55%" r="45%">
+      <stop offset="0%"   stop-color="rgba(255,210,120,0.55)"/>
+      <stop offset="60%"  stop-color="rgba(255,170,70,0.25)"/>
+      <stop offset="100%"  stop-color="rgba(255,140,40,0)"/>
     </radialGradient>
-    <filter id="baoShadow" x="-25%" y="-25%" width="150%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(180,100,50,0.38)"/>
+    <!-- Specular lighting: key light top-left -->
+    <filter id="baoSpec" x="-20%" y="-20%" width="140%" height="140%">
+      <feSpecularLighting result="specOut" specularExponent="40" lighting-color="#ffffff" surfaceScale="4">
+        <fePointLight x="10" y="6" z="30"/>
+      </feSpecularLighting>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="0.6" k3="1" k4="0"/>
     </filter>
-    <filter id="baoGel">
-      <feGaussianBlur stdDeviation="2.5" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    <!-- Deep drop shadow -->
+    <filter id="baoShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="2" dy="6" stdDeviation="5" flood-color="rgba(120,50,20,0.50)"/>
     </filter>
+    <!-- Pleat line gradient -->
     <linearGradient id="baoPleat" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="rgba(200,140,90,0.45)"/>
-      <stop offset="50%" stop-color="rgba(255,220,190,0.3)"/>
-      <stop offset="100%" stop-color="rgba(200,140,90,0.45)"/>
+      <stop offset="0%"   stop-color="rgba(180,120,80,0.5)"/>
+      <stop offset="50%"  stop-color="rgba(255,220,195,0.35)"/>
+      <stop offset="100%" stop-color="rgba(180,120,80,0.5)"/>
     </linearGradient>
   </defs>
 
-  <!-- SSS soup glow from inside -->
-  <ellipse cx="32" cy="44" rx="13" ry="9" fill="url(#baoInner)" filter="url(#baoGel)"/>
+  <!-- Ground shadow ellipse -->
+  <ellipse cx="32" cy="61" rx="20" ry="6" fill="rgba(0,0,0,0.35)"/>
 
-  <!-- Main bun body — SSS maltose gel -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#baoSSS)" filter="url(#baoShadow)"/>
+  <!-- Interior soup glow (SSS from inside) -->
+  <ellipse cx="32" cy="46" rx="14" ry="10" fill="url(#baoSoup)"/>
 
-  <!-- Gel overlay gloss -->
-  <ellipse cx="32" cy="33" rx="17" ry="15" fill="rgba(255,248,242,0.28)"/>
+  <!-- Main bun body with SSS -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#baoBody)" filter="url(#baoShadow)"/>
 
-  <!-- Pinched pleat lines at top -->
-  <path d="M24 17 Q26 22 28 17 Q30 22 32 17 Q34 22 36 17 Q38 22 40 17" stroke="url(#baoPleat)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <!-- Gel overlay (upper gloss) -->
+  <ellipse cx="32" cy="33" rx="18" ry="16" fill="rgba(255,250,247,0.32)"/>
 
-  <!-- SSS shine -->
-  ${sssShine()}
+  <!-- Specular hotspot top-left -->
+  ${specHighlight(20, 20, 10, 7, 0.72)}
+  ${specHighlight(18, 18, 5, 3.5, 0.90)}
 
-  <!-- Beady safety eyes -->
+  <!-- Pinched pleat lines at crown -->
+  <path d="M24 17 Q26 22 28 17 Q30 22 32 17 Q34 22 36 17 Q38 22 40 17" stroke="url(#baoPleat)" stroke-width="1.7" fill="none" stroke-linecap="round"/>
+
+  <!-- Rim light bottom-right edge -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="none" stroke="rgba(255,200,160,0.18)" stroke-width="1.5" clip-path="url(#baoRim)"/>
+
+  <!-- Face -->
   ${eye(24, 34, 4.5)}
   ${eye(40, 34, 4.5)}
-
-  <!-- Blush -->
   ${blush(32, 40)}
-
-  <!-- Embroidered smile -->
   ${smile(26, 43, 12)}
 
-  <!-- Corduroy boots dangling -->
-  ${boots(20, 55, '#6a4c2a')}
-  ${boots(36, 55, '#6a4c2a')}
+  <!-- Corduroy boots -->
+  ${boots(20, 55, '#5c3d20')}
+  ${boots(36, 55, '#5c3d20')}
 </svg>`,
     name: 'Bao-Bao', type: 'Xiaolongbao', rarity: 'common', weight: 18
   },
 
   // ── HAR-GOW PIP — Common ───────────────────────────────────
-  // Crystal Shrimp Dumpling — frosted translucent wrapper,
-  // orange shrimp glow visible through gel, big rosy cheeks
+  // Crystal Shrimp Dumpling: frosted translucent wrapper,
+  // orange shrimp glow through gel, big rosy cheeks
   hargow: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="hgSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="rgba(255,242,235,0.96)"/>
-      <stop offset="40%" stop-color="rgba(245,222,208,0.88)"/>
-      <stop offset="75%" stop-color="rgba(218,178,155,0.82)"/>
-      <stop offset="100%" stop-color="rgba(175,125,95,0.76)"/>
+    <!-- SSS crystal wrapper: cool white → pale pink → warm shadow -->
+    <radialGradient id="hgBody" cx="35%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="rgba(255,252,250,0.97)"/>
+      <stop offset="28%"  stop-color="rgba(248,232,224,0.92)"/>
+      <stop offset="58%"  stop-color="rgba(218,178,155,0.85)"/>
+      <stop offset="82%"  stop-color="rgba(175,125,95,0.78)"/>
+      <stop offset="100%" stop-color="rgba(130,85,60,0.72)"/>
     </radialGradient>
-    <radialGradient id="hgShrimp" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,160,60,0.72)"/>
-      <stop offset="55%" stop-color="rgba(255,120,40,0.5)"/>
-      <stop offset="100%" stop-color="rgba(255,100,20,0)"/>
+    <!-- Shrimp glow: warm orange through translucent skin -->
+    <radialGradient id="hgShrimp" cx="50%" cy="48%" r="48%">
+      <stop offset="0%"   stop-color="rgba(255,165,70,0.82)"/>
+      <stop offset="50%"  stop-color="rgba(255,125,40,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,90,20,0)"/>
     </radialGradient>
-    <filter id="hgShadow" x="-25%" y="-25%" width="150%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(160,90,50,0.35)"/>
+    <filter id="hgShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="2" dy="6" stdDeviation="5" flood-color="rgba(100,60,30,0.48)"/>
     </filter>
-    <filter id="hgFrost">
-      <feGaussianBlur stdDeviation="1.8" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
+    <!-- Frost sparkle overlay -->
+    <radialGradient id="hgFrost" cx="30%" cy="25%" r="50%">
+      <stop offset="0%"   stop-color="rgba(255,255,255,0.7)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
   </defs>
 
-  <!-- Frosted crystal wrapper -->
-  <ellipse cx="32" cy="36" rx="21" ry="21" fill="url(#hgSSS)" filter="url(#hgShadow)"/>
+  <ellipse cx="32" cy="61" rx="20" ry="6" fill="rgba(0,0,0,0.32)"/>
+
+  <!-- Frosted crystal body -->
+  <ellipse cx="32" cy="36" rx="21" ry="21" fill="url(#hgBody)" filter="url(#hgShadow)"/>
 
   <!-- Shrimp glow visible through translucent wrapper -->
-  <ellipse cx="32" cy="34" rx="11" ry="9" fill="url(#hgShrimp)" filter="url(#hgFrost)"/>
+  <ellipse cx="32" cy="35" rx="12" ry="10" fill="url(#hgShrimp)"/>
 
   <!-- Frost overlay -->
-  <ellipse cx="32" cy="33" rx="17" ry="15" fill="rgba(255,255,255,0.18)"/>
+  <ellipse cx="32" cy="33" rx="17" ry="15" fill="url(#hgFrost)"/>
 
-  <!-- Wrinkle skirt at bottom -->
-  <path d="M12 40 Q16 44 20 40 Q24 44 28 40 Q32 44 36 40 Q40 44 44 40 Q48 44 52 40" stroke="rgba(175,125,95,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Specular hot spot -->
+  ${specHighlight(20, 20, 9, 7, 0.78)}
+  ${specHighlight(18, 18, 5, 3, 0.92)}
 
-  <!-- SSS shine -->
-  ${sssShine()}
+  <!-- Wrinkle skirt at base -->
+  <path d="M12 40 Q16 44 20 40 Q24 44 28 40 Q32 44 36 40 Q40 44 44 40 Q48 44 52 40" stroke="rgba(130,85,60,0.55)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
 
   <!-- Big rosy blush cheeks -->
   ${blush(32, 40)}
 
-  <!-- Beady eyes — slightly wide set -->
+  <!-- Beady eyes (wide set) -->
   ${eye(23, 33, 4.5)}
   ${eye(41, 33, 4.5)}
 
@@ -350,60 +320,75 @@ const SYMBOLS = {
   ${smile(26, 43, 12)}
 
   <!-- Corduroy boots -->
-  ${boots(20, 55, '#5c3a1a')}
-  ${boots(36, 55, '#5c3a1a')}
+  ${boots(20, 55, '#4a3010')}
+  ${boots(36, 55, '#4a3010')}
 </svg>`,
     name: 'Har-Gow Pip', type: 'Shrimp Dumpling', rarity: 'common', weight: 18
   },
 
   // ── SIU-MAI SAM — Rare ─────────────────────────────────────
-  // Pork & Shrimp Siu Mai — yellow wrinkled wrapper,
-  // crab roe sprinkles, stick-like arms resting on tummy
+  // Yellow wrapper, pork filling, crab roe sprinkles, stick arms
   siumai: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="smSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff8d8"/>
-      <stop offset="40%" stop-color="#fce890"/>
-      <stop offset="70%" stop-color="#e8c840"/>
-      <stop offset="100%" stop-color="#b89020"/>
+    <!-- SSS yellow wrapper: bright core → golden mid → amber shadow -->
+    <radialGradient id="smBody" cx="35%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="20%"  stop-color="#fffbe0"/>
+      <stop offset="48%"  stop-color="#fce870"/>
+      <stop offset="74%"  stop-color="#d4a820"/>
+      <stop offset="100%" stop-color="#8a6010"/>
     </radialGradient>
-    <radialGradient id="smMeat" cx="45%" cy="40%" r="55%">
-      <stop offset="0%" stop-color="#e06060"/>
-      <stop offset="60%" stop-color="#b84040"/>
-      <stop offset="100%" stop-color="#8a1818"/>
+    <!-- Pork filling -->
+    <radialGradient id="smMeat" cx="45%" cy="38%" r="55%">
+      <stop offset="0%"   stop-color="#e06060"/>
+      <stop offset="55%"  stop-color="#b83838"/>
+      <stop offset="100%" stop-color="#7a1010"/>
     </radialGradient>
-    <filter id="smShadow" x="-25%" y="-25%" width="150%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(160,120,0,0.38)"/>
+    <filter id="smShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="2" dy="6" stdDeviation="5" flood-color="rgba(130,100,0,0.48)"/>
+    </filter>
+    <filter id="smSpec" x="-20%" y="-20%" width="140%" height="140%">
+      <feSpecularLighting result="specOut" specularExponent="38" lighting-color="#ffffff" surfaceScale="4">
+        <fePointLight x="10" y="6" z="28"/>
+      </feSpecularLighting>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="0.55" k3="1" k4="0"/>
     </filter>
   </defs>
 
-  <!-- Main body — yellow wrapper -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#smSSS)" filter="url(#smShadow)"/>
+  <ellipse cx="32" cy="61" rx="20" ry="6" fill="rgba(0,0,0,0.32)"/>
+
+  <!-- Main body -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#smBody)" filter="url(#smShadow)"/>
 
   <!-- Open meat filling on top -->
   <ellipse cx="32" cy="27" rx="14" ry="11" fill="url(#smMeat)"/>
-  <ellipse cx="32" cy="26" rx="11" ry="8" fill="#c84040"/>
+  <ellipse cx="32" cy="26" rx="11" ry="8" fill="#c03535"/>
 
-  <!-- Crab roe sprinkles — orange dots on yellow -->
-  <circle cx="14" cy="36" r="2.2" fill="#ff8c00" opacity="0.85"/>
-  <circle cx="19" cy="42" r="1.6" fill="#ff8c00" opacity="0.75"/>
-  <circle cx="44" cy="38" r="2.2" fill="#ff8c00" opacity="0.85"/>
-  <circle cx="50" cy="32" r="1.6" fill="#ff8c00" opacity="0.75"/>
-  <circle cx="13" cy="46" r="1.6" fill="#ff8c00" opacity="0.7"/>
-  <circle cx="51" cy="44" r="1.6" fill="#ff8c00" opacity="0.7"/>
-  <circle cx="38" cy="44" r="1.6" fill="#ff8c00" opacity="0.75"/>
-  <circle cx="25" cy="44" r="1.6" fill="#ff8c00" opacity="0.7"/>
+  <!-- Crab roe sprinkles (orange dots with highlight) -->
+  <circle cx="14" cy="36" r="2.4" fill="#ff8c00" opacity="0.9"/>
+  <circle cx="14" cy="36" r="1" fill="rgba(255,220,150,0.7)"/>
+  <circle cx="19" cy="42" r="1.7" fill="#ff8c00" opacity="0.8"/>
+  <circle cx="44" cy="38" r="2.4" fill="#ff8c00" opacity="0.9"/>
+  <circle cx="44" cy="38" r="1" fill="rgba(255,220,150,0.7)"/>
+  <circle cx="50" cy="32" r="1.7" fill="#ff8c00" opacity="0.8"/>
+  <circle cx="13" cy="46" r="1.7" fill="#ff8c00" opacity="0.75"/>
+  <circle cx="51" cy="44" r="1.7" fill="#ff8c00" opacity="0.75"/>
+  <circle cx="38" cy="44" r="1.7" fill="#ff8c00" opacity="0.8"/>
+  <circle cx="25" cy="44" r="1.7" fill="#ff8c00" opacity="0.8"/>
+  <circle cx="26" cy="36" r="1.5" fill="#ff8c00" opacity="0.75"/>
+  <circle cx="38" cy="36" r="1.5" fill="#ff8c00" opacity="0.75"/>
 
-  <!-- Wrapped edge frill -->
-  <path d="M11 38 Q14 42 17 38 Q20 42 23 38 Q26 42 29 38 Q32 42 35 38 Q38 42 41 38 Q44 42 47 38 Q50 42 53 38" stroke="rgba(180,140,0,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Wrapper frill at base -->
+  <path d="M11 38 Q14 42 17 38 Q20 42 23 38 Q26 42 29 38 Q32 42 35 38 Q38 42 41 38 Q44 42 47 38 Q50 42 53 38" stroke="rgba(180,130,0,0.45)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
 
   <!-- Stick-like arms resting on tummy -->
-  <rect x="9" y="38" width="4" height="10" rx="2" fill="#d4a060" transform="rotate(-25,11,38)"/>
-  <rect x="51" y="38" width="4" height="10" rx="2" fill="#d4a060" transform="rotate(25,53,38)"/>
+  <rect x="8" y="37" width="4.5" height="11" rx="2.2" fill="#c89050" transform="rotate(-28,10,37)"/>
+  <rect x="51.5" y="37" width="4.5" height="11" rx="2.2" fill="#c89050" transform="rotate(28,54,37)"/>
 
-  <!-- SSS shine -->
-  ${sssShine()}
+  <!-- Specular hotspot -->
+  ${specHighlight(20, 19, 9, 7, 0.70)}
+  ${specHighlight(18, 17, 5, 3, 0.88)}
 
   <!-- Beady eyes -->
   ${eye(24, 33, 4.5)}
@@ -412,60 +397,69 @@ const SYMBOLS = {
   <!-- Blush -->
   ${blush(32, 40)}
 
-  <!-- Derpy cheerful smile -->
+  <!-- Derpy smile -->
   ${smile(25, 43, 14)}
 
   <!-- Boots -->
-  ${boots(20, 55, '#6a4c2a')}
-  ${boots(36, 55, '#6a4c2a')}
+  ${boots(20, 55, '#5c3d20')}
+  ${boots(36, 55, '#5c3d20')}
 </svg>`,
     name: 'Siu-Mai Sam', type: 'Pork Dumpling', rarity: 'rare', weight: 10
   },
 
   // ── EGG TARTIE — Rare ─────────────────────────────────────
-  // Dan Tat — flaky golden-brown shell, ultra-gloss wobbly custard heart
+  // Flaky pastry bowl, ultra-gloss wobbly custard, kicking boots
   eggtart: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="etPastry" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#f5deb3"/>
-      <stop offset="40%" stop-color="#d4a05a"/>
-      <stop offset="75%" stop-color="#a06830"/>
-      <stop offset="100%" stop-color="#6a3a10"/>
+    <!-- Pastry shell: warm golden gradient -->
+    <radialGradient id="etPastry" cx="35%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="#f8e8c8"/>
+      <stop offset="28%"  stop-color="#d4a060"/>
+      <stop offset="60%"  stop-color="#a06830"/>
+      <stop offset="84%"  stop-color="#6a3810"/>
+      <stop offset="100%" stop-color="#3a1800"/>
     </radialGradient>
-    <radialGradient id="etCustard" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff5b0"/>
-      <stop offset="35%" stop-color="#ffda30"/>
-      <stop offset="65%" stop-color="#f09000"/>
-      <stop offset="100%" stop-color="#a05000"/>
+    <!-- Custard: bright yellow-orange core, deep amber rim -->
+    <radialGradient id="etCustard" cx="38%" cy="30%" r="62%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="12%"  stop-color="#fff5a0"/>
+      <stop offset="40%"  stop-color="#ffda28"/>
+      <stop offset="70%"  stop-color="#e07800"/>
+      <stop offset="100%" stop-color="#903800"/>
     </radialGradient>
-    <radialGradient id="etCustardGloss" cx="35%" cy="28%" r="55%">
-      <stop offset="0%" stop-color="rgba(255,255,180,0.9)"/>
-      <stop offset="50%" stop-color="rgba(255,220,80,0.5)"/>
-      <stop offset="100%" stop-color="rgba(255,180,0,0)"/>
+    <!-- Custard specular gloss -->
+    <radialGradient id="etCustardGloss" cx="32%" cy="26%" r="55%">
+      <stop offset="0%"   stop-color="rgba(255,255,220,0.98)"/>
+      <stop offset="35%"  stop-color="rgba(255,225,100,0.75)"/>
+      <stop offset="70%"  stop-color="rgba(255,180,30,0.3)"/>
+      <stop offset="100%" stop-color="rgba(255,140,0,0)"/>
     </radialGradient>
-    <filter id="etShadow" x="-25%" y="-25%" width="150%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(160,100,0,0.42)"/>
-    </filter>
-    <filter id="etWobble">
-      <feGaussianBlur stdDeviation="1.5" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    <filter id="etShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="2" dy="6" stdDeviation="5" flood-color="rgba(120,70,0,0.52)"/>
     </filter>
   </defs>
 
-  <!-- Pastry bowl — flaky shell -->
+  <ellipse cx="32" cy="61" rx="20" ry="6" fill="rgba(0,0,0,0.32)"/>
+
+  <!-- Pastry bowl (flaky shell) -->
   <ellipse cx="32" cy="39" rx="22" ry="18" fill="url(#etPastry)" filter="url(#etShadow)"/>
 
-  <!-- Flaky crust ridges on pastry rim -->
-  <path d="M12 38 Q14 34 16 38 Q18 34 20 38 Q22 34 24 38 Q26 34 28 38 Q30 34 32 38 Q34 34 36 38 Q38 34 40 38 Q42 34 44 38 Q46 34 48 38 Q50 34 52 38" stroke="rgba(140,80,30,0.45)" stroke-width="1.2" fill="none"/>
+  <!-- Flaky crust ridges on rim -->
+  <path d="M12 38 Q14 34 16 38 Q18 34 20 38 Q22 34 24 38 Q26 34 28 38 Q30 34 32 38 Q34 34 36 38 Q38 34 40 38 Q42 34 44 38 Q46 34 48 38 Q50 34 52 38" stroke="rgba(100,50,15,0.50)" stroke-width="1.3" fill="none"/>
 
-  <!-- Ultra-gloss wobbly custard center -->
-  <ellipse cx="32" cy="35" rx="16" ry="13" fill="url(#etCustard)" filter="url(#etWobble)"/>
+  <!-- Wobbly custard with SSS -->
+  <ellipse cx="32" cy="35" rx="16" ry="13" fill="url(#etCustard)"/>
+
+  <!-- Gloss on custard (hot spotlight from top-left) -->
   <ellipse cx="32" cy="33" rx="13" ry="10" fill="url(#etCustardGloss)"/>
-  <ellipse cx="30" cy="30" rx="5" ry="4" fill="rgba(255,255,200,0.6)"/>
 
-  <!-- SSS shine -->
-  ${sssShine()}
+  <!-- Specular hot spot on custard -->
+  ${specHighlight(25, 26, 7, 5, 0.90)}
+  ${specHighlight(23, 24, 3.5, 2.5, 1.0)}
+
+  <!-- Specular on pastry -->
+  ${specHighlight(20, 22, 8, 5, 0.50)}
 
   <!-- Beady eyes on pastry rim -->
   ${eye(24, 37, 4)}
@@ -478,143 +472,177 @@ const SYMBOLS = {
   ${smile(27, 46, 10)}
 
   <!-- Boots -->
-  ${boots(21, 55, '#5c3a1a')}
-  ${boots(35, 55, '#5c3a1a')}
+  ${boots(21, 55, '#4a3010')}
+  ${boots(35, 55, '#4a3010')}
 </svg>`,
     name: 'Egg Tartie', type: 'Egg Tart', rarity: 'rare', weight: 9
   },
 
   // ── CHAR SIU BAO — Epic ────────────────────────────────────
-  // Fluffy white steamed bun, cracked top revealing sticky red BBQ sauce
+  // Fluffy white steamed bun, cracked crown, sticky red BBQ sauce
   charsiu: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="csBun" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="35%" stop-color="#f8f0e4"/>
-      <stop offset="70%" stop-color="#e8d0b0"/>
-      <stop offset="100%" stop-color="#c8a070"/>
+    <!-- Fluffy bun: pure white core → warm cream → golden shadow -->
+    <radialGradient id="csBun" cx="35%" cy="28%" r="65%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="22%"  stop-color="#faf5ee"/>
+      <stop offset="50%"  stop-color="#e8d0b0"/>
+      <stop offset="78%"  stop-color="#c8a070"/>
+      <stop offset="100%" stop-color="#8a5830"/>
     </radialGradient>
-    <radialGradient id="csSauce" cx="42%" cy="35%" r="58%">
-      <stop offset="0%" stop-color="#ff5030"/>
-      <stop offset="40%" stop-color="#d42808"/>
-      <stop offset="75%" stop-color="#8a1800"/>
-      <stop offset="100%" stop-color="#3a0800"/>
+    <!-- BBQ sauce: deep red with caramel gloss -->
+    <radialGradient id="csSauce" cx="40%" cy="35%" r="58%">
+      <stop offset="0%"   stop-color="#ff4020"/>
+      <stop offset="35%"  stop-color="#d42008"/>
+      <stop offset="68%"  stop-color="#8a1000"/>
+      <stop offset="100%" stop-color="#3a0400"/>
     </radialGradient>
-    <radialGradient id="csSauceGloss" cx="35%" cy="28%" r="55%">
-      <stop offset="0%" stop-color="rgba(255,200,100,0.7)"/>
-      <stop offset="50%" stop-color="rgba(255,140,40,0.3)"/>
+    <!-- Sauce caramel gloss -->
+    <radialGradient id="csSauceGloss" cx="32%" cy="26%" r="55%">
+      <stop offset="0%"   stop-color="rgba(255,210,100,0.80)"/>
+      <stop offset="45%"  stop-color="rgba(255,150,40,0.40)"/>
       <stop offset="100%" stop-color="rgba(255,100,0,0)"/>
     </radialGradient>
-    <filter id="csShadow" x="-25%" y="-25%" width="150%" height="160%">
-      <feDropShadow dx="1" dy="5" stdDeviation="5" flood-color="rgba(140,30,0,0.45)"/>
-    </filter>
-    <filter id="csSauceGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(200,50,0,0.65)"/>
+    <filter id="csShadow" x="-35%" y="-35%" width="170%" height="180%">
+      <feDropShadow dx="2" dy="7" stdDeviation="6" flood-color="rgba(100,20,0,0.52)"/>
     </filter>
   </defs>
+
+  <ellipse cx="32" cy="61" rx="20" ry="6" fill="rgba(0,0,0,0.32)"/>
 
   <!-- Fluffy white bun body -->
   <ellipse cx="32" cy="34" rx="23" ry="22" fill="url(#csBun)" filter="url(#csShadow)"/>
 
-  <!-- Crack split at top -->
-  <path d="M26 14 Q28 20 27 27 Q30 25 32 27 Q34 25 37 27 Q36 20 38 14" fill="#c8a070" opacity="0.72"/>
+  <!-- Crack split at crown -->
+  <path d="M26 14 Q28 20 27 27 Q30 25 32 27 Q34 25 37 27 Q36 20 38 14" fill="#c8a070" opacity="0.75"/>
 
   <!-- Glossy BBQ sauce peeking through crack -->
-  <ellipse cx="32" cy="21" rx="8" ry="6" fill="url(#csSauce)" filter="url(#csSauceGlow)"/>
-  <ellipse cx="30" cy="19" rx="3" ry="2" fill="rgba(255,200,100,0.5)"/>
+  <ellipse cx="32" cy="21" rx="8" ry="6" fill="url(#csSauce)"/>
+  <ellipse cx="32" cy="19" rx="6" ry="4" fill="url(#csSauceGloss)"/>
+  ${specHighlight(30, 17, 3, 2, 0.85)}
 
-  <!-- Fluffy surface texture lines -->
-  <path d="M14 29 Q18 27 22 29" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
-  <path d="M40 27 Q44 29 48 27" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
+  <!-- Fluffy surface texture (subtle creases) -->
+  <path d="M14 29 Q18 27 22 29" stroke="rgba(200,170,130,0.35)" stroke-width="1" fill="none"/>
+  <path d="M40 27 Q44 29 48 27" stroke="rgba(200,170,130,0.35)" stroke-width="1" fill="none"/>
+  <path d="M30 20 Q32 18 34 20" stroke="rgba(200,170,130,0.25)" stroke-width="0.8" fill="none"/>
 
-  <!-- SSS shine -->
-  ${sssShine()}
+  <!-- Specular hotspot on bun -->
+  ${specHighlight(20, 19, 10, 8, 0.72)}
+  ${specHighlight(18, 17, 5, 3.5, 0.90)}
 
-  <!-- Winking face -->
+  <!-- Winking eyes -->
   ${eye(23, 34, 4.5)}
   ${eye(41, 34, 4.5)}
 
-  <!-- Blush — slightly pink from BBQ glaze -->
+  <!-- Blush (slight pink from glaze) -->
   ${blush(32, 40)}
 
   <!-- Embroidered smile -->
   ${smile(26, 43, 12)}
 
   <!-- Boots -->
-  ${boots(20, 55, '#4a3010')}
-  ${boots(36, 55, '#4a3010')}
+  ${boots(20, 55, '#3a2808')}
+  ${boots(36, 55, '#3a2808')}
 </svg>`,
     name: 'Char Siu Bao', type: 'BBQ Pork Bun', rarity: 'epic', weight: 5
   },
 
   // ── GOLDEN JIN-DEUI — Legendary / Jackpot ────────────────
-  // Fried Sesame Ball — golden sphere, white sesame seed bumps,
-  // hollow squishy core, tiny glowing bamboo ring crown, sparkles
+  // Fried Sesame Ball: golden sphere, white sesame bumps,
+  // hollow core glow, bamboo ring crown, sparkle stars
   jin: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="jinSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#ffffd0"/>
-      <stop offset="30%" stop-color="#ffd700"/>
-      <stop offset="65%" stop-color="#d4a017"/>
-      <stop offset="100%" stop-color="#7a5000"/>
+    <!-- Golden sphere: white-hot core → bright gold → deep amber shadow -->
+    <radialGradient id="jinBody" cx="32%" cy="26%" r="68%">
+      <stop offset="0%"   stop-color="#fffff0"/>
+      <stop offset="18%"  stop-color="#ffe840"/>
+      <stop offset="42%"  stop-color="#f0a010"/>
+      <stop offset="68%"  stop-color="#c07800"/>
+      <stop offset="100%" stop-color="#6a4000"/>
     </radialGradient>
+    <!-- Hollow core warm glow -->
     <radialGradient id="jinCore" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,200,80,0.4)"/>
-      <stop offset="100%" stop-color="rgba(255,150,0,0)"/>
+      <stop offset="0%"   stop-color="rgba(255,200,60,0.60)"/>
+      <stop offset="55%"  stop-color="rgba(255,150,20,0.30)"/>
+      <stop offset="100%" stop-color="rgba(255,100,0,0)"/>
     </radialGradient>
-    <radialGradient id="jinBamboo" cx="40%" cy="35%" r="60%">
-      <stop offset="0%" stop-color="#c8a060"/>
-      <stop offset="100%" stop-color="#6a4010"/>
+    <!-- Sesame seed gradient -->
+    <radialGradient id="jinSeed" cx="35%" cy="30%" r="60%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="50%"  stop-color="#f5f0d8"/>
+      <stop offset="100%" stop-color="#c8c0a0"/>
     </radialGradient>
-    <filter id="jinShadow" x="-30%" y="-30%" width="160%" height="170%">
-      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="rgba(200,140,0,0.55)"/>
+    <!-- Bamboo ring -->
+    <linearGradient id="jinBamboo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#d4a860"/>
+      <stop offset="50%"  stop-color="#8a5820"/>
+      <stop offset="100%" stop-color="#5a3808"/>
+    </linearGradient>
+    <filter id="jinShadow" x="-40%" y="-40%" width="180%" height="190%">
+      <feDropShadow dx="0" dy="8" stdDeviation="7" flood-color="rgba(200,130,0,0.65)"/>
     </filter>
     <filter id="jinGoldGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(255,200,0,0.75)"/>
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(255,200,0,0.85)"/>
     </filter>
     <filter id="jinStarGlow" x="-60%" y="-60%" width="220%" height="220%">
-      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="rgba(255,220,0,0.9)"/>
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="rgba(255,220,0,0.95)"/>
+    </filter>
+    <filter id="jinSpec" x="-20%" y="-20%" width="140%" height="140%">
+      <feSpecularLighting result="specOut" specularExponent="50" lighting-color="#ffffff" surfaceScale="5">
+        <fePointLight x="8" y="5" z="35"/>
+      </feSpecularLighting>
+      <feComposite in="SourceGraphic" in2="specOut" operator="arithmetic" k1="0" k2="0.7" k3="1" k4="0"/>
     </filter>
   </defs>
 
-  <!-- Shadow -->
-  <ellipse cx="32" cy="59" rx="17" ry="5" fill="rgba(0,0,0,0.3)"/>
+  <ellipse cx="32" cy="61" rx="19" ry="6" fill="rgba(0,0,0,0.38)"/>
 
-  <!-- Hollow core glow inside sphere -->
-  <ellipse cx="32" cy="36" rx="12" ry="12" fill="url(#jinCore)"/>
+  <!-- Core glow from hollow inside -->
+  <ellipse cx="32" cy="36" rx="13" ry="13" fill="url(#jinCore)"/>
 
-  <!-- Golden sesame ball body -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#jinSSS)" filter="url(#jinShadow)"/>
+  <!-- Golden sphere body with specular lighting -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#jinBody)" filter="url(#jinShadow)"/>
 
-  <!-- Sesame seed bumps -->
-  <ellipse cx="18" cy="22" rx="3.5" ry="2.5" fill="#f5f0d0" transform="rotate(-20,18,22)"/>
-  <ellipse cx="28" cy="16" rx="3" ry="2" fill="#f5f0d0" transform="rotate(15,28,16)"/>
-  <ellipse cx="40" cy="17" rx="3.5" ry="2.5" fill="#f5f0d0" transform="rotate(25,40,17)"/>
-  <ellipse cx="48" cy="26" rx="3" ry="2" fill="#f5f0d0" transform="rotate(-10,48,26)"/>
-  <ellipse cx="46" cy="40" rx="3" ry="2" fill="#f5f0d0" transform="rotate(20,46,40)"/>
-  <ellipse cx="38" cy="50" rx="3" ry="2" fill="#f5f0d0" transform="rotate(-15,38,50)"/>
-  <ellipse cx="24" cy="50" rx="3.5" ry="2.5" fill="#f5f0d0" transform="rotate(10,24,50)"/>
-  <ellipse cx="14" cy="38" rx="3" ry="2" fill="#f5f0d0" transform="rotate(-5,14,38)"/>
-  <ellipse cx="22" cy="28" rx="2.5" ry="1.8" fill="#f5f0d0" transform="rotate(5,22,28)"/>
-  <ellipse cx="42" cy="28" rx="2.5" ry="1.8" fill="#f5f0d0" transform="rotate(-8,42,28)"/>
+  <!-- Sesame seed bumps (white with highlight) -->
+  <ellipse cx="16" cy="20" rx="4" ry="2.8" fill="url(#jinSeed)" transform="rotate(-22,16,20)"/>
+  <ellipse cx="16" cy="20" rx="2" ry="1.4" fill="rgba(255,255,255,0.8)" transform="rotate(-22,16,20)"/>
+  <ellipse cx="27" cy="14" rx="3.5" ry="2.4" fill="url(#jinSeed)" transform="rotate(15,27,14)"/>
+  <ellipse cx="27" cy="14" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.8)" transform="rotate(15,27,14)"/>
+  <ellipse cx="40" cy="15" rx="4" ry="2.8" fill="url(#jinSeed)" transform="rotate(28,40,15)"/>
+  <ellipse cx="40" cy="15" rx="2" ry="1.4" fill="rgba(255,255,255,0.8)" transform="rotate(28,40,15)"/>
+  <ellipse cx="50" cy="26" rx="3.5" ry="2.4" fill="url(#jinSeed)" transform="rotate(-8,50,26)"/>
+  <ellipse cx="50" cy="26" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.8)" transform="rotate(-8,50,26)"/>
+  <ellipse cx="47" cy="40" rx="3.5" ry="2.4" fill="url(#jinSeed)" transform="rotate(18,47,40)"/>
+  <ellipse cx="47" cy="40" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.8)" transform="rotate(18,47,40)"/>
+  <ellipse cx="36" cy="51" rx="4" ry="2.8" fill="url(#jinSeed)" transform="rotate(-12,36,51)"/>
+  <ellipse cx="36" cy="51" rx="2" ry="1.4" fill="rgba(255,255,255,0.8)" transform="rotate(-12,36,51)"/>
+  <ellipse cx="22" cy="51" rx="4" ry="2.8" fill="url(#jinSeed)" transform="rotate(8,22,51)"/>
+  <ellipse cx="22" cy="51" rx="2" ry="1.4" fill="rgba(255,255,255,0.8)" transform="rotate(8,22,51)"/>
+  <ellipse cx="13" cy="38" rx="3.5" ry="2.4" fill="url(#jinSeed)" transform="rotate(-4,13,38)"/>
+  <ellipse cx="13" cy="38" rx="1.8" ry="1.2" fill="rgba(255,255,255,0.8)" transform="rotate(-4,13,38)"/>
+  <ellipse cx="20" cy="26" rx="3" ry="2" fill="url(#jinSeed)" transform="rotate(5,20,26)"/>
+  <ellipse cx="20" cy="26" rx="1.5" ry="1" fill="rgba(255,255,255,0.8)" transform="rotate(5,20,26)"/>
+  <ellipse cx="44" cy="27" rx="3" ry="2" fill="url(#jinSeed)" transform="rotate(-6,44,27)"/>
+  <ellipse cx="44" cy="27" rx="1.5" ry="1" fill="rgba(255,255,255,0.8)" transform="rotate(-6,44,27)"/>
 
   <!-- Bamboo steamer ring crown -->
-  <ellipse cx="32" cy="12" rx="10" ry="4" fill="none" stroke="url(#jinBamboo)" stroke-width="4"/>
-  <line x1="22" y1="12" x2="22" y2="16" stroke="#6a4010" stroke-width="2"/>
-  <line x1="32" y1="12" x2="32" y2="16" stroke="#6a4010" stroke-width="2"/>
-  <line x1="42" y1="12" x2="42" y2="16" stroke="#6a4010" stroke-width="2"/>
+  <ellipse cx="32" cy="11" rx="11" ry="4.5" fill="none" stroke="url(#jinBamboo)" stroke-width="4.5"/>
+  <line x1="21" y1="11" x2="21" y2="16" stroke="#5a3808" stroke-width="2.2"/>
+  <line x1="32" y1="11" x2="32" y2="16" stroke="#5a3808" stroke-width="2.2"/>
+  <line x1="43" y1="11" x2="43" y2="16" stroke="#5a3808" stroke-width="2.2"/>
 
-  <!-- SSS shine — large golden highlight -->
-  <ellipse cx="22" cy="24" rx="10" ry="7" fill="rgba(255,255,200,0.65)"/>
-  <ellipse cx="20" cy="22" rx="5" ry="3.5" fill="rgba(255,255,255,0.4)"/>
+  <!-- Massive specular hotspot (bright key light) -->
+  ${specHighlight(18, 16, 12, 9, 0.82)}
+  ${specHighlight(16, 14, 6, 4.5, 0.95)}
+  ${specHighlight(14, 12, 2.5, 2, 1.0)}
 
   <!-- Crown jewel eyes -->
-  <circle cx="24" cy="35" r="5" fill="#111"/>
-  <circle cx="22" cy="33" r="2.2" fill="rgba(255,255,255,0.9)"/>
-  <circle cx="40" cy="35" r="5" fill="#111"/>
-  <circle cx="38" cy="33" r="2.2" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="24" cy="35" r="5.5" fill="#0a0a0a"/>
+  <circle cx="22.5" cy="33" r="2.5" fill="rgba(255,255,255,0.95)"/>
+  <circle cx="40" cy="35" r="5.5" fill="#0a0a0a"/>
+  <circle cx="38.5" cy="33" r="2.5" fill="rgba(255,255,255,0.95)"/>
 
   <!-- Blush -->
   ${blush(32, 41)}
@@ -624,16 +652,16 @@ const SYMBOLS = {
 
   <!-- Sparkle star bursts -->
   <g filter="url(#jinStarGlow)">
-    <path d="M7 18 L8 15 L9 18 L12 19 L9 20 L8 23 L7 20 L4 19 Z" fill="#ffd700"/>
-    <path d="M55 14 L56 11 L57 14 L60 15 L57 16 L56 19 L55 16 L52 15 Z" fill="#ffd700"/>
-    <path d="M32 3 L32.7 5.5 L35 5.5 L33 7.2 L34 10 L32 8.2 L30 10 L31 7.2 L29 5.5 L31.3 5.5 Z" fill="#ffd700"/>
-    <path d="M5 42 L5.6 44.5 L8 44.5 L6 46.2 L7 49 L5 47.2 L3 49 L4 46.2 L2 44.5 L4.4 44.5 Z" fill="#ffd700" opacity="0.8"/>
-    <path d="M59 40 L59.6 42.5 L62 42.5 L60 44.2 L61 47 L59 45.2 L57 47 L58 44.2 L56 42.5 L58.4 42.5 Z" fill="#ffd700" opacity="0.8"/>
+    <path d="M6 17 L7 14 L8 17 L11 18 L8 19 L7 22 L6 19 L3 18 Z" fill="#ffd700"/>
+    <path d="M56 13 L57 10 L58 13 L61 14 L58 15 L57 18 L56 15 L53 14 Z" fill="#ffd700"/>
+    <path d="M32 2 L32.8 5 L36 5 L33.5 7 L34.5 10.5 L32 8.5 L29.5 10.5 L30.5 7 L28 5 L31.2 5 Z" fill="#ffd700"/>
+    <path d="M4 42 L4.7 44.5 L7.5 44.5 L5.5 46.2 L6.2 49 L4 47 L1.8 49 L2.5 46.2 L0.5 44.5 L3.3 44.5 Z" fill="#ffd700" opacity="0.85"/>
+    <path d="M60 40 L60.7 42.5 L63.5 42.5 L61.5 44.2 L62.2 47 L60 45 L57.8 47 L58.5 44.2 L56.5 42.5 L59.3 42.5 Z" fill="#ffd700" opacity="0.85"/>
   </g>
 
   <!-- Boots -->
-  ${boots(20, 55, '#6a4010')}
-  ${boots(36, 55, '#6a4010')}
+  ${boots(20, 55, '#5a3808')}
+  ${boots(36, 55, '#5a3808')}
 </svg>`,
     name: 'Golden Jin-Deui', type: 'Sesame Ball', rarity: 'legendary', weight: 2
   }
@@ -642,166 +670,214 @@ const SYMBOLS = {
 const SYMBOL_KEYS = Object.keys(SYMBOLS);
 const RARITY_WEIGHTS = {};
 SYMBOL_KEYS.forEach(k => RARITY_WEIGHTS[k] = SYMBOLS[k].weight);
-const TOTAL_WEIGHT = Object.values(RARITY_WEIGHTS).reduce((a,b)=>a+b,0);
+const TOTAL_WEIGHT = Object.values(RARITY_WEIGHTS).reduce((a, b) => a + b, 0);
 
 // ── AUDIO ──────────────────────────────────────────────────────
 let audioCtx = null;
-function getAudio(){if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx;}
-function playTone(freq,type,dur,vol=0.3,startTime=0){
-  const ctx=getAudio(), osc=ctx.createOscillator(), gain=ctx.createGain();
+function getAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); return audioCtx; }
+function playTone(freq, type, dur, vol = 0.3, startTime = 0) {
+  const ctx = getAudio(), osc = ctx.createOscillator(), gain = ctx.createGain();
   osc.connect(gain); gain.connect(ctx.destination);
-  osc.type=type; osc.frequency.value=freq;
-  const t=ctx.currentTime+startTime;
-  gain.gain.setValueAtTime(0,t);
-  gain.gain.linearRampToValueAtTime(vol,t+0.01);
-  gain.gain.exponentialRampToValueAtTime(0.001,t+dur);
-  osc.start(t); osc.stop(t+dur+0.05);
+  osc.type = type; osc.frequency.value = freq;
+  const t = ctx.currentTime + startTime;
+  gain.gain.setValueAtTime(0, t);
+  gain.gain.linearRampToValueAtTime(vol, t + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001, t + dur);
+  osc.start(t); osc.stop(t + dur + 0.05);
 }
-function playNoise(dur,vol=0.15,startTime=0){
-  const ctx=getAudio(), buf=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate), d=buf.getChannelData(0);
-  for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
-  const src=ctx.createBufferSource(), gain=ctx.createGain(), filter=ctx.createBiquadFilter();
-  filter.type='highpass'; filter.frequency.value=1000;
-  src.buffer=buf; src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
-  const t=ctx.currentTime+startTime;
-  gain.gain.setValueAtTime(0,t);
-  gain.gain.linearRampToValueAtTime(vol,t+0.01);
-  gain.gain.exponentialRampToValueAtTime(0.001,t+dur);
-  src.start(t); src.stop(t+dur);
+function playNoise(dur, vol = 0.15, startTime = 0) {
+  const ctx = getAudio(), buf = ctx.createBuffer(1, ctx.sampleRate * dur, ctx.sampleRate), d = buf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  const src = ctx.createBufferSource(), gain = ctx.createGain(), filter = ctx.createBiquadFilter();
+  filter.type = 'highpass'; filter.frequency.value = 1000;
+  src.buffer = buf; src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
+  const t = ctx.currentTime + startTime;
+  gain.gain.setValueAtTime(0, t);
+  gain.gain.linearRampToValueAtTime(vol, t + 0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001, t + dur);
+  src.start(t); src.stop(t + dur);
 }
-function soundWhoosh(){playNoise(0.3,0.2); playTone(400,'sine',0.3,0.1)}
-function soundTick(){const ctx=getAudio(), buf=ctx.createBuffer(1,ctx.sampleRate*0.03,ctx.sampleRate), d=buf.getChannelData(0); for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*0.3)); const src=ctx.createBufferSource(); src.buffer=buf; const g=ctx.createGain(); g.gain.value=0.12; src.connect(g); g.connect(ctx.destination); src.start();}
-function soundThud(){playTone(80,'sine',0.15,0.4); playTone(60,'sine',0.1,0.2)}
-function soundCoin(){for(let i=0;i<6;i++) setTimeout(()=>playTone(800+i*200,'sine',0.1,0.2),i*60);}
-function soundJackpot(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,'sine',0.4,0.3),i*150)); setTimeout(()=>[1047,1319,1568,2093].forEach((f,i)=>setTimeout(()=>playTone(f,'square',0.3,0.15),i*100)),600);}
-function soundNearMiss(){playTone(200,'sine',0.3,0.2); setTimeout(()=>playTone(180,'sine',0.4,0.15),200);}
-function soundClick(){playTone(600,'sine',0.05,0.25)}
+function soundWhoosh() { playNoise(0.3, 0.2); playTone(400, 'sine', 0.3, 0.1); }
+function soundTick() {
+  const ctx = getAudio(), buf = ctx.createBuffer(1, ctx.sampleRate * 0.03, ctx.sampleRate), d = buf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.exp(-i / (d.length * 0.3));
+  const src = ctx.createBufferSource(); src.buffer = buf; const g = ctx.createGain(); g.gain.value = 0.12; src.connect(g); g.connect(ctx.destination); src.start();
+}
+function soundThud() { playTone(80, 'sine', 0.15, 0.4); playTone(60, 'sine', 0.1, 0.2); }
+function soundCoin() { for (let i = 0; i < 6; i++) setTimeout(() => playTone(800 + i * 200, 'sine', 0.1, 0.2), i * 60); }
+function soundJackpot() { [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => playTone(f, 'sine', 0.4, 0.3), i * 150)); setTimeout(() => [1047, 1319, 1568, 2093].forEach((f, i) => setTimeout(() => playTone(f, 'square', 0.3, 0.15), i * 100)), 600; }
+function soundNearMiss() { playTone(200, 'sine', 0.3, 0.2); setTimeout(() => playTone(180, 'sine', 0.4, 0.15), 200); }
+function soundClick() { playTone(600, 'sine', 0.05, 0.25); }
 
-// ── STATE ────────────────────────────────────────────────────
-const STORAGE_KEYS = {balance:'ysq_balance',lastSpin:'ysq_lastSpin',streak:'ysq_streak',lastVisit:'ysq_lastVisit',collection:'ysq_collection',biggestWin:'ysq_biggestWin',leaderboard:'ysq_leaderboard',bonusUsed:'ysq_bonusUsed'};
-let state = {balance:1000,freeSpinReady:false,bonusSpins:0,spinning:false,collection:{},dailyStreak:1,biggestWin:0};
-const COL_CELLS=[[0,5,10,15,20],[1,6,11,16,21],[2,7,12,17,22],[3,8,13,18,23],[4,9,14,19,24]];
+// ── STATE ──────────────────────────────────────────────────────
+const STORAGE_KEYS = { balance: 'ysq_balance', lastSpin: 'ysq_lastSpin', streak: 'ysq_streak', lastVisit: 'ysq_lastVisit', collection: 'ysq_collection', biggestWin: 'ysq_biggestWin', leaderboard: 'ysq_leaderboard', bonusUsed: 'ysq_bonusUsed' };
+let state = { balance: 1000, freeSpinReady: false, bonusSpins: 0, spinning: false, collection: {}, dailyStreak: 1, biggestWin: 0 };
+const COL_CELLS = [[0, 5, 10, 15, 20], [1, 6, 11, 16, 21], [2, 7, 12, 17, 22], [3, 8, 13, 18, 23], [4, 9, 14, 19, 24]];
 
-function loadState(){
-  state.balance=parseInt(localStorage.getItem(STORAGE_KEYS.balance))||1000;
-  state.biggestWin=parseInt(localStorage.getItem(STORAGE_KEYS.biggestWin))||0;
-  const lastVisit=localStorage.getItem(STORAGE_KEYS.lastVisit);
-  const now=new Date();
-  if(lastVisit){const gap=(now-new Date(lastVisit))/1000/3600; if(gap>=24)state.dailyStreak=1; else if(gap>=1)state.dailyStreak=parseInt(localStorage.getItem(STORAGE_KEYS.streak))||1;}
-  state.collection=JSON.parse(localStorage.getItem(STORAGE_KEYS.collection)||'{}');
-  const lastSpin=localStorage.getItem(STORAGE_KEYS.lastSpin);
-  if(lastSpin){const elapsed=(now-new Date(lastSpin))/1000; state.freeSpinReady=elapsed>=14400;} else state.freeSpinReady=true;
+function loadState() {
+  state.balance = parseInt(localStorage.getItem(STORAGE_KEYS.balance)) || 1000;
+  state.biggestWin = parseInt(localStorage.getItem(STORAGE_KEYS.biggestWin)) || 0;
+  const lastVisit = localStorage.getItem(STORAGE_KEYS.lastVisit);
+  const now = new Date();
+  if (lastVisit) {
+    const gap = (now - new Date(lastVisit)) / 1000 / 3600;
+    if (gap >= 24) state.dailyStreak = 1;
+    else if (gap >= 1) state.dailyStreak = parseInt(localStorage.getItem(STORAGE_KEYS.streak)) || 1;
+  }
+  state.collection = JSON.parse(localStorage.getItem(STORAGE_KEYS.collection) || '{}');
+  const lastSpin = localStorage.getItem(STORAGE_KEYS.lastSpin);
+  if (lastSpin) { const elapsed = (now - new Date(lastSpin)) / 1000; state.freeSpinReady = elapsed >= 14400; }
+  else state.freeSpinReady = true;
 }
-function saveBalance(){localStorage.setItem(STORAGE_KEYS.balance,state.balance)}
-function saveCollection(){localStorage.setItem(STORAGE_KEYS.collection,JSON.stringify(state.collection))}
-function saveStreak(){localStorage.setItem(STORAGE_KEYS.streak,state.dailyStreak); localStorage.setItem(STORAGE_KEYS.lastVisit,new Date().toISOString())}
-function saveLastSpin(){localStorage.setItem(STORAGE_KEYS.lastSpin,new Date().toISOString())}
-function saveBiggestWin(){localStorage.setItem(STORAGE_KEYS.biggestWin,state.biggestWin)}
-function updateLeaderboard(score){let lb=JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]'); lb.push({score,date:new Date().toLocaleDateString()}); lb.sort((a,b)=>b.score-a.score); localStorage.setItem(STORAGE_KEYS.leaderboard,JSON.stringify(lb.slice(0,20)));}
+function saveBalance() { localStorage.setItem(STORAGE_KEYS.balance, state.balance); }
+function saveCollection() { localStorage.setItem(STORAGE_KEYS.collection, JSON.stringify(state.collection)); }
+function saveStreak() { localStorage.setItem(STORAGE_KEYS.streak, state.dailyStreak); localStorage.setItem(STORAGE_KEYS.lastVisit, new Date().toISOString()); }
+function saveLastSpin() { localStorage.setItem(STORAGE_KEYS.lastSpin, new Date().toISOString()); }
+function saveBiggestWin() { localStorage.setItem(STORAGE_KEYS.biggestWin, state.biggestWin); }
+function updateLeaderboard(score) { let lb = JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard) || '[]'); lb.push({ score, date: new Date().toLocaleDateString() }); lb.sort((a, b) => b.score - a.score); localStorage.setItem(STORAGE_KEYS.leaderboard, JSON.stringify(lb.slice(0, 20))); }
 
-// ── UI ────────────────────────────────────────────────────────
-function buildGrid(){
-  const grid=document.getElementById('slotGrid'); grid.innerHTML='';
-  for(let i=0;i<25;i++){const cell=document.createElement('div'); cell.className='slot-cell'; cell.id='cell'+i; cell.innerHTML=SYMBOLS.baobao.svg; grid.appendChild(cell);}
+// ── UI ─────────────────────────────────────────────────────────
+function buildGrid() {
+  const grid = document.getElementById('slotGrid'); grid.innerHTML = '';
+  for (let i = 0; i < 25; i++) { const cell = document.createElement('div'); cell.className = 'slot-cell'; cell.id = 'cell' + i; cell.innerHTML = SYMBOLS.baobao.svg; grid.appendChild(cell); }
 }
-function buildCollection(){
-  const row=document.getElementById('collectionRow'); row.innerHTML='';
-  SYMBOL_KEYS.forEach(key=>{const div=document.createElement('div'); div.className='col-item'+(state.collection[key]?' collected':''); div.id='col-'+key; div.innerHTML=SYMBOLS[key].svg; div.title=`${SYMBOLS[key].name} — ${SYMBOLS[key].type}`; row.appendChild(div);});
-  const total=SYMBOL_KEYS.filter(k=>state.collection[k]).length;
-  document.getElementById('collectProgress').textContent=`${total}/${SYMBOL_KEYS.length} Collected`;
-  if(total===SYMBOL_KEYS.length && !localStorage.getItem(STORAGE_KEYS.bonusUsed)){setTimeout(()=>showBonus(),500);}
+function buildCollection() {
+  const row = document.getElementById('collectionRow'); row.innerHTML = '';
+  SYMBOL_KEYS.forEach(key => {
+    const div = document.createElement('div'); div.className = 'col-item' + (state.collection[key] ? ' collected' : '');
+    div.id = 'col-' + key; div.innerHTML = SYMBOLS[key].svg; div.title = `${SYMBOLS[key].name} — ${SYMBOLS[key].type}`; row.appendChild(div);
+  });
+  const total = SYMBOL_KEYS.filter(k => state.collection[k]).length;
+  document.getElementById('collectProgress').textContent = `${total}/${SYMBOL_KEYS.length} Collected`;
+  if (total === SYMBOL_KEYS.length && !localStorage.getItem(STORAGE_KEYS.bonusUsed)) { setTimeout(() => showBonus(), 500); }
 }
-function updateBalanceUI(animate=true){const el=document.getElementById('coinBalance'); el.textContent=state.balance.toLocaleString(); if(animate){el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');}}
-function updateStreakUI(){document.getElementById('streakText').textContent='Day '+state.dailyStreak}
-function updateSpinButton(){
-  const btn=document.getElementById('spinBtn');
-  if(state.bonusSpins>0){btn.classList.add('free-spin'); btn.querySelector('.spin-cost').textContent=`FREE (${state.bonusSpins})`;}
-  else if(state.freeSpinReady){btn.classList.add('free-spin'); btn.querySelector('.spin-cost').textContent='FREE SPIN!';}
-  else{btn.classList.remove('free-spin'); btn.querySelector('.spin-cost').textContent='10 coins';}
+function updateBalanceUI(animate = true) { const el = document.getElementById('coinBalance'); el.textContent = state.balance.toLocaleString(); if (animate) { el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop'); } }
+function updateStreakUI() { document.getElementById('streakText').textContent = 'Day ' + state.dailyStreak; }
+function updateSpinButton() {
+  const btn = document.getElementById('spinBtn');
+  if (state.bonusSpins > 0) { btn.classList.add('free-spin'); btn.querySelector('.spin-cost').textContent = `FREE (${state.bonusSpins})`; }
+  else if (state.freeSpinReady) { btn.classList.add('free-spin'); btn.querySelector('.spin-cost').textContent = 'FREE SPIN!'; }
+  else { btn.classList.remove('free-spin'); btn.querySelector('.spin-cost').textContent = '10 coins'; }
 }
 
 // ── SLOT LOGIC ────────────────────────────────────────────────
-function pickSymbol(){let r=Math.random()*TOTAL_WEIGHT; for(const key of SYMBOL_KEYS){r-=RARITY_WEIGHTS[key]; if(r<=0)return key;} return SYMBOL_KEYS[0];}
-function lineCellIndices(lineIdx,posInLine){if(lineIdx<5)return lineIdx*5+posInLine; else if(lineIdx<10)return COL_CELLS[lineIdx-5][posInLine]; else if(lineIdx===10)return posInLine*6; else return 4+posInLine*4;}
+function pickSymbol() { let r = Math.random() * TOTAL_WEIGHT; for (const key of SYMBOL_KEYS) { r -= RARITY_WEIGHTS[key]; if (r <= 0) return key; } return SYMBOL_KEYS[0]; }
+function lineCellIndices(lineIdx, posInLine) { if (lineIdx < 5) return lineIdx * 5 + posInLine; else if (lineIdx < 10) return COL_CELLS[lineIdx - 5][posInLine]; else if (lineIdx === 10) return posInLine * 6; else return 4 + posInLine * 4; }
 
-function generateResult(){
-  const pool=[]; SYMBOL_KEYS.forEach(k=>{for(let i=0;i<RARITY_WEIGHTS[k];i++)pool.push(k);});
-  const pick=()=>pool[Math.floor(Math.random()*pool.length)];
-  const grid=Array.from({length:25},()=>pick());
-  const lines=[];
-  for(let r=0;r<5;r++)lines.push([grid[r*5],grid[r*5+1],grid[r*5+2],grid[r*5+3],grid[r*5+4]]);
-  for(let c=0;c<5;c++)lines.push([grid[c],grid[5+c],grid[10+c],grid[15+c],grid[20+c]]);
-  lines.push([grid[0],grid[6],grid[12],grid[18],grid[24]]);
-  lines.push([grid[4],grid[8],grid[12],grid[16],grid[20]]);
-  const lineMatches=lines.map((line,li)=>{const symCount={}; line.forEach(s=>symCount[s]=(symCount[s]||0)+1); let bestKey=null,bestCount=0,bestPos=[]; Object.entries(symCount).forEach(([k,v])=>{if(v>bestCount){bestCount=v;bestKey=k;}}); if(bestCount>=3){line.forEach((s,pi)=>{if(s===bestKey)bestPos.push(pi);});} return {key:bestKey,count:bestCount,positions:bestPos};});
-  let totalWin=0,winningCells=new Set(),jackpot=false,nearMiss=false;
-  lineMatches.forEach((lm,li)=>{if(lm.count>=3){const payTable={3:50,4:200,5:500}; let win=payTable[lm.count]||50; if(lm.key==='jin'&&lm.count>=3){win=5000;jackpot=true;} totalWin+=win; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}});
-  if(!jackpot&&totalWin===0){lineMatches.forEach((lm,li)=>{if(lm.count===2){nearMiss=true; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}}); if(nearMiss)totalWin=3+Math.floor(Math.random()*3);}
-  if(totalWin===0&&Math.random()<0.7)totalWin=5+Math.floor(Math.random()*10);
-  return {grid,totalWin,winningCells:Array.from(winningCells),jackpot,nearMiss};
+function generateResult() {
+  const pool = []; SYMBOL_KEYS.forEach(k => { for (let i = 0; i < RARITY_WEIGHTS[k]; i++) pool.push(k); });
+  const pick = () => pool[Math.floor(Math.random() * pool.length)];
+  const grid = Array.from({ length: 25 }, () => pick());
+  const lines = [];
+  for (let r = 0; r < 5; r++) lines.push([grid[r * 5], grid[r * 5 + 1], grid[r * 5 + 2], grid[r * 5 + 3], grid[r * 5 + 4]]);
+  for (let c = 0; c < 5; c++) lines.push([grid[c], grid[5 + c], grid[10 + c], grid[15 + c], grid[20 + c]]);
+  lines.push([grid[0], grid[6], grid[12], grid[18], grid[24]]);
+  lines.push([grid[4], grid[8], grid[12], grid[16], grid[20]]);
+  const lineMatches = lines.map((line) => {
+    const symCount = {}; line.forEach(s => symCount[s] = (symCount[s] || 0) + 1);
+    let bestKey = null, bestCount = 0, bestPos = [];
+    Object.entries(symCount).forEach(([k, v]) => { if (v > bestCount) { bestCount = v; bestKey = k; } });
+    if (bestCount >= 3) { line.forEach((s, pi) => { if (s === bestKey) bestPos.push(pi); }); }
+    return { key: bestKey, count: bestCount, positions: bestPos };
+  });
+  let totalWin = 0, winningCells = new Set(), jackpot = false, nearMiss = false;
+  lineMatches.forEach((lm, li) => {
+    if (lm.count >= 3) {
+      const payTable = { 3: 50, 4: 200, 5: 500 }; let win = payTable[lm.count] || 50;
+      if (lm.key === 'jin' && lm.count >= 3) { win = 5000; jackpot = true; }
+      totalWin += win; lm.positions.forEach(pos => winningCells.add(lineCellIndices(li, pos)));
+    }
+  });
+  if (!jackpot && totalWin === 0) {
+    lineMatches.forEach((lm) => { if (lm.count === 2) { nearMiss = true; lm.positions.forEach(pos => winningCells.add(lineCellIndices(li, pos))); } });
+    if (nearMiss) totalWin = 3 + Math.floor(Math.random() * 3);
+  }
+  if (totalWin === 0 && Math.random() < 0.7) totalWin = 5 + Math.floor(Math.random() * 10);
+  return { grid, totalWin, winningCells: Array.from(winningCells), jackpot, nearMiss };
 }
 
-// ── SPIN ──────────────────────────────────────────────────────
-async function doSpin(){
-  if(state.spinning) return;
+// ── SPIN ───────────────────────────────────────────────────────
+async function doSpin() {
+  if (state.spinning) return;
   soundClick();
-  const isFreeSpin=state.bonusSpins>0||state.freeSpinReady;
-  if(!isFreeSpin&&state.balance<10){setStatus('Not enough coins!','nearmiss-text'); return;}
-  if(!isFreeSpin){state.balance-=10;saveLastSpin();} else {state.bonusSpins=Math.max(0,state.bonusSpins-1); if(state.bonusSpins===0&&state.freeSpinReady)state.freeSpinReady=false;}
-  state.spinning=true;
-  const btn=document.getElementById('spinBtn');
-  btn.disabled=true; btn.classList.remove('pulse'); btn.classList.add('pressed');
-  setTimeout(()=>btn.classList.remove('pressed'),100);
+  const isFreeSpin = state.bonusSpins > 0 || state.freeSpinReady;
+  if (!isFreeSpin && state.balance < 10) { setStatus('Not enough coins!', 'nearmiss-text'); return; }
+  if (!isFreeSpin) { state.balance -= 10; saveLastSpin(); } else { state.bonusSpins = Math.max(0, state.bonusSpins - 1); if (state.bonusSpins === 0 && state.freeSpinReady) state.freeSpinReady = false; }
+  state.spinning = true;
+  const btn = document.getElementById('spinBtn');
+  btn.disabled = true; btn.classList.remove('pulse'); btn.classList.add('pressed');
+  setTimeout(() => btn.classList.remove('pressed'), 100);
   updateBalanceUI(); updateSpinButton();
-  const result=generateResult();
-  const colStopTimes=[700,1000,1300,1600,1900];
+  const result = generateResult();
+  const colStopTimes = [700, 1000, 1300, 1600, 1900];
   soundWhoosh();
-  let tickInterval=setInterval(soundTick,60);
-  for(let i=0;i<25;i++)document.getElementById('cell'+i).classList.add('spinning');
-  for(let col=0;col<5;col++){
-    await new Promise(res=>setTimeout(res,col===0?colStopTimes[0]:colStopTimes[col]-colStopTimes[col-1]));
-    COL_CELLS[col].forEach(cellIdx=>{const el=document.getElementById('cell'+cellIdx); el.classList.remove('spinning'); el.innerHTML=SYMBOLS[result.grid[cellIdx]].svg;});
+  let tickInterval = setInterval(soundTick, 60);
+  for (let i = 0; i < 25; i++) document.getElementById('cell' + i).classList.add('spinning');
+  for (let col = 0; col < 5; col++) {
+    await new Promise(res => setTimeout(res, col === 0 ? colStopTimes[0] : colStopTimes[col] - colStopTimes[col - 1]));
+    COL_CELLS[col].forEach(cellIdx => { const el = document.getElementById('cell' + cellIdx); el.classList.remove('spinning'); el.innerHTML = SYMBOLS[result.grid[cellIdx]].svg; });
     soundThud();
-    COL_CELLS[col].forEach(cellIdx=>{state.collection[result.grid[cellIdx]]=(state.collection[result.grid[cellIdx]]||0)+1;});
+    COL_CELLS[col].forEach(cellIdx => { state.collection[result.grid[cellIdx]] = (state.collection[result.grid[cellIdx]] || 0) + 1; });
   }
   clearInterval(tickInterval);
-  await new Promise(res=>setTimeout(res,300));
-  result.winningCells.forEach(idx=>{const el=document.getElementById('cell'+idx); if(result.jackpot)el.classList.add('winner'); else if(result.nearMiss){el.classList.add('nearmiss'); const float=document.createElement('div'); float.className='nearmiss-float'; float.textContent=result.totalWin>0?'SO CLOSE!':''; el.appendChild(float); setTimeout(()=>{el.classList.remove('nearmiss');float.remove();},900);}});
-  if(result.jackpot){soundJackpot();state.balance+=result.totalWin;if(state.balance>state.biggestWin)state.biggestWin=state.balance;saveBiggestWin();updateBalanceUI();showJackpot(result.totalWin);confetti();flashScreen();}
-  else if(result.totalWin>0){if(result.nearMiss){soundNearMiss();setStatus(`+${result.totalWin} coins!`,'nearmiss-text');}else{soundCoin();setStatus(`+${result.totalWin} coins!`,'win-text');}state.balance+=result.totalWin;if(state.balance>state.biggestWin)state.biggestWin=state.balance;saveBiggestWin();updateBalanceUI();coinRain(result.totalWin);}
-  else setStatus('No match...','');
-  saveBalance();saveCollection();updateLeaderboard(state.balance);buildCollection();
-  setTimeout(()=>{for(let i=0;i<25;i++)document.getElementById('cell'+i).classList.remove('winner','nearmiss');state.spinning=false;btn.disabled=false;btn.classList.add('pulse');updateSpinButton();},2200);
-  const now=new Date(),lastVisit=localStorage.getItem(STORAGE_KEYS.lastVisit);
-  if(lastVisit){const gap=(now-new Date(lastVisit))/1000/3600; if(gap>=1&&gap<24)state.dailyStreak++; else if(gap>=24)state.dailyStreak=1;}
-  saveStreak();updateStreakUI();startFreeTimer();
+  await new Promise(res => setTimeout(res, 300));
+  result.winningCells.forEach(idx => {
+    const el = document.getElementById('cell' + idx);
+    if (result.jackpot) el.classList.add('winner');
+    else if (result.nearMiss) {
+      el.classList.add('nearmiss');
+      const float = document.createElement('div'); float.className = 'nearmiss-float';
+      float.textContent = result.totalWin > 0 ? 'SO CLOSE!' : '';
+      el.appendChild(float);
+      setTimeout(() => { el.classList.remove('nearmiss'); float.remove(); }, 900);
+    }
+  });
+  if (result.jackpot) { soundJackpot(); state.balance += result.totalWin; if (state.balance > state.biggestWin) state.biggestWin = state.balance; saveBiggestWin(); updateBalanceUI(); showJackpot(result.totalWin); confetti(); flashScreen(); }
+  else if (result.totalWin > 0) {
+    if (result.nearMiss) { soundNearMiss(); setStatus(`+${result.totalWin} coins!`, 'nearmiss-text'); }
+    else { soundCoin(); setStatus(`+${result.totalWin} coins!`, 'win-text'); }
+    state.balance += result.totalWin; if (state.balance > state.biggestWin) state.biggestWin = state.balance; saveBiggestWin(); updateBalanceUI(); coinRain(result.totalWin);
+  } else setStatus('No match...', '');
+  saveBalance(); saveCollection(); updateLeaderboard(state.balance); buildCollection();
+  setTimeout(() => { for (let i = 0; i < 25; i++) document.getElementById('cell' + i).classList.remove('winner', 'nearmiss'); state.spinning = false; btn.disabled = false; btn.classList.add('pulse'); updateSpinButton(); }, 2200);
+  const now = new Date(), lastVisit = localStorage.getItem(STORAGE_KEYS.lastVisit);
+  if (lastVisit) { const gap = (now - new Date(lastVisit)) / 1000 / 3600; if (gap >= 1 && gap < 24) state.dailyStreak++; else if (gap >= 24) state.dailyStreak = 1; }
+  saveStreak(); updateStreakUI(); startFreeTimer();
 }
-function setStatus(msg,cls){const el=document.getElementById('statusMsg');el.className=cls;el.textContent=msg;}
+function setStatus(msg, cls) { const el = document.getElementById('statusMsg'); el.className = cls; el.textContent = msg; }
 
-// ── EFFECTS ──────────────────────────────────────────────────
-function coinRain(amount){const count=Math.min(amount,30); for(let i=0;i<count;i++){setTimeout(()=>{const el=document.createElement('div');el.className='coin-rain';el.textContent='🪙';el.style.left=(Math.random()*88)+'vw';el.style.animationDuration=(1.5+Math.random())+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),3000);},i*50);}}
-function confetti(){const colors=['#ff6b9d','#5dd9c1','#b4a0ff','#ffe066','#7ec8e3','#ff9f1c','#ffd700','#ff85ad']; for(let i=0;i<60;i++){setTimeout(()=>{const el=document.createElement('div');el.className='confetti-piece';el.style.left=(Math.random()*88)+'vw';el.style.top=(Math.random()*30)+'vh';el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.animationDuration=(2+Math.random()*1.5)+'s';el.style.width=(8+Math.random()*8)+'px';el.style.height=(8+Math.random()*8)+'px';el.style.borderRadius=Math.random()>0.5?'50%':'3px';document.body.appendChild(el);setTimeout(()=>el.remove(),4000);},i*30);}}
-function flashScreen(){const el=document.createElement('div');el.className='jackpot-flash';document.body.appendChild(el);setTimeout(()=>el.remove(),1500);}
+// ── EFFECTS ────────────────────────────────────────────────────
+function coinRain(amount) { const count = Math.min(amount, 30); for (let i = 0; i < count; i++) { setTimeout(() => { const el = document.createElement('div'); el.className = 'coin-rain'; el.textContent = '🪙'; el.style.left = (Math.random() * 88) + 'vw'; el.style.animationDuration = (1.5 + Math.random()) + 's'; document.body.appendChild(el); setTimeout(() => el.remove(), 3000); }, i * 50); } }
+function confetti() { const colors = ['#ff6b9d', '#5dd9c1', '#b4a0ff', '#ffe066', '#7ec8e3', '#ff9f1c', '#ffd700', '#ff85ad']; for (let i = 0; i < 60; i++) { setTimeout(() => { const el = document.createElement('div'); el.className = 'confetti-piece'; el.style.left = (Math.random() * 88) + 'vw'; el.style.top = (Math.random() * 30) + 'vh'; el.style.background = colors[Math.floor(Math.random() * colors.length)]; el.style.animationDuration = (2 + Math.random() * 1.5) + 's'; el.style.width = (8 + Math.random() * 8) + 'px'; el.style.height = (8 + Math.random() * 8) + 'px'; el.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px'; document.body.appendChild(el); setTimeout(() => el.remove(), 4000); }, i * 30); } }
+function flashScreen() { const el = document.createElement('div'); el.className = 'jackpot-flash'; document.body.appendChild(el); setTimeout(() => el.remove(), 1500); }
 
 // ── TIMER ─────────────────────────────────────────────────────
-let freeTimerInterval=null;
-function startFreeTimer(){if(freeTimerInterval)clearInterval(freeTimerInterval);const tick=()=>{const lastSpin=localStorage.getItem(STORAGE_KEYS.lastSpin);const timerEl=document.getElementById('freeTimer');if(!lastSpin){timerEl.textContent='READY!';state.freeSpinReady=true;updateSpinButton();return;}const remaining=Math.max(0,14400-(new Date()-new Date(lastSpin))/1000);if(remaining<=0){timerEl.textContent='READY!';state.freeSpinReady=true;updateSpinButton();return;}const h=Math.floor(remaining/3600),m=Math.floor((remaining%3600)/60),s=Math.floor(remaining%60);timerEl.textContent=`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;state.freeSpinReady=false;updateSpinButton();};tick();freeTimerInterval=setInterval(tick,1000);}
-
-// ── MODALS ────────────────────────────────────────────────────
-function showJackpot(amount){document.getElementById('jackpotMsg').textContent=`You won ${amount.toLocaleString()} coins!`;document.getElementById('jackpotOverlay').classList.add('active');}
-function closeJackpot(){document.getElementById('jackpotOverlay').classList.remove('active');}
-function showBonus(){document.getElementById('bonusOverlay').classList.add('active');state.bonusSpins=3;localStorage.setItem(STORAGE_KEYS.bonusUsed,'true');updateSpinButton();}
-function closeBonus(){document.getElementById('bonusOverlay').classList.remove('active');}
-function showLeaderboard(){const lb=JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]');const top=lb.slice(0,10);const list=document.getElementById('leaderList');list.innerHTML='';if(top.length===0)list.innerHTML='<li style="justify-content:center;color:#888">No scores yet!</li>';top.forEach((entry,i)=>{const li=document.createElement('li');const rankClass=i===0?'r1':i===1?'r2':'r3';li.innerHTML=`<span class="leader-rank ${rankClass}">${i+1}</span><span>${entry.date}</span><span class="leader-bal">${entry.score.toLocaleString()}</span>`;list.appendChild(li);});document.getElementById('currentBalance').textContent=`Balance: ${state.balance.toLocaleString()} coins`;document.getElementById('leaderOverlay').classList.add('active');}
-function closeLeaderboard(){document.getElementById('leaderOverlay').classList.remove('active');}
-function shareScore(){const msg=`🍜 Hit ${state.biggestWin.toLocaleString()} coins on Yum Sum Squishies! Can you beat me?\n\n👉 pandafam4real.github.io/squishy-slots`;if(navigator.clipboard){navigator.clipboard.writeText(msg).then(()=>{const btn=document.querySelector('.share-btn');const orig=btn.textContent;btn.textContent='Copied!';setTimeout(()=>btn.textContent=orig,2000);});}}
-
-// ── INIT ──────────────────────────────────────────────────────
-function init(){
-  loadState(); buildGrid(); buildCollection();
-  updateBalanceUI(false); updateStreakUI(); updateSpinButton(); startFreeTimer();
-  for(let i=0;i<25;i++)document.getElementById('cell'+i).innerHTML=SYMBOLS[pickSymbol()].svg;
+let freeTimerInterval = null;
+function startFreeTimer() {
+  if (freeTimerInterval) clearInterval(freeTimerInterval);
+  const tick = () => {
+    const lastSpin = localStorage.getItem(STORAGE_KEYS.lastSpin);
+    const timerEl = document.getElementById('freeTimer');
+    if (!lastSpin) { timerEl.textContent = 'READY!'; state.freeSpinReady = true; updateSpinButton(); return; }
+    const remaining = Math.max(0, 14400 - (new Date() - new Date(lastSpin)) / 1000);
+    if (remaining <= 0) { timerEl.textContent = 'READY!'; state.freeSpinReady = true; updateSpinButton(); return; }
+    const h = Math.floor(remaining / 3600), m = Math.floor((remaining % 3600) / 60), s = Math.floor(remaining % 60);
+    timerEl.textContent = `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`; state.freeSpinReady = false; updateSpinButton();
+  };
+  tick(); freeTimerInterval = setInterval(tick, 1000);
 }
+
+// ── MODALS ─────────────────────────────────────────────────────
+function showJackpot(amount) { document.getElementById('jackpotMsg').textContent = `You won ${amount.toLocaleString()} coins!`; document.getElementById('jackpotOverlay').classList.add('active'); }
+function closeJackpot() { document.getElementById('jackpotOverlay').classList.remove('active'); }
+function showBonus() { document.getElementById('bonusOverlay').classList.add('active'); state.bonusSpins = 3; localStorage.setItem(STORAGE_KEYS.bonusUsed, 'true'); updateSpinButton(); }
+function closeBonus() { document.getElementById('bonusOverlay').classList.remove('active'); }
+function showLeaderboard() { const lb = JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard) || '[]'); const top = lb.slice(0, 10); const list = document.getElementById('leaderList'); list.innerHTML = ''; if (top.length === 0) list.innerHTML = '<li style="justify-content:center;color:#888">No scores yet!</li>'; top.forEach((entry, i) => { const li = document.createElement('li'); const rankClass = i === 0 ? 'r1' : i === 1 ? 'r2' : 'r3'; li.innerHTML = `<span class="leader-rank ${rankClass}">${i + 1}</span><span>${entry.date}</span><span class="leader-bal">${entry.score.toLocaleString()}</span>`; list.appendChild(li); }); document.getElementById('currentBalance').textContent = `Balance: ${state.balance.toLocaleString()} coins`; document.getElementById('leaderOverlay').classList.add('active'); }
+function closeLeaderboard() { document.getElementById('leaderOverlay').classList.remove('active'); }
+function shareScore() { const msg = `🍜 Hit ${state.biggestWin.toLocaleString()} coins on Yum Sum Squishies! Can you beat me?\n\n👉 pandafam4real.github.io/squishy-slots`; if (navigator.clipboard) { navigator.clipboard.writeText(msg).then(() => { const btn = document.querySelector('.share-btn'); const orig = btn.textContent; btn.textContent = 'Copied!'; setTimeout(() => btn.textContent = orig, 2000); }); } }
+
+// ── INIT ───────────────────────────────────────────────────────
+function init() { loadState(); buildGrid(); buildCollection(); updateBalanceUI(false); updateStreakUI(); updateSpinButton(); startFreeTimer(); for (let i = 0; i < 25; i++) document.getElementById('cell' + i).innerHTML = SYMBOLS[pickSymbol()].svg; }
 init();
 </script>
 </body>
