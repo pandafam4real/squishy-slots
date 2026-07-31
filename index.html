@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Squishy Slots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+--bg:#1a1a2e;--card:#2a2a4a;--pink:#ffb3c6;--mint:#b8e0d2;
+--lav:#d4a5ff;--butter:#ffe5b4;--blue:#a8dadc;--peach:#ff9f1c;
+--gold:#ffd700;--shadow:0 8px 32px rgba(0,0,0,0.4);
+}
+html,body{min-height:100vh;background:var(--bg);font-family:'Nunito',sans-serif;color:#fff;overflow-x:hidden}
+body{display:flex;flex-direction:column;align-items:center;padding:16px 8px 100px}
+
+/* Header */
+.header{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:420px;margin-bottom:16px}
+.coin-wrap{display:flex;align-items:center;gap:8px;background:var(--card);border-radius:20px;padding:8px 18px;box-shadow:var(--shadow)}
+.coin-icon{width:32px;height:32px;background:linear-gradient(135deg,#ffd700,#ff9f1c);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#7a4a00;box-shadow:0 0 12px rgba(255,215,0,0.5)}
+#coinBalance{font-size:24px;font-weight:900;transition:transform 0.2s}
+#coinBalance.pop{animation:pop 0.3s}
+@keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.4)}100%{transform:scale(1)}}
+.streak-badge{display:flex;align-items:center;gap:6px;background:var(--card);border-radius:20px;padding:8px 16px;box-shadow:var(--shadow)}
+.streak-badge svg{width:22px;height:22px}
+#streakText{font-size:14px;font-weight:700;color:var(--peach)}
+
+/* Slot Machine Frame */
+.machine{background:var(--card);border-radius:28px;padding:24px 16px;box-shadow:var(--shadow);width:100%;max-width:400px;border:2px solid rgba(255,179,198,0.2)}
+.machine-title{
+  text-align:center;font-size:28px;font-weight:900;
+  background:linear-gradient(135deg,#ff9f1c,#ffb3c6,#d4a5ff);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:2px;margin-bottom:16px;
+}
+
+/* Slot Grid */
+.slot-grid{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:6px;
+  background:#111;padding:10px;border-radius:20px;border:3px solid #333;
+}
+.slot-cell{
+  aspect-ratio:1;background:#222;border-radius:12px;display:flex;
+  align-items:center;justify-content:center;overflow:hidden;
+  border:2px solid #333;position:relative;
+}
+.slot-cell svg{width:80%;height:80%;transition:transform 0.2s}
+.slot-cell.winner{animation:winBounce 0.5s infinite alternate;border-color:var(--gold);box-shadow:0 0 20px var(--gold)}
+@keyframes winBounce{from{transform:scale(1)}to{transform:scale(1.15)}}
+.slot-cell.nearmiss{animation:shake 0.4s;border-color:var(--peach)}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+
+/* Paytable */
+.paytable{margin-top:12px;font-size:11px;color:#aaa;text-align:center;line-height:1.6}
+.paytable span{color:var(--butter);font-weight:700}
+
+/* Spin Button */
+.spin-wrap{text-align:center;margin-top:16px}
+#spinBtn{
+  width:90%;max-width:320px;height:72px;border:none;border-radius:36px;
+  background:linear-gradient(135deg,var(--pink),var(--lav));
+  color:#fff;font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;
+  letter-spacing:3px;cursor:pointer;box-shadow:0 8px 24px rgba(255,179,198,0.4);
+  transition:transform 0.1s,box-shadow 0.1s;position:relative;overflow:hidden;
+}
+#spinBtn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(255,179,198,0.6)}
+#spinBtn:active{transform:translateY(1px)}
+#spinBtn:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+#spinBtn.pulse{animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 8px 24px rgba(255,179,198,0.4)}50%{box-shadow:0 8px 48px rgba(255,179,198,0.8)}}
+.spin-cost{display:block;font-size:12px;font-weight:600;margin-top:-4px;opacity:0.8;letter-spacing:0}
+#spinBtn.free-spin{background:linear-gradient(135deg,var(--mint),var(--blue))}
+
+/* Status */
+.status-area{min-height:48px;display:flex;align-items:center;justify-content:center;margin-top:12px}
+#statusMsg{font-size:20px;font-weight:800;text-align:center;transition:opacity 0.3s}
+.win-text{color:var(--gold)!important;text-shadow:0 0 20px var(--gold)}
+.nearmiss-text{color:var(--peach)!important}
+.jackpot-text{color:var(--gold)!important;font-size:28px!important;animation:jackpotPulse 0.5s infinite alternate}
+@keyframes jackpotPulse{from{text-shadow:0 0 10px var(--gold)}to{text-shadow:0 0 40px var(--gold),0 0 80px var(--peach)}}
+
+/* Footer */
+.footer{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(to top,#1a1a2e 80%,transparent);padding:16px 16px 24px;display:flex;flex-direction:column;align-items:center;gap:10px}
+.timer-row{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:#aaa}
+.timer-row svg{width:18px;height:18px}
+.free-timer{color:var(--mint)}
+.collection-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:420px}
+.col-item{width:38px;height:38px;background:var(--card);border-radius:10px;display:flex;align-items:center;justify-content:center;border:2px solid #333;transition:border-color 0.3s}
+.col-item.collected{border-color:var(--lav)}
+.col-item svg{width:26px;height:26px;opacity:0.2;transition:opacity 0.3s}
+.col-item.collected svg{opacity:1}
+.collect-progress{font-size:12px;font-weight:700;color:var(--lav)}
+.btn-row{display:flex;gap:10px}
+.footer-btn{
+  padding:10px 20px;border:none;border-radius:20px;cursor:pointer;
+  font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;
+  transition:transform 0.1s;
+}
+.footer-btn:hover{transform:translateY(-1px)}
+.share-btn{background:linear-gradient(135deg,var(--mint),var(--blue));color:#1a1a2e}
+.lead-btn{background:linear-gradient(135deg,var(--lav),var(--pink));color:#fff}
+
+/* Overlays */
+.overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.85);
+  display:flex;align-items:center;justify-content:center;z-index:100;
+  opacity:0;pointer-events:none;transition:opacity 0.3s;
+}
+.overlay.active{opacity:1;pointer-events:all}
+.modal{
+  background:var(--card);border-radius:24px;padding:32px 24px;
+  max-width:360px;width:90%;text-align:center;box-shadow:var(--shadow);
+  border:2px solid rgba(255,179,198,0.3);
+}
+.modal h2{font-size:22px;font-weight:900;margin-bottom:16px;background:linear-gradient(135deg,var(--pink),var(--lav));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.modal p{font-size:14px;color:#ccc;line-height:1.6;margin-bottom:16px}
+.modal-close{background:linear-gradient(135deg,var(--pink),var(--lav));color:#fff;border:none;padding:12px 32px;border-radius:24px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;margin-top:8px}
+
+/* Leaderboard */
+.leader-list{list-style:none;text-align:left;margin:16px 0}
+.leader-list li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #444;font-size:14px;font-weight:700}
+.leader-list li:last-child{border:none}
+.leader-rank{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900}
+.leader-rank.r1{background:linear-gradient(135deg,#ffd700,#ff9f1c);color:#7a4a00}
+.leader-rank.r2{background:linear-gradient(135deg,#c0c0c0,#888);color:#333}
+.leader-rank.r3{background:linear-gradient(135deg,#cd7f32,#a0522d);color:#fff}
+.leader-bal{color:var(--butter);margin-left:auto}
+
+/* Coin Rain */
+.coin-rain{position:fixed;top:-40px;pointer-events:none;z-index:200;font-size:28px;animation:coinFall 1.5s ease-in forwards}
+@keyframes coinFall{to{top:110vh;transform:rotate(720deg)}}
+
+/* Jackpot Flash */
+.jackpot-flash{
+  position:fixed;inset:0;background:radial-gradient(circle,rgba(255,215,0,0.8),transparent 70%);
+  z-index:150;opacity:0;pointer-events:none;animation:flashIn 1s forwards;
+}
+@keyframes flashIn{0%{opacity:1}100%{opacity:0}}
+.confetti-piece{position:fixed;width:10px;height:10px;border-radius:3px;z-index:160;animation:confettiFall 2s ease-in forwards}
+@keyframes confettiFall{to{top:110vh;transform:rotate(1080deg)}}
+
+/* Spinning state */
+.slot-cell.spinning svg{animation:spinCycle 0.15s linear infinite}
+@keyframes spinCycle{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+
+/* Bonus Round */
+.bonus-active{border:3px solid var(--gold)!important;box-shadow:0 0 30px rgba(255,215,0,0.5)!important}
+.bonus-badge{background:var(--gold);color:#7a4a00;font-size:10px;font-weight:900;padding:2px 8px;border-radius:10px;margin-left:6px}
+
+/* Near Miss Float */
+.nearmiss-float{position:absolute;top:-10px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:900;color:var(--peach);animation:floatUp 0.8s forwards;white-space:nowrap;z-index:10}
+@keyframes floatUp{0%{opacity:1;top:-10px}100%{opacity:0;top:-40px}}
+
+/* Number counter */
+@keyframes countUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Responsive */
+@media(max-width:380px){
+  .machine-title{font-size:22px}
+  #spinBtn{font-size:22px;height:60px}
+  .col-item{width:32px;height:32px}
+  .col-item svg{width:22px;height:22px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="coin-wrap">
+    <div class="coin-icon">$</div>
+    <span id="coinBalance">1,000</span>
+  </div>
+  <div class="streak-badge">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 10 8 14c1 2 3 3 4 4 1-1 3-2 4-4 2-4 0-8-4-12z" fill="#ff9f1c"/><path d="M12 8c-2 2.5-3.5 5-2.5 7.5.5 1.25 1.5 2 2.5 2.5.5-.5 1.5-1.25 2.5-2.5 1-2.5-.5-5-2.5-7.5z" fill="#ffd700"/></svg>
+    <span id="streakText">Day 1</span>
+  </div>
+</div>
+
+<!-- SLOT MACHINE -->
+<div class="machine" id="machine">
+  <div class="machine-title">SQUISHY SLOTS</div>
+  <div class="slot-grid" id="slotGrid"></div>
+  <div class="paytable">
+    <span>3 Match = 50</span> &nbsp;|&nbsp; <span>4 Match = 200</span> &nbsp;|&nbsp; <span>5 Match = 500</span><br>
+    <span>JACKPOT (3x Gold) = 5000</span> &nbsp;|&nbsp; <span>Near Miss = 3–5 coins</span>
+  </div>
+</div>
+
+<!-- SPIN BUTTON -->
+<div class="spin-wrap">
+  <button id="spinBtn" class="pulse" onclick="doSpin()">
+    SPIN!
+    <span class="spin-cost">10 coins</span>
+  </button>
+</div>
+
+<!-- STATUS -->
+<div class="status-area">
+  <div id="statusMsg"></div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="timer-row">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+    <span class="free-timer" id="freeTimerLabel">Free spin in </span><span class="free-timer" id="freeTimer">–:––:––</span>
+  </div>
+  <div class="collection-row" id="collectionRow"></div>
+  <div class="collect-progress" id="collectProgress">0/9 Squishies Collected</div>
+  <div class="btn-row">
+    <button class="footer-btn share-btn" onclick="shareScore()">Share</button>
+    <button class="footer-btn lead-btn" onclick="showLeaderboard()">Top Scores</button>
+  </div>
+</div>
+
+<!-- MODALS -->
+<div class="overlay" id="jackpotOverlay">
+  <div class="modal">
+    <h2>JACKPOT!!!</h2>
+    <p id="jackpotMsg">You won 5,000 coins!</p>
+    <button class="modal-close" onclick="closeJackpot()">AMAZING!</button>
+  </div>
+</div>
+
+<div class="overlay" id="bonusOverlay">
+  <div class="modal">
+    <h2>Bonus Round!</h2>
+    <p>You collected all 9 Squishies! Here are 3 FREE SPINS!</p>
+    <button class="modal-close" onclick="closeBonus()">LET'S GO!</button>
+  </div>
+</div>
+
+<div class="overlay" id="leaderOverlay">
+  <div class="modal">
+    <h2>Top Scores</h2>
+    <ul class="leader-list" id="leaderList"></ul>
+    <p id="currentBalance"></p>
+    <button class="modal-close" onclick="closeLeaderboard()">Close</button>
+  </div>
+</div>
+
+<script>
+// ============ SVG SYMBOLS ============
+const SYMBOLS = {
+  slime: {
+    svg: `<svg viewBox="0 0 64 64"><ellipse cx="32" cy="46" rx="22" ry="14" fill="#c8a2ff" opacity="0.5"/><ellipse cx="32" cy="36" rx="22" ry="22" fill="#c8a2ff"/><ellipse cx="32" cy="34" rx="18" ry="18" fill="#d9b3ff"/><circle cx="24" cy="30" r="5" fill="#fff"/><circle cx="40" cy="30" r="5" fill="#fff"/><circle cx="25" cy="31" r="2.5" fill="#333"/><circle cx="41" cy="31" r="2.5" fill="#333"/><ellipse cx="32" cy="42" rx="5" ry="3" fill="#a855f7"/><circle cx="18" cy="36" r="4" fill="rgba(255,255,255,0.3)"/><circle cx="14" cy="42" r="2" fill="rgba(255,255,255,0.2)"/></svg>`,
+    name:'Slime', rarity:'common', weight:18
+  },
+  heart: {
+    svg: `<svg viewBox="0 0 64 64"><path d="M32 56 C12 38 8 22 20 14 C26 10 32 16 32 20 C32 16 38 10 44 14 C56 22 52 38 32 56Z" fill="#ffb3c6"/><path d="M32 50 C16 35 13 24 22 17 C27 13 32 18 32 22 C32 18 37 13 42 17 C51 24 48 35 32 50Z" fill="#ffc8d6"/><circle cx="23" cy="28" r="4" fill="#fff"/><circle cx="41" cy="28" r="4" fill="#fff"/><circle cx="24" cy="29" r="2" fill="#333"/><circle cx="42" cy="29" r="2" fill="#333"/><path d="M28 38 Q32 42 36 38" stroke="#e91e8c" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Heart', rarity:'common', weight:18
+  },
+  cloud: {
+    svg: `<svg viewBox="0 0 64 64"><ellipse cx="32" cy="36" rx="22" ry="16" fill="#b8e0d2"/><circle cx="18" cy="30" r="12" fill="#b8e0d2"/><circle cx="46" cy="30" r="12" fill="#b8e0d2"/><circle cx="32" cy="24" r="14" fill="#b8e0d2"/><ellipse cx="32" cy="32" rx="18" ry="14" fill="#cce8e0"/><circle cx="24" cy="28" r="4" fill="#fff"/><circle cx="40" cy="28" r="4" fill="#fff"/><circle cx="25" cy="29" r="2" fill="#333"/><circle cx="41" cy="29" r="2" fill="#333"/><path d="M27 37 Q32 40 37 37" stroke="#5a9e8f" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Cloud', rarity:'uncommon', weight:13
+  },
+  star: {
+    svg: `<svg viewBox="0 0 64 64"><polygon points="32,4 38,24 58,24 42,38 48,58 32,46 16,58 22,38 6,24 26,24" fill="#ffe5b4"/><polygon points="32,10 37,24 50,24 40,34 44,48 32,40 20,48 24,34 14,24 27,24" fill="#fff0c7"/><circle cx="26" cy="30" r="4" fill="#fff"/><circle cx="38" cy="30" r="4" fill="#fff"/><circle cx="27" cy="31" r="2" fill="#333"/><circle cx="39" cy="31" r="2" fill="#333"/><path d="M28 38 Q32 41 36 38" stroke="#d4a017" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Star', rarity:'uncommon', weight:13
+  },
+  sun: {
+    svg: `<svg viewBox="0 0 64 64"><g transform="translate(32,32)"><line x1="0" y1="-28" x2="0" y2="-36" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="0" y1="28" x2="0" y2="36" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="-28" y1="0" x2="-36" y2="0" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="28" y1="0" x2="36" y2="0" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="-20" y1="-20" x2="-25" y2="-25" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="20" y1="-20" x2="25" y2="-25" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="-20" y1="20" x2="-25" y2="25" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/><line x1="20" y1="20" x2="25" y2="25" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/></g><circle cx="32" cy="32" r="20" fill="#ff9f1c"/><circle cx="32" cy="32" r="16" fill="#ffb347"/><circle cx="25" cy="28" r="4" fill="#fff"/><circle cx="39" cy="28" r="4" fill="#fff"/><circle cx="26" cy="29" r="2" fill="#333"/><circle cx="40" cy="29" r="2" fill="#333"/><path d="M27 38 Q32 42 37 38" stroke="#c45c00" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Sunny', rarity:'rare', weight:9
+  },
+  moon: {
+    svg: `<svg viewBox="0 0 64 64"><path d="M40 12 C28 14 18 24 18 38 C18 52 28 60 40 58 C30 56 24 46 24 36 C24 26 30 16 40 12Z" fill="#d4a5ff"/><path d="M38 16 C28 18 20 27 20 38 C20 50 28 56 38 54 C30 52 25 44 25 36 C25 28 30 20 38 16Z" fill="#e8c8ff"/><circle cx="30" cy="34" r="4" fill="#fff"/><circle cx="44" cy="34" r="4" fill="#fff"/><circle cx="31" cy="35" r="2" fill="#333"/><circle cx="45" cy="35" r="2" fill="#333"/><path d="M34 44 Q38 47 42 44" stroke="#9933cc" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Moon', rarity:'rare', weight:9
+  },
+  crystal: {
+    svg: `<svg viewBox="0 0 64 64"><polygon points="32,6 48,24 48,44 32,58 16,44 16,24" fill="#a8dadc" opacity="0.4"/><polygon points="32,10 44,24 44,42 32,54 20,42 20,24" fill="#a8dadc"/><polygon points="32,10 44,24 32,34 20,24" fill="#c4e8ea"/><polygon points="32,34 44,24 44,42 32,54" fill="#8ec8ca"/><line x1="20" y1="24" x2="44" y2="24" stroke="#fff" stroke-width="1" opacity="0.6"/><circle cx="28" cy="30" r="3" fill="#fff"/><circle cx="36" cy="30" r="3" fill="#fff"/><circle cx="29" cy="31" r="1.5" fill="#333"/><circle cx="37" cy="31" r="1.5" fill="#333"/><path d="M30 38 Q32 40 34 38" stroke="#2a7a7d" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Crystal', rarity:'epic', weight:5
+  },
+  rainbow: {
+    svg: `<svg viewBox="0 0 64 64"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff6b6b"/><stop offset="25%" stop-color="#ffd700"/><stop offset="50%" stop-color="#51cf66"/><stop offset="75%" stop-color="#339af0"/><stop offset="100%" stop-color="#cc5de8"/></linearGradient></defs><ellipse cx="32" cy="36" rx="22" ry="20" fill="url(#rg)"/><ellipse cx="32" cy="34" rx="17" ry="16" fill="rgba(255,255,255,0.2)"/><circle cx="25" cy="30" r="4" fill="#fff"/><circle cx="39" cy="30" r="4" fill="#fff"/><circle cx="26" cy="31" r="2" fill="#333"/><circle cx="40" cy="31" r="2" fill="#333"/><path d="M28 40 Q32 44 36 40" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/></svg>`,
+    name:'Rainbow', rarity:'epic', weight:4
+  },
+  golden: {
+    svg: `<svg viewBox="0 0 64 64"><defs><radialGradient id="gg" cx="40%" cy="30%"><stop offset="0%" stop-color="#fff5a0"/><stop offset="50%" stop-color="#ffd700"/><stop offset="100%" stop-color="#b8860b"/></radialGradient></defs><ellipse cx="32" cy="50" rx="20" ry="8" fill="rgba(255,215,0,0.3)"/><ellipse cx="32" cy="34" rx="22" ry="22" fill="url(#gg)"/><ellipse cx="32" cy="32" rx="18" ry="18" fill="#ffd700"/><ellipse cx="28" cy="28" rx="8" ry="6" fill="rgba(255,255,255,0.4)"/><circle cx="24" cy="30" r="5" fill="#fff"/><circle cx="40" cy="30" r="5" fill="#fff"/><circle cx="25" cy="31" r="2.5" fill="#333"/><circle cx="41" cy="31" r="2.5" fill="#333"/><path d="M27 40 Q32 45 37 40" stroke="#996600" stroke-width="2.5" fill="none" stroke-linecap="round"/><circle cx="12" cy="20" r="2" fill="#ffd700" opacity="0.8"/><circle cx="52" cy="18" r="1.5" fill="#ffd700" opacity="0.8"/><circle cx="8" cy="38" r="1" fill="#ffd700" opacity="0.6"/><circle cx="56" cy="40" r="1.5" fill="#ffd700" opacity="0.6"/></svg>`,
+    name:'Golden', rarity:'jackpot', weight:1
+  }
+};
+
+const SYMBOL_KEYS = Object.keys(SYMBOLS);
+const RARITY_WEIGHTS = {};
+SYMBOL_KEYS.forEach(k => RARITY_WEIGHTS[k] = SYMBOLS[k].weight);
+const TOTAL_WEIGHT = Object.values(RARITY_WEIGHTS).reduce((a,b)=>a+b,0);
+
+// ============ AUDIO ENGINE ============
+let audioCtx = null;
+function getAudio(){
+  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  return audioCtx;
+}
+function playTone(freq,type,dur,vol=0.3,startTime=0){
+  const ctx=getAudio();
+  const osc=ctx.createOscillator();
+  const gain=ctx.createGain();
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.type=type;osc.frequency.value=freq;
+  const t=ctx.currentTime+startTime;
+  gain.gain.setValueAtTime(0,t);
+  gain.gain.linearRampToValueAtTime(vol,t+0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  osc.start(t);osc.stop(t+dur+0.05);
+}
+function playNoise(dur,vol=0.15,startTime=0){
+  const ctx=getAudio();
+  const buf=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate);
+  const data=buf.getChannelData(0);
+  for(let i=0;i<data.length;i++) data[i]=Math.random()*2-1;
+  const src=ctx.createBufferSource();
+  src.buffer=buf;
+  const gain=ctx.createGain();
+  const filter=ctx.createBiquadFilter();
+  filter.type='highpass';filter.frequency.value=1000;
+  src.connect(filter);filter.connect(gain);gain.connect(ctx.destination);
+  const t=ctx.currentTime+startTime;
+  gain.gain.setValueAtTime(0,t);
+  gain.gain.linearRampToValueAtTime(vol,t+0.01);
+  gain.gain.exponentialRampToValueAtTime(0.001,t+dur);
+  src.start(t);src.stop(t+dur);
+}
+function soundWhoosh(){playNoise(0.3,0.2);playTone(400,'sine',0.3,0.1)}
+function soundTick(){
+  const ctx=getAudio();
+  const buf=ctx.createBuffer(1,ctx.sampleRate*0.03,ctx.sampleRate);
+  const d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*0.3));
+  const src=ctx.createBufferSource();src.buffer=buf;
+  const g=ctx.createGain();g.gain.value=0.12;
+  src.connect(g);g.connect(ctx.destination);src.start();
+}
+function soundThud(){playTone(80,'sine',0.15,0.4);playTone(60,'sine',0.1,0.2)}
+function soundCoin(){
+  for(let i=0;i<6;i++) setTimeout(()=>{playTone(800+i*200,'sine',0.1,0.2)},i*60);
+}
+function soundJackpot(){
+  [523,659,784,1047].forEach((f,i)=>setTimeout(()=>{playTone(f,'sine',0.4,0.3)},i*150));
+  setTimeout(()=>{[1047,1319,1568,2093].forEach((f,i)=>setTimeout(()=>playTone(f,'square',0.3,0.15),i*100))},600);
+}
+function soundNearMiss(){
+  playTone(200,'sine',0.3,0.2);
+  setTimeout(()=>playTone(180,'sine',0.4,0.15),200);
+}
+function soundClick(){playTone(600,'sine',0.05,0.25)}
+
+// ============ GAME STATE ============
+const STORAGE_KEYS = {
+  balance:'squishy_balance',
+  lastSpin:'squishy_lastSpin',
+  streak:'squishy_streak',
+  lastVisit:'squishy_lastVisit',
+  collection:'squishy_collection',
+  biggestWin:'squishy_biggestWin',
+  leaderboard:'squishy_leaderboard',
+  bonusUsed:'squishy_bonusUsed'
+};
+
+let state = {
+  balance: 1000,
+  freeSpinReady: false,
+  bonusSpins: 0,
+  spinning: false,
+  collection: {},
+  dailyStreak: 1,
+  biggestWin: 0
+};
+
+// Column mapping: which grid indices belong to each column (0-4)
+const COL_CELLS = [
+  [0, 5, 10, 15, 20],
+  [1, 6, 11, 16, 21],
+  [2, 7, 12, 17, 22],
+  [3, 8, 13, 18, 23],
+  [4, 9, 14, 19, 24]
+];
+
+function loadState(){
+  state.balance = parseInt(localStorage.getItem(STORAGE_KEYS.balance))||1000;
+  state.biggestWin = parseInt(localStorage.getItem(STORAGE_KEYS.biggestWin))||0;
+  const lastVisit = localStorage.getItem(STORAGE_KEYS.lastVisit);
+  const now = new Date();
+  if(lastVisit){
+    const gap = (now - new Date(lastVisit))/1000/3600;
+    if(gap>=24){ state.dailyStreak = 1; }
+    else if(gap>=1){ state.dailyStreak = parseInt(localStorage.getItem(STORAGE_KEYS.streak))||1; }
+  }
+  const col = localStorage.getItem(STORAGE_KEYS.collection);
+  state.collection = col ? JSON.parse(col) : {};
+  const lastSpin = localStorage.getItem(STORAGE_KEYS.lastSpin);
+  if(lastSpin){
+    const elapsed = (now - new Date(lastSpin))/1000;
+    state.freeSpinReady = elapsed >= 14400;
+  } else {
+    state.freeSpinReady = true;
+  }
+}
+
+function saveBalance(){
+  localStorage.setItem(STORAGE_KEYS.balance, state.balance);
+}
+function saveCollection(){
+  localStorage.setItem(STORAGE_KEYS.collection, JSON.stringify(state.collection));
+}
+function saveStreak(){
+  localStorage.setItem(STORAGE_KEYS.streak, state.dailyStreak);
+  localStorage.setItem(STORAGE_KEYS.lastVisit, new Date().toISOString());
+}
+function saveLastSpin(){
+  localStorage.setItem(STORAGE_KEYS.lastSpin, new Date().toISOString());
+}
+function saveBiggestWin(){
+  localStorage.setItem(STORAGE_KEYS.biggestWin, state.biggestWin);
+}
+function updateLeaderboard(score){
+  let lb = JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]');
+  const date = new Date().toLocaleDateString();
+  lb.push({score, date});
+  lb.sort((a,b)=>b.score-a.score);
+  lb = lb.slice(0,20);
+  localStorage.setItem(STORAGE_KEYS.leaderboard, JSON.stringify(lb));
+}
+
+// ============ UI BUILDING ============
+function buildGrid(){
+  const grid = document.getElementById('slotGrid');
+  grid.innerHTML = '';
+  for(let i=0;i<25;i++){
+    const cell = document.createElement('div');
+    cell.className = 'slot-cell';
+    cell.id = 'cell'+i;
+    // Use slime as placeholder
+    const svgContent = SYMBOLS.slime.svg.replace('<svg viewBox="0 0 64 64">','').replace('</svg>','');
+    cell.innerHTML = `<svg viewBox="0 0 64 64">${svgContent}</svg>`;
+    grid.appendChild(cell);
+  }
+}
+
+function buildCollection(){
+  const row = document.getElementById('collectionRow');
+  row.innerHTML = '';
+  SYMBOL_KEYS.forEach(key => {
+    const div = document.createElement('div');
+    div.className = 'col-item' + (state.collection[key] ? ' collected' : '');
+    div.id = 'col-'+key;
+    div.innerHTML = SYMBOLS[key].svg;
+    div.title = SYMBOLS[key].name;
+    row.appendChild(div);
+  });
+  const total = SYMBOL_KEYS.filter(k=>state.collection[k]).length;
+  document.getElementById('collectProgress').textContent = `${total}/9 Squishies Collected`;
+  if(total===9 && !localStorage.getItem(STORAGE_KEYS.bonusUsed)){
+    setTimeout(()=>showBonus(),500);
+  }
+}
+
+function updateBalanceUI(animate=true){
+  const el = document.getElementById('coinBalance');
+  el.textContent = state.balance.toLocaleString();
+  if(animate){
+    el.classList.remove('pop');
+    void el.offsetWidth;
+    el.classList.add('pop');
+  }
+}
+
+function updateStreakUI(){
+  document.getElementById('streakText').textContent = 'Day '+state.dailyStreak;
+}
+
+function updateSpinButton(){
+  const btn = document.getElementById('spinBtn');
+  if(state.bonusSpins > 0){
+    btn.classList.add('free-spin');
+    btn.querySelector('.spin-cost').textContent = `FREE (${state.bonusSpins} left)`;
+  } else if(state.freeSpinReady){
+    btn.classList.add('free-spin');
+    btn.querySelector('.spin-cost').textContent = 'FREE SPIN!';
+  } else {
+    btn.classList.remove('free-spin');
+    btn.querySelector('.spin-cost').textContent = '10 coins';
+  }
+}
+
+// ============ SLOT LOGIC ============
+function pickSymbol(){
+  let r = Math.random() * TOTAL_WEIGHT;
+  for(const key of SYMBOL_KEYS){
+    r -= RARITY_WEIGHTS[key];
+    if(r<=0) return key;
+  }
+  return 'slime';
+}
+
+// Returns the grid cell indices for a given line index and position within that line
+function lineCellIndices(lineIdx, posInLine) {
+  if(lineIdx < 5) {
+    // Row: indices lineIdx*5 to lineIdx*5+4
+    return lineIdx * 5 + posInLine;
+  } else if(lineIdx < 10) {
+    // Column: col (lineIdx-5) at row posInLine
+    return COL_CELLS[lineIdx - 5][posInLine];
+  } else if(lineIdx === 10) {
+    // Diagonal \: positions 0-4 → 0,6,12,18,24
+    return posInLine * 6;
+  } else {
+    // Diagonal /: positions 0-4 → 4,8,12,16,20
+    return 4 + posInLine * 4;
+  }
+}
+
+function generateResult(){
+  // Build weighted pool
+  const pool = [];
+  SYMBOL_KEYS.forEach(k => { for(let i=0;i<RARITY_WEIGHTS[k];i++) pool.push(k); });
+  const pick = () => pool[Math.floor(Math.random()*pool.length)];
+
+  // Generate 5x5 grid
+  const grid = [];
+  for(let i=0;i<25;i++) grid.push(pick());
+
+  // Build all 12 lines: 5 rows + 5 cols + 2 diagonals
+  const lines = [];
+  // Rows
+  for(let r=0;r<5;r++){
+    lines.push([grid[r*5],grid[r*5+1],grid[r*5+2],grid[r*5+3],grid[r*5+4]]);
+  }
+  // Cols
+  for(let c=0;c<5;c++){
+    lines.push([grid[c],grid[5+c],grid[10+c],grid[15+c],grid[20+c]]);
+  }
+  // Diagonals
+  lines.push([grid[0],grid[6],grid[12],grid[18],grid[24]]);
+  lines.push([grid[4],grid[8],grid[12],grid[16],grid[20]]);
+
+  // Count match lengths per symbol per line
+  const lineMatches = lines.map((line, li) => {
+    const symCount = {};
+    line.forEach(s => symCount[s] = (symCount[s]||0)+1);
+    let bestKey = null, bestCount = 0, bestPos = [];
+    Object.entries(symCount).forEach(([k,v]) => {
+      if(v > bestCount) {
+        bestCount = v;
+        bestKey = k;
+      }
+    });
+    if(bestCount >= 3) {
+      // Find positions of the matching symbols in this line
+      bestPos = [];
+      line.forEach((s, pi) => { if(s === bestKey) bestPos.push(pi); });
+    }
+    return {key: bestKey, count: bestCount, positions: bestPos};
+  });
+
+  // Determine win
+  let totalWin = 0;
+  let winningCells = new Set();
+  let jackpot = false;
+
+  lineMatches.forEach((lm, li) => {
+    if(lm.count >= 3){
+      const payTable = {3:50, 4:200, 5:500};
+      let win = payTable[lm.count] || 50;
+      if(lm.key === 'golden' && lm.count >= 3){ win = 5000; jackpot = true; }
+      totalWin += win;
+      // Mark the actual positions of matching symbols
+      lm.positions.forEach(pos => {
+        winningCells.add(lineCellIndices(li, pos));
+      });
+    }
+  });
+
+  // Near miss detection: exactly 2 matching symbols in a line (adjacent positions)
+  let nearMiss = false;
+  if(!jackpot && totalWin === 0){
+    lineMatches.forEach((lm, li) => {
+      if(lm.count === 2) {
+        nearMiss = true;
+        // Mark the 2 matching cells
+        lm.positions.forEach(pos => {
+          winningCells.add(lineCellIndices(li, pos));
+        });
+      }
+    });
+    if(nearMiss){
+      const nearCoins = 3 + Math.floor(Math.random()*3); // 3-5 coins
+      totalWin += nearCoins;
+    }
+  }
+
+  // 70% consolation if still nothing
+  if(totalWin === 0 && Math.random() < 0.7){
+    totalWin = 5 + Math.floor(Math.random()*10); // 5-14 coins
+  }
+
+  return {grid, totalWin, winningCells: Array.from(winningCells), jackpot, nearMiss};
+}
+
+// ============ SPIN ANIMATION ============
+async function doSpin(){
+  if(state.spinning) return;
+  soundClick();
+
+  const cost = 10;
+  const isFreeSpin = state.bonusSpins > 0 || state.freeSpinReady;
+
+  if(!isFreeSpin && state.balance < cost){
+    setStatus('Not enough coins!','nearmiss-text'); return;
+  }
+
+  if(!isFreeSpin){
+    state.balance -= cost;
+    saveLastSpin();
+  } else {
+    state.bonusSpins = Math.max(0, state.bonusSpins - 1);
+    if(state.bonusSpins === 0 && state.freeSpinReady) {
+      state.freeSpinReady = false; // mark as used
+    }
+  }
+
+  state.spinning = true;
+  const btn = document.getElementById('spinBtn');
+  btn.disabled = true;
+  btn.classList.remove('pulse');
+  updateBalanceUI();
+  updateSpinButton();
+
+  const result = generateResult();
+
+  // Staggered column stops: col0 stops at 700ms, col1 at 1000ms, col2 at 1300ms, col3 at 1600ms, col4 at 1900ms
+  const colStopTimes = [700, 1000, 1300, 1600, 1900];
+  const COL_CELLS_IDX = [
+    [0,5,10,15,20],
+    [1,6,11,16,21],
+    [2,7,12,17,22],
+    [3,8,13,18,23],
+    [4,9,14,19,24]
+  ];
+
+  soundWhoosh();
+
+  // Start spinning animation on all cells
+  let tickInterval = setInterval(soundTick, 60);
+  for(let cellIdx=0; cellIdx<25; cellIdx++){
+    document.getElementById('cell'+cellIdx).classList.add('spinning');
+  }
+
+  // Stop each column at its designated time
+  for(let col=0; col<5; col++){
+    await new Promise(res => setTimeout(res, col === 0 ? colStopTimes[0] : colStopTimes[col] - colStopTimes[col-1]));
+    COL_CELLS_IDX[col].forEach(cellIdx => {
+      const el = document.getElementById('cell'+cellIdx);
+      el.classList.remove('spinning');
+      el.innerHTML = SYMBOLS[result.grid[cellIdx]].svg;
+    });
+    soundThud();
+    // Collect symbols from this column
+    COL_CELLS_IDX[col].forEach(cellIdx => {
+      state.collection[result.grid[cellIdx]] = (state.collection[result.grid[cellIdx]]||0) + 1;
+    });
+  }
+
+  clearInterval(tickInterval);
+  await new Promise(res => setTimeout(res, 300));
+
+  // Apply winning cell highlights
+  result.winningCells.forEach(idx => {
+    const el = document.getElementById('cell'+idx);
+    if(result.jackpot){
+      el.classList.add('winner');
+    } else if(result.nearMiss){
+      el.classList.add('nearmiss');
+      const float = document.createElement('div');
+      float.className = 'nearmiss-float';
+      float.textContent = result.totalWin > 0 ? 'SO CLOSE!' : '';
+      el.appendChild(float);
+      setTimeout(() => { el.classList.remove('nearmiss'); float.remove(); }, 800);
+    }
+  });
+
+  if(result.jackpot){
+    soundJackpot();
+    state.balance += result.totalWin;
+    if(state.balance > state.biggestWin) state.biggestWin = state.balance;
+    saveBiggestWin();
+    updateBalanceUI();
+    showJackpot(result.totalWin);
+    confetti();
+    flashScreen();
+  } else if(result.totalWin > 0){
+    if(result.nearMiss) {
+      soundNearMiss();
+      setStatus(`+${result.totalWin} coins!`,'nearmiss-text');
+    } else {
+      soundCoin();
+      setStatus(`+${result.totalWin} coins!`,'win-text');
+    }
+    state.balance += result.totalWin;
+    if(state.balance > state.biggestWin) state.biggestWin = state.balance;
+    saveBiggestWin();
+    updateBalanceUI();
+    coinRain(result.totalWin);
+  } else {
+    setStatus('No match this time...','');
+  }
+
+  saveBalance();
+  saveCollection();
+  updateLeaderboard(state.balance);
+  buildCollection();
+
+  // Reset after delay
+  setTimeout(()=>{
+    for(let i=0;i<25;i++) document.getElementById('cell'+i).classList.remove('winner','nearmiss');
+    state.spinning = false;
+    btn.disabled = false;
+    btn.classList.add('pulse');
+    updateSpinButton();
+  }, 2200);
+
+  // Update daily streak
+  const now = new Date();
+  const lastVisit = localStorage.getItem(STORAGE_KEYS.lastVisit);
+  if(lastVisit){
+    const gap = (now - new Date(lastVisit))/1000/3600;
+    if(gap >= 1 && gap < 24) {
+      state.dailyStreak++;
+    } else if(gap >= 24) {
+      state.dailyStreak = 1;
+    }
+  }
+  saveStreak();
+  updateStreakUI();
+  startFreeTimer();
+}
+
+function setStatus(msg, cls){
+  const el = document.getElementById('statusMsg');
+  el.className = cls;
+  el.textContent = msg;
+}
+
+// ============ VISUAL EFFECTS ============
+function coinRain(amount){
+  const count = Math.min(amount, 30);
+  for(let i=0;i<count;i++){
+    setTimeout(()=>{
+      const el = document.createElement('div');
+      el.className = 'coin-rain';
+      el.textContent = '🪙';
+      el.style.left = (Math.random() * 90) + 'vw';
+      el.style.animationDuration = (1 + Math.random()) + 's';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 2500);
+    }, i*50);
+  }
+}
+
+function confetti(){
+  const colors = ['#ffb3c6','#b8e0d2','#d4a5ff','#ffe5b4','#a8dadc','#ff9f1c','#ffd700'];
+  for(let i=0;i<60;i++){
+    setTimeout(()=>{
+      const el = document.createElement('div');
+      el.className = 'confetti-piece';
+      el.style.left = (Math.random() * 90) + 'vw';
+      el.style.top = (Math.random() * 30) + 'vh';
+      el.style.background = colors[Math.floor(Math.random()*colors.length)];
+      el.style.animationDuration = (1.5 + Math.random()*1.5) + 's';
+      el.style.transform = `rotate(${Math.random()*360}deg)`;
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 3000);
+    }, i*30);
+  }
+}
+
+function flashScreen(){
+  const el = document.createElement('div');
+  el.className = 'jackpot-flash';
+  document.body.appendChild(el);
+  setTimeout(()=>el.remove(), 1500);
+}
+
+// ============ FREE SPIN TIMER ============
+let freeTimerInterval = null;
+function startFreeTimer(){
+  if(freeTimerInterval) clearInterval(freeTimerInterval);
+  const tick = () => {
+    const lastSpin = localStorage.getItem(STORAGE_KEYS.lastSpin);
+    const timerEl = document.getElementById('freeTimer');
+    if(!lastSpin){
+      timerEl.textContent = 'READY!';
+      state.freeSpinReady = true;
+      updateSpinButton();
+      return;
+    }
+    const elapsed = (new Date() - new Date(lastSpin))/1000;
+    const remaining = Math.max(0, 14400 - elapsed);
+    if(remaining <= 0){
+      timerEl.textContent = 'READY!';
+      state.freeSpinReady = true;
+      updateSpinButton();
+      return;
+    }
+    const h = Math.floor(remaining/3600);
+    const m = Math.floor((remaining%3600)/60);
+    const s = Math.floor(remaining%60);
+    timerEl.textContent = `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    state.freeSpinReady = false;
+    updateSpinButton();
+  };
+  tick();
+  freeTimerInterval = setInterval(tick, 1000);
+}
+
+// ============ MODALS ============
+function showJackpot(amount){
+  document.getElementById('jackpotMsg').textContent = `You won ${amount.toLocaleString()} coins!`;
+  document.getElementById('jackpotOverlay').classList.add('active');
+}
+function closeJackpot(){
+  document.getElementById('jackpotOverlay').classList.remove('active');
+}
+function showBonus(){
+  document.getElementById('bonusOverlay').classList.add('active');
+  state.bonusSpins = 3;
+  localStorage.setItem(STORAGE_KEYS.bonusUsed,'true');
+  updateSpinButton();
+}
+function closeBonus(){
+  document.getElementById('bonusOverlay').classList.remove('active');
+}
+function showLeaderboard(){
+  const lb = JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]');
+  const top = lb.slice(0,10);
+  const list = document.getElementById('leaderList');
+  list.innerHTML = '';
+  if(top.length === 0){
+    list.innerHTML = '<li style="justify-content:center;color:#888">No scores yet!</li>';
+  }
+  top.forEach((entry, i) => {
+    const li = document.createElement('li');
+    const rankClass = i===0?'r1':i===1?'r2':'r3';
+    li.innerHTML = `<span class="leader-rank ${rankClass}">${i+1}</span><span>${entry.date}</span><span class="leader-bal">${entry.score.toLocaleString()}</span>`;
+    list.appendChild(li);
+  });
+  document.getElementById('currentBalance').textContent = `Your balance: ${state.balance.toLocaleString()} coins`;
+  document.getElementById('leaderOverlay').classList.add('active');
+}
+function closeLeaderboard(){
+  document.getElementById('leaderOverlay').classList.remove('active');
+}
+
+// ============ SOCIAL ============
+function shareScore(){
+  const msg = `🎰 I just hit ${state.biggestWin.toLocaleString()} coins on Squishy Slots! Can you beat my balance?\n\nPlay Squishy Slots!`;
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(msg).then(()=>{
+      const btn = document.querySelector('.share-btn');
+      const orig = btn.textContent; btn.textContent = 'Copied!';
+      setTimeout(()=>btn.textContent = orig, 2000);
+    });
+  } else {
+    prompt('Copy this:', msg);
+  }
+}
+
+// ============ INIT ============
+function init(){
+  loadState();
+  buildGrid();
+  buildCollection();
+  updateBalanceUI(false);
+  updateStreakUI();
+  updateSpinButton();
+  startFreeTimer();
+  // Set initial random symbols in grid
+  for(let i=0;i<25;i++){
+    const sym = pickSymbol();
+    document.getElementById('cell'+i).innerHTML = SYMBOLS[sym].svg;
+  }
+}
+
+init();
+</script>
+</body>
+</html>
