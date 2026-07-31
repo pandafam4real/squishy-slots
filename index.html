@@ -9,11 +9,8 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
---bg:#0d0d1a;--machine-bg:#1e1e3a;--machine-edge:#2a2a5a;
---pink:#ff6b9d;--pink-dark:#cc3d6e;--pink-light:#ffb3cc;
---mint:#5dd9c1;--mint-dark:#2a9d8f;--lav:#b4a0ff;--lav-dark:#7c6ad9;
---butter:#ffe066;--blue:#7ec8e3;--peach:#ffb347;
---gold:#ffd700;--gold-dark:#b8960b;--gold-light:#fff0a0;
+--bg:#0d0d1a;--pink:#ff6b9d;--mint:#5dd9c1;--lav:#b4a0ff;
+--butter:#ffe066;--gold:#ffd700;--peach:#ffb347;
 }
 html,body{
   min-height:100vh;
@@ -27,119 +24,45 @@ html,body{
 body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100px}
 
 /* HEADER */
-.header{
-  display:flex;justify-content:space-between;align-items:center;
-  width:100%;max-width:420px;margin-bottom:20px;
-}
-.coin-wrap{
-  display:flex;align-items:center;gap:10px;
-  background:linear-gradient(135deg,#1a1a3a,#252550);
-  border-radius:24px;padding:10px 20px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
-  border:1px solid rgba(255,215,0,0.2);
-}
-.coin-icon{
-  width:36px;height:36px;
-  background:linear-gradient(145deg,#fff0a0,#ffd700,#b8860b);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  font-size:18px;font-weight:900;color:#7a4a00;
-  box-shadow:0 2px 8px rgba(255,215,0,0.5), inset 0 2px 4px rgba(255,255,255,0.4);
-}
+.header{display:flex;justify-content:space-between;align-items:center;width:100%;max-width:420px;margin-bottom:20px}
+.coin-wrap{display:flex;align-items:center;gap:10px;background:linear-gradient(135deg,#1a1a3a,#252550);border-radius:24px;padding:10px 20px;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(255,215,0,0.2)}
+.coin-icon{width:36px;height:36px;background:linear-gradient(145deg,#fff0a0,#ffd700,#b8860b);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;color:#7a4a00;box-shadow:0 2px 8px rgba(255,215,0,0.5),inset 0 2px 4px rgba(255,255,255,0.4)}
 #coinBalance{font-size:26px;font-weight:900;transition:transform 0.2s}
 #coinBalance.pop{animation:pop 0.3s}
 @keyframes pop{0%{transform:scale(1)}50%{transform:scale(1.35)}100%{transform:scale(1)}}
-.streak-badge{
-  display:flex;align-items:center;gap:6px;
-  background:linear-gradient(135deg,#1a1a3a,#252550);
-  border-radius:24px;padding:10px 16px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.08);
-  border:1px solid rgba(255,159,79,0.2);
-}
+.streak-badge{display:flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1a1a3a,#252550);border-radius:24px;padding:10px 16px;box-shadow:0 4px 20px rgba(0,0,0,0.5);border:1px solid rgba(255,159,79,0.2)}
 .streak-badge svg{width:24px;height:24px}
 #streakText{font-size:14px;font-weight:800;color:var(--peach)}
 
-/* MACHINE CONTAINER — 3D PERSPECTIVE */
+/* MACHINE */
 .machine-container{perspective:1200px;width:100%;max-width:420px}
-
-/* SLOT MACHINE — 3D TRANSFORM */
 .machine{
   background:linear-gradient(160deg,#2a2a5a 0%,#1e1e3a 40%,#181830 100%);
   border-radius:32px;padding:24px 16px 20px;width:100%;
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.7),
-    0 0 0 1px rgba(255,255,255,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.1),
-    inset 0 -2px 0 rgba(0,0,0,0.3);
-  transform:rotateX(3deg);
-  transform-style:preserve-3d;
-  position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,0.7),0 0 0 1px rgba(255,255,255,0.06),inset 0 1px 0 rgba(255,255,255,0.1),inset 0 -2px 0 rgba(0,0,0,0.3);
+  transform:rotateX(3deg);transform-style:preserve-3d;position:relative;
 }
-.machine::before{
-  content:'';position:absolute;top:0;left:10%;right:10%;height:3px;
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),rgba(255,255,255,0.3),rgba(255,255,255,0.15),transparent);
-  border-radius:0 0 3px 3px;
-}
+.machine::before{content:'';position:absolute;top:0;left:10%;right:10%;height:3px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),rgba(255,255,255,0.3),rgba(255,255,255,0.15),transparent);border-radius:0 0 3px 3px}
 
-.machine-title{
-  text-align:center;font-size:22px;font-weight:900;letter-spacing:3px;margin-bottom:14px;
-  background:linear-gradient(135deg,#ffd700 0%,#ff9f1c 30%,#ff6b9d 60%,#b4a0ff 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 2px 6px rgba(255,107,157,0.5));
-}
+.machine-title{text-align:center;font-size:20px;font-weight:900;letter-spacing:3px;margin-bottom:14px;background:linear-gradient(135deg,#ffd700 0%,#ff9f1c 30%,#ff6b9d 60%,#b4a0ff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 2px 6px rgba(255,107,157,0.5))}
 
 /* 3D SLOT GRID */
-.slot-grid-wrap{
-  background:linear-gradient(180deg,#080810 0%,#0d0d1a 100%);
-  border-radius:24px;padding:10px;
-  border:3px solid #222;
-  box-shadow:
-    inset 0 6px 24px rgba(0,0,0,0.95),
-    inset 0 0 0 1px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(0,0,0,0.4);
-}
+.slot-grid-wrap{background:linear-gradient(180deg,#080810 0%,#0d0d1a 100%);border-radius:24px;padding:10px;border:3px solid #222;box-shadow:inset 0 6px 24px rgba(0,0,0,0.95),0 0 0 1px rgba(0,0,0,0.4)}
 .slot-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
-
 .slot-cell{
-  aspect-ratio:1;
-  background:linear-gradient(145deg,#141428,#0c0c1e);
-  border-radius:16px;display:flex;align-items:center;justify-content:center;
-  overflow:hidden;position:relative;
+  aspect-ratio:1;background:linear-gradient(145deg,#141428,#0c0c1e);border-radius:16px;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;
   border:2px solid #1e1e3a;
-  box-shadow:
-    inset 0 3px 8px rgba(0,0,0,0.8),
-    inset 0 0 0 1px rgba(255,255,255,0.02),
-    0 2px 0 rgba(255,255,255,0.03);
+  box-shadow:inset 0 3px 8px rgba(0,0,0,0.8),inset 0 0 0 1px rgba(255,255,255,0.02),0 2px 0 rgba(255,255,255,0.03);
 }
-/* Jellycat glass face — glossy overlay */
-.slot-cell::after{
-  content:'';position:absolute;inset:0;border-radius:14px;
-  background:linear-gradient(145deg,rgba(255,255,255,0.08) 0%,transparent 40%,rgba(255,255,255,0.04) 100%);
-  pointer-events:none;
-}
-.slot-cell svg{width:88%;height:88%;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.7))}
-.slot-cell.winner{
-  border-color:var(--gold);
-  box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 24px rgba(255,215,0,0.7),0 0 48px rgba(255,215,0,0.3);
-  animation:winBounce3d 0.5s ease-in-out infinite alternate;
-}
-@keyframes winBounce3d{
-  from{transform:scale(1) translateY(0)}
-  to{transform:scale(1.08) translateY(-4px)}
-}
-.slot-cell.nearmiss{
-  border-color:var(--peach);
-  animation:shake3d 0.4s ease;
-  box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 16px rgba(255,179,71,0.5);
-}
-@keyframes shake3d{
-  0%,100%{transform:translateX(0)}
-  20%{transform:translateX(-5px) rotate(-2deg)}
-  40%{transform:translateX(5px) rotate(2deg)}
-  60%{transform:translateX(-3px) rotate(-1deg)}
-  80%{transform:translateX(3px) rotate(1deg)}
-}
+/* Jellycat glass sheen */
+.slot-cell::after{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(145deg,rgba(255,255,255,0.09) 0%,transparent 40%,rgba(255,255,255,0.04) 100%);pointer-events:none}
+.slot-cell svg{width:88%;height:88%;filter:drop-shadow(0 4px 10px rgba(0,0,0,0.8))}
+.slot-cell.winner{border-color:var(--gold);box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 28px rgba(255,215,0,0.75),0 0 56px rgba(255,215,0,0.35);animation:winBounce3d 0.5s ease-in-out infinite alternate}
+@keyframes winBounce3d{from{transform:scale(1) translateY(0)}to{transform:scale(1.08) translateY(-4px)}}
+.slot-cell.nearmiss{border-color:var(--peach);animation:shake3d 0.4s ease;box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 18px rgba(255,179,71,0.5)}
+@keyframes shake3d{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px) rotate(-2deg)}40%{transform:translateX(5px) rotate(2deg)}60%{transform:translateX(-3px) rotate(-1deg)}80%{transform:translateX(3px) rotate(1deg)}}
 
-/* PAYTABLE */
 .paytable{margin-top:14px;font-size:10px;color:#777;text-align:center;line-height:1.9}
 .paytable span{color:var(--butter);font-weight:800}
 
@@ -148,22 +71,11 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 #spinBtn{
   width:92%;max-width:340px;height:76px;border:none;border-radius:38px;
   background:linear-gradient(160deg,#ff85ad 0%,#ff6b9d 30%,#d44a80 70%,#b33d6a 100%);
-  color:#fff;font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;
-  letter-spacing:4px;cursor:pointer;position:relative;
-  box-shadow:
-    0 8px 0 #8a2250,
-    0 12px 24px rgba(212,74,128,0.5),
-    inset 0 2px 0 rgba(255,255,255,0.25),
-    inset 0 -2px 0 rgba(0,0,0,0.15);
-  transform:translateY(0);
-  transition:transform 0.08s, box-shadow 0.08s;
-  text-shadow:0 2px 4px rgba(0,0,0,0.3);overflow:hidden;
+  color:#fff;font-family:'Nunito',sans-serif;font-size:26px;font-weight:900;letter-spacing:3px;cursor:pointer;position:relative;
+  box-shadow:0 8px 0 #8a2250,0 12px 24px rgba(212,74,128,0.5),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15);
+  transform:translateY(0);transition:transform 0.08s,box-shadow 0.08s;text-shadow:0 2px 4px rgba(0,0,0,0.3);overflow:hidden;
 }
-#spinBtn::before{
-  content:'';position:absolute;top:4px;left:15%;right:15%;height:40%;
-  background:linear-gradient(180deg,rgba(255,255,255,0.28),transparent);
-  border-radius:50% 50% 40% 40%;pointer-events:none;
-}
+#spinBtn::before{content:'';position:absolute;top:4px;left:15%;right:15%;height:40%;background:linear-gradient(180deg,rgba(255,255,255,0.28),transparent);border-radius:50% 50% 40% 40%;pointer-events:none}
 #spinBtn:hover{transform:translateY(-3px);box-shadow:0 11px 0 #8a2250,0 16px 32px rgba(212,74,128,0.65),inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -2px 0 rgba(0,0,0,0.15)}
 #spinBtn:active,#spinBtn.pressed{transform:translateY(6px);box-shadow:0 2px 0 #8a2250,0 4px 12px rgba(212,74,128,0.4),inset 0 2px 0 rgba(255,255,255,0.1),inset 0 -1px 0 rgba(0,0,0,0.2)}
 #spinBtn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
@@ -215,28 +127,25 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 .leader-rank.r3{background:linear-gradient(135deg,#cd7f32,#a0522d);color:#fff}
 .leader-bal{color:var(--butter);margin-left:auto;font-weight:800}
 
-/* COIN RAIN */
+/* EFFECTS */
 .coin-rain{position:fixed;top:-40px;pointer-events:none;z-index:200;font-size:30px;animation:coinFall3d 1.8s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5))}
 @keyframes coinFall3d{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(110vh) rotate(720deg) scale(0.8);opacity:0}}
 .jackpot-flash{position:fixed;inset:0;background:radial-gradient(circle,rgba(255,215,0,0.7),rgba(255,107,157,0.3),transparent 70%);z-index:150;opacity:0;pointer-events:none;animation:flashIn3d 1.2s forwards}
 @keyframes flashIn3d{0%{opacity:1}100%{opacity:0}}
-.confetti-piece{position:fixed;width:12px;height:12px;border-radius:3px;z-index:160;animation:confettiFall3d 2.5s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4))}
+.confetti-piece{position:fixed;border-radius:3px;z-index:160;animation:confettiFall3d 2.5s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4))}
 @keyframes confettiFall3d{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(1080deg) scale(0.6);opacity:0}}
 .slot-cell.spinning svg{animation:spinCycle3d 0.12s linear infinite;filter:drop-shadow(0 0 10px rgba(255,255,255,0.3))}
 @keyframes spinCycle3d{0%{transform:translateY(-100%) scale(0.88);opacity:0.4}50%{transform:translateY(0) scale(1.06);opacity:1}100%{transform:translateY(100%) scale(0.88);opacity:0.4}}
 .nearmiss-float{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:900;color:var(--peach);animation:floatUp3d 0.9s ease-out forwards;white-space:nowrap;z-index:10;text-shadow:0 0 10px rgba(255,179,71,0.8)}
 @keyframes floatUp3d{0%{opacity:1;top:-14px;transform:translateX(-50%) scale(0.8)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}100%{opacity:0;top:-50px;transform:translateX(-50%) scale(0.9)}}
 
-@media(max-width:380px){.machine-title{font-size:18px}#spinBtn{font-size:22px;height:64px}.col-item{width:34px;height:34px}.col-item svg{width:22px;height:22px}#coinBalance{font-size:22px}}
+@media(max-width:380px){.machine-title{font-size:17px}#spinBtn{font-size:22px;height:64px}.col-item{width:34px;height:34px}.col-item svg{width:22px;height:22px}#coinBalance{font-size:22px}}
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="coin-wrap">
-    <div class="coin-icon">$</div>
-    <span id="coinBalance">1,000</span>
-  </div>
+  <div class="coin-wrap"><div class="coin-icon">$</div><span id="coinBalance">1,000</span></div>
   <div class="streak-badge">
     <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 10 8 14c1 2 3 3 4 4 1-1 3-2 4-4 2-4 0-8-4-12z" fill="#ff9f1c"/><path d="M12 8c-2 2.5-3.5 5-2.5 7.5.5 1.25 1.5 2 2.5 2.5.5-.5 1.5-1.25 2.5-2.5 1-2.5-.5-5-2.5-7.5z" fill="#ffd700"/></svg>
     <span id="streakText">Day 1</span>
@@ -246,9 +155,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 <div class="machine-container">
   <div class="machine">
     <div class="machine-title">YUM SUM SQUISHIES</div>
-    <div class="slot-grid-wrap">
-      <div class="slot-grid" id="slotGrid"></div>
-    </div>
+    <div class="slot-grid-wrap"><div class="slot-grid" id="slotGrid"></div></div>
     <div class="paytable">
       <span>3 Match = 50</span> &nbsp;|&nbsp; <span>4 Match = 200</span> &nbsp;|&nbsp; <span>5 Match = 500</span><br>
       <span>JACKPOT (3x Golden) = 5000</span> &nbsp;|&nbsp; <span>Near Miss = 3–5 coins</span>
@@ -257,10 +164,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 </div>
 
 <div class="spin-wrap">
-  <button id="spinBtn" class="pulse" onclick="doSpin()">
-    SQUEEZE!
-    <span class="spin-cost">10 coins</span>
-  </button>
+  <button id="spinBtn" class="pulse" onclick="doSpin()">SQUEEZE!<span class="spin-cost">10 coins</span></button>
 </div>
 
 <div class="status-area"><div id="statusMsg"></div></div>
@@ -272,7 +176,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
     <span class="free-timer" id="freeTimer">–:––:––</span>
   </div>
   <div class="collection-row" id="collectionRow"></div>
-  <div class="collect-progress" id="collectProgress">0/9 Collected</div>
+  <div class="collect-progress" id="collectProgress">0/6 Collected</div>
   <div class="btn-row">
     <button class="footer-btn share-btn" onclick="shareScore()">Share</button>
     <button class="footer-btn lead-btn" onclick="showLeaderboard()">Top Scores</button>
@@ -280,690 +184,458 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 </div>
 
 <div class="overlay" id="jackpotOverlay"><div class="modal"><h2>JACKPOT!!!</h2><p id="jackpotMsg">You won 5,000 coins!</p><button class="modal-close" onclick="closeJackpot()">AMAZING!</button></div></div>
-<div class="overlay" id="bonusOverlay"><div class="modal"><h2>Bonus Round!</h2><p>You collected all 9 Squishies! 3 FREE SPINS!</p><button class="modal-close" onclick="closeBonus()">LET'S GO!</button></div></div>
+<div class="overlay" id="bonusOverlay"><div class="modal"><h2>Bonus Round!</h2><p>You collected all 6 Squishies! 3 FREE SPINS!</p><button class="modal-close" onclick="closeBonus()">LET'S GO!</button></div></div>
 <div class="overlay" id="leaderOverlay"><div class="modal"><h2>Top Scores</h2><ul class="leader-list" id="leaderList"></ul><p id="currentBalance"></p><button class="modal-close" onclick="closeLeaderboard()">Close</button></div></div>
 
 <script>
 // ================================================================
-// YUM SUM SQUISHIES — Jellycat-style Dim Sum Characters
-// Each is built with: SSS gel body, beady safety eyes, embroidered
-// smile, ribbed corduroy boots, blush cheeks, subsurface glow
+// YUM SUM SQUISHIES — Jellycat × Dim Sum
+// Material system: SSS gel bodies, corduroy boots, beaded safety eyes,
+// embroidered smiles, ribbed textures, soft pastel gradients
 // ================================================================
 
-// Helper: generate Jellycat eye (beaded plastic safety eye)
-function jellycatEye(cx, cy, r, highlight=true) {
-  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#1a1a1a"/>
+// ── Jellycat eye factory (beaded plastic safety eye) ──────────
+function eye(cx, cy, r) {
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#111"/>
   <circle cx="${cx-r*0.3}" cy="${cy-r*0.3}" r="${r*0.45}" fill="rgba(255,255,255,0.9)"/>
-  ${highlight ? `<circle cx="${cx-r*0.5}" cy="${cy-r*0.5}" r="${r*0.2}" fill="rgba(255,255,255,0.6)"/>` : ''}`;
+  <circle cx="${cx-r*0.55}" cy="${cy-r*0.55}" r="${r*0.18}" fill="rgba(255,255,255,0.6)"/>`;
 }
 
-// Helper: embroidered smile (Jellycat stitched mouth)
-function jellycatMouth(x, y, w) {
-  return `<path d="M${x} ${y} Q${x+w*0.5} ${y+w*0.35} ${x+w} ${y}" stroke="#2a1a0a" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
+// ── Embroidered smile ──────────────────────────────────────
+function smile(x, y, w) {
+  return `<path d="M${x} ${y} Q${x+w*0.5} ${y+w*0.38} ${x+w} ${y}" stroke="#1a0a00" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
 }
 
-// Helper: blush cheeks
-function blushCheeks(cx, cy, w, h) {
-  return `<ellipse cx="${cx-w}" cy="${cy}" rx="${w*0.5}" ry="${h*0.5}" fill="rgba(255,130,140,0.45)"/>
-  <ellipse cx="${cx+w}" cy="${cy}" rx="${w*0.5}" ry="${h*0.5}" fill="rgba(255,130,140,0.45)"/>`;
+// ── Blush cheeks ─────────────────────────────────────────────
+function blush(cx, cy) {
+  return `<ellipse cx="${cx-7}" cy="${cy}" rx="5.5" ry="3.5" fill="rgba(255,130,148,0.45)"/>
+  <ellipse cx="${cx+7}" cy="${cy}" rx="5.5" ry="3.5" fill="rgba(255,130,148,0.45)"/>`;
 }
 
-// Helper: corduroy boot (ribbed capsule)
-function corduroyBoot(x, y, w, h, color) {
-  let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w/2}" fill="${color}"/>`;
-  // Rib lines
-  for(let i=0; i<3; i++){
-    const lx = x + w*(0.25 + i*0.25);
-    s += `<line x1="${lx}" y1="${y+1}" x2="${lx}" y2="${y+h-1}" stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>`;
+// ── Corduroy boots ────────────────────────────────────────────
+function boots(x, y, color) {
+  let s = `<rect x="${x}" y="${y}" width="8" height="13" rx="4" fill="${color}"/>`;
+  for(let i=0;i<3;i++){
+    const lx = x + 2 + i*2.2;
+    s += `<line x1="${lx}" y1="${y+1}" x2="${lx}" y2="${y+12}" stroke="rgba(0,0,0,0.18)" stroke-width="0.8"/>`;
   }
   return s;
 }
 
+// ── SSS Gel base ───────────────────────────────────────────────
+// Returns SVG ellipse for SSS underglow
+function sssUnderglow(SSSColor, opacity) {
+  return `<ellipse cx="32" cy="54" rx="18" ry="7" fill="${SSSColor}" opacity="${opacity}" style="mix-blend-mode:multiply"/>`;
+}
+
+// ── SSS shine overlay ─────────────────────────────────────────
+function sssShine() {
+  return `<ellipse cx="24" cy="26" rx="9" ry="7" fill="rgba(255,255,255,0.72)"/>`;
+}
+
+// ── Slot symbols ───────────────────────────────────────────────
 const SYMBOLS = {
-  // ── BAO-BAO the Big Bun — Common ──────────────────────────
-  // Translucent maltose gel Xiaolongbao, pinched pleated top, corduroy boots
+
+  // ── BAO-BAO — Common ─────────────────────────────────────
+  // XL Soupy Xiaolongbao — translucent maltose gel, pinched pleats,
+  // blush pink gradient, dangling corduroy boots
   baobao: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
     <radialGradient id="baoSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff8f0"/>
-      <stop offset="40%" stop-color="#fce4d6"/>
-      <stop offset="75%" stop-color="#f5c8a8"/>
-      <stop offset="100%" stop-color="#d4956a"/>
+      <stop offset="0%" stop-color="#fff8f2"/>
+      <stop offset="35%" stop-color="#fce4d6"/>
+      <stop offset="70%" stop-color="#f5c8a8"/>
+      <stop offset="100%" stop-color="#c88860"/>
     </radialGradient>
-    <radialGradient id="baoShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <radialGradient id="baoInner" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,200,100,0.35)"/>
+      <stop offset="100%" stop-color="rgba(255,180,80,0)"/>
     </radialGradient>
-    <filter id="baoGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(210,120,60,0.35)"/>
+    <filter id="baoShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(180,100,50,0.38)"/>
     </filter>
-    <filter id="baoInnerGlow" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="2" result="blur"/>
+    <filter id="baoGel">
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
     <linearGradient id="baoPleat" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="rgba(200,140,90,0.4)"/>
+      <stop offset="0%" stop-color="rgba(200,140,90,0.45)"/>
       <stop offset="50%" stop-color="rgba(255,220,190,0.3)"/>
-      <stop offset="100%" stop-color="rgba(200,140,90,0.4)"/>
+      <stop offset="100%" stop-color="rgba(200,140,90,0.45)"/>
     </linearGradient>
   </defs>
 
-  <!-- Shadow -->
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
+  <!-- SSS soup glow from inside -->
+  <ellipse cx="32" cy="44" rx="13" ry="9" fill="url(#baoInner)" filter="url(#baoGel)"/>
 
-  <!-- Soup glow from inside (SSS effect) -->
-  <ellipse cx="32" cy="42" rx="14" ry="10" fill="rgba(255,200,100,0.2)" filter="url(#baoInnerGlow)"/>
+  <!-- Main bun body — SSS maltose gel -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#baoSSS)" filter="url(#baoShadow)"/>
 
-  <!-- Main bun body -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#baoSSS)" filter="url(#baoGlow)"/>
-
-  <!-- Translucent gel overlay (top gloss) -->
-  <ellipse cx="32" cy="34" rx="18" ry="16" fill="rgba(255,248,240,0.3)"/>
+  <!-- Gel overlay gloss -->
+  <ellipse cx="32" cy="33" rx="17" ry="15" fill="rgba(255,248,242,0.28)"/>
 
   <!-- Pinched pleat lines at top -->
-  <path d="M24 18 Q26 22 28 18 Q30 22 32 18 Q34 22 36 18 Q38 22 40 18" stroke="url(#baoPleat)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M24 17 Q26 22 28 17 Q30 22 32 17 Q34 22 36 17 Q38 22 40 17" stroke="url(#baoPleat)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
 
-  <!-- Shine highlight (Jellycat glossy face) -->
-  <ellipse cx="24" cy="26" rx="9" ry="7" fill="url(#baoShine)"/>
+  <!-- SSS shine -->
+  ${sssShine()}
 
   <!-- Beady safety eyes -->
-  ${jellycatEye(24, 34, 4.5)}
-  ${jellycatEye(40, 34, 4.5)}
+  ${eye(24, 34, 4.5)}
+  ${eye(40, 34, 4.5)}
 
-  <!-- Blush cheeks -->
-  ${blushCheeks(32, 40, 7, 4)}
+  <!-- Blush -->
+  ${blush(32, 40)}
 
   <!-- Embroidered smile -->
-  ${jellycatMouth(26, 43, 12)}
+  ${smile(26, 43, 12)}
 
   <!-- Corduroy boots dangling -->
-  ${corduroyBoot(20, 54, 8, 12, '#7a5c3a')}
-  ${corduroyBoot(36, 54, 8, 12, '#7a5c3a')}
+  ${boots(20, 55, '#6a4c2a')}
+  ${boots(36, 55, '#6a4c2a')}
 </svg>`,
-    name:'Bao-Bao', rarity:'common', weight:18
+    name: 'Bao-Bao', type: 'Xiaolongbao', rarity: 'common', weight: 18
   },
 
   // ── HAR-GOW PIP — Common ───────────────────────────────────
-  // Crystal frosted shrimp dumpling, orange shrimp glow visible through gel
+  // Crystal Shrimp Dumpling — frosted translucent wrapper,
+  // orange shrimp glow visible through gel, big rosy cheeks
   hargow: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
     <radialGradient id="hgSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="rgba(255,240,230,0.95)"/>
-      <stop offset="40%" stop-color="rgba(245,220,205,0.88)"/>
-      <stop offset="75%" stop-color="rgba(220,180,160,0.8)"/>
-      <stop offset="100%" stop-color="rgba(180,130,100,0.75)"/>
+      <stop offset="0%" stop-color="rgba(255,242,235,0.96)"/>
+      <stop offset="40%" stop-color="rgba(245,222,208,0.88)"/>
+      <stop offset="75%" stop-color="rgba(218,178,155,0.82)"/>
+      <stop offset="100%" stop-color="rgba(175,125,95,0.76)"/>
     </radialGradient>
-    <radialGradient id="hgShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <radialGradient id="hgShrimp" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,160,60,0.72)"/>
+      <stop offset="55%" stop-color="rgba(255,120,40,0.5)"/>
+      <stop offset="100%" stop-color="rgba(255,100,20,0)"/>
     </radialGradient>
-    <filter id="hgGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(200,120,60,0.3)"/>
+    <filter id="hgShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(160,90,50,0.35)"/>
     </filter>
-    <radialGradient id="shrimpGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,160,60,0.7)"/>
-      <stop offset="100%" stop-color="rgba(255,120,40,0)"/>
-    </radialGradient>
+    <filter id="hgFrost">
+      <feGaussianBlur stdDeviation="1.8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
   </defs>
 
-  <ellipse cx="32" cy="60" rx="17" ry="5" fill="rgba(0,0,0,0.22)"/>
+  <!-- Frosted crystal wrapper -->
+  <ellipse cx="32" cy="36" rx="21" ry="21" fill="url(#hgSSS)" filter="url(#hgShadow)"/>
 
-  <!-- Frosted crystal wrapper body -->
-  <ellipse cx="32" cy="36" rx="21" ry="21" fill="url(#hgSSS)" filter="url(#hgGlow)"/>
+  <!-- Shrimp glow visible through translucent wrapper -->
+  <ellipse cx="32" cy="34" rx="11" ry="9" fill="url(#hgShrimp)" filter="url(#hgFrost)"/>
 
-  <!-- Pleated skirt at bottom (classic Har Gow wrinkle) -->
-  <path d="M12 40 Q16 44 20 40 Q24 44 28 40 Q32 44 36 40 Q40 44 44 40 Q48 44 52 40" stroke="rgba(180,130,100,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Frost overlay -->
+  <ellipse cx="32" cy="33" rx="17" ry="15" fill="rgba(255,255,255,0.18)"/>
 
-  <!-- Shrimp glow visible inside -->
-  <ellipse cx="32" cy="34" rx="11" ry="9" fill="url(#shrimpGlow)"/>
+  <!-- Wrinkle skirt at bottom -->
+  <path d="M12 40 Q16 44 20 40 Q24 44 28 40 Q32 44 36 40 Q40 44 44 40 Q48 44 52 40" stroke="rgba(175,125,95,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
 
-  <!-- Crystal frost overlay -->
-  <ellipse cx="32" cy="33" rx="17" ry="15" fill="rgba(255,255,255,0.15)"/>
+  <!-- SSS shine -->
+  ${sssShine()}
 
-  <!-- Shine -->
-  <ellipse cx="24" cy="26" rx="8" ry="6" fill="url(#hgShine)"/>
+  <!-- Big rosy blush cheeks -->
+  ${blush(32, 40)}
 
-  <!-- Big rosy cheeks (extra cute) -->
-  ${blushCheeks(32, 40, 8, 5)}
+  <!-- Beady eyes — slightly wide set -->
+  ${eye(23, 33, 4.5)}
+  ${eye(41, 33, 4.5)}
 
-  <!-- Beady eyes — slightly wider set -->
-  ${jellycatEye(23, 33, 4.5)}
-  ${jellycatEye(41, 33, 4.5)}
+  <!-- Embroidered smile -->
+  ${smile(26, 43, 12)}
 
-  <!-- Happy embroidered smile -->
-  ${jellycatMouth(26, 43, 12)}
-
-  <!-- Tiny corduroy boots -->
-  ${corduroyBoot(20, 54, 8, 11, '#6a4c2a')}
-  ${corduroyBoot(36, 54, 8, 11, '#6a4c2a')}
+  <!-- Corduroy boots -->
+  ${boots(20, 55, '#5c3a1a')}
+  ${boots(36, 55, '#5c3a1a')}
 </svg>`,
-    name:'Har-Gow Pip', rarity:'common', weight:17
+    name: 'Har-Gow Pip', type: 'Shrimp Dumpling', rarity: 'common', weight: 18
   },
 
   // ── SIU-MAI SAM — Rare ─────────────────────────────────────
-  // Open-topped yellow wrapper, crab roe sprinkles, chunky shape
+  // Pork & Shrimp Siu Mai — yellow wrinkled wrapper,
+  // crab roe sprinkles, stick-like arms resting on tummy
   siumai: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
     <radialGradient id="smSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff5d0"/>
+      <stop offset="0%" stop-color="#fff8d8"/>
       <stop offset="40%" stop-color="#fce890"/>
-      <stop offset="75%" stop-color="#e8c840"/>
-      <stop offset="100%" stop-color="#c49020"/>
+      <stop offset="70%" stop-color="#e8c840"/>
+      <stop offset="100%" stop-color="#b89020"/>
     </radialGradient>
-    <radialGradient id="smShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,200,0.8)"/>
-      <stop offset="100%" stop-color="rgba(255,255,200,0)"/>
-    </radialGradient>
-    <filter id="smGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(200,160,0,0.35)"/>
-    </filter>
-    <radialGradient id="smMeat" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#d46060"/>
+    <radialGradient id="smMeat" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#e06060"/>
       <stop offset="60%" stop-color="#b84040"/>
-      <stop offset="100%" stop-color="#8a2020"/>
+      <stop offset="100%" stop-color="#8a1818"/>
     </radialGradient>
+    <filter id="smShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(160,120,0,0.38)"/>
+    </filter>
   </defs>
 
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
+  <!-- Main body — yellow wrapper -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#smSSS)" filter="url(#smShadow)"/>
 
-  <!-- Main body — chunky open-topped shape -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#smSSS)" filter="url(#smGlow)"/>
+  <!-- Open meat filling on top -->
+  <ellipse cx="32" cy="27" rx="14" ry="11" fill="url(#smMeat)"/>
+  <ellipse cx="32" cy="26" rx="11" ry="8" fill="#c84040"/>
 
-  <!-- Open top depression (cabbage wrap opening) -->
-  <ellipse cx="32" cy="28" rx="14" ry="10" fill="url(#smMeat)"/>
-  <ellipse cx="32" cy="27" rx="11" ry="7" fill="#c84040"/>
+  <!-- Crab roe sprinkles — orange dots on yellow -->
+  <circle cx="14" cy="36" r="2.2" fill="#ff8c00" opacity="0.85"/>
+  <circle cx="19" cy="42" r="1.6" fill="#ff8c00" opacity="0.75"/>
+  <circle cx="44" cy="38" r="2.2" fill="#ff8c00" opacity="0.85"/>
+  <circle cx="50" cy="32" r="1.6" fill="#ff8c00" opacity="0.75"/>
+  <circle cx="13" cy="46" r="1.6" fill="#ff8c00" opacity="0.7"/>
+  <circle cx="51" cy="44" r="1.6" fill="#ff8c00" opacity="0.7"/>
+  <circle cx="38" cy="44" r="1.6" fill="#ff8c00" opacity="0.75"/>
+  <circle cx="25" cy="44" r="1.6" fill="#ff8c00" opacity="0.7"/>
 
-  <!-- Crab roe sprinkles (orange dots on yellow wrapper) -->
-  <circle cx="16" cy="36" r="2" fill="#ff8c00" opacity="0.8"/>
-  <circle cx="20" cy="42" r="1.5" fill="#ff8c00" opacity="0.7"/>
-  <circle cx="44" cy="38" r="2" fill="#ff8c00" opacity="0.8"/>
-  <circle cx="48" cy="32" r="1.5" fill="#ff8c00" opacity="0.7"/>
-  <circle cx="14" cy="44" r="1.5" fill="#ff8c00" opacity="0.6"/>
-  <circle cx="50" cy="44" r="1.5" fill="#ff8c00" opacity="0.6"/>
-  <circle cx="40" cy="44" r="1.5" fill="#ff8c00" opacity="0.7"/>
+  <!-- Wrapped edge frill -->
+  <path d="M11 38 Q14 42 17 38 Q20 42 23 38 Q26 42 29 38 Q32 42 35 38 Q38 42 41 38 Q44 42 47 38 Q50 42 53 38" stroke="rgba(180,140,0,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
 
-  <!-- Wrapper frilly edge -->
-  <path d="M11 38 Q14 42 17 38 Q20 42 23 38 Q26 42 29 38 Q32 42 35 38 Q38 42 41 38 Q44 42 47 38 Q50 42 53 38" stroke="rgba(200,160,0,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Stick-like arms resting on tummy -->
+  <rect x="9" y="38" width="4" height="10" rx="2" fill="#d4a060" transform="rotate(-25,11,38)"/>
+  <rect x="51" y="38" width="4" height="10" rx="2" fill="#d4a060" transform="rotate(25,53,38)"/>
 
-  <!-- Shine -->
-  <ellipse cx="24" cy="28" rx="8" ry="6" fill="url(#smShine)"/>
+  <!-- SSS shine -->
+  ${sssShine()}
 
   <!-- Beady eyes -->
-  ${jellycatEye(24, 34, 4.5)}
-  ${jellycatEye(40, 34, 4.5)}
+  ${eye(24, 33, 4.5)}
+  ${eye(40, 33, 4.5)}
 
   <!-- Blush -->
-  ${blushCheeks(32, 40, 7, 4)}
+  ${blush(32, 40)}
 
-  <!-- Smile -->
-  ${jellycatMouth(26, 43, 12)}
+  <!-- Derpy cheerful smile -->
+  ${smile(25, 43, 14)}
 
-  <!-- Corduroy boots -->
-  ${corduroyBoot(20, 54, 8, 12, '#7a5c3a')}
-  ${corduroyBoot(36, 54, 8, 12, '#7a5c3a')}
+  <!-- Boots -->
+  ${boots(20, 55, '#6a4c2a')}
+  ${boots(36, 55, '#6a4c2a')}
 </svg>`,
-    name:'Siu-Mai Sam', rarity:'rare', weight:12
+    name: 'Siu-Mai Sam', type: 'Pork Dumpling', rarity: 'rare', weight: 10
   },
 
   // ── EGG TARTIE — Rare ─────────────────────────────────────
-  // Flaky pastry bowl, ultra-jiggly gloss custard heart
+  // Dan Tat — flaky golden-brown shell, ultra-gloss wobbly custard heart
   eggtart: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="etCustard" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff5b0"/>
-      <stop offset="40%" stop-color="#ffda30"/>
-      <stop offset="75%" stop-color="#f0900"/>
-      <stop offset="100%" stop-color="#c06000"/>
-    </radialGradient>
     <radialGradient id="etPastry" cx="38%" cy="32%" r="62%">
       <stop offset="0%" stop-color="#f5deb3"/>
       <stop offset="40%" stop-color="#d4a05a"/>
       <stop offset="75%" stop-color="#a06830"/>
       <stop offset="100%" stop-color="#6a3a10"/>
     </radialGradient>
-    <radialGradient id="etShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <radialGradient id="etCustard" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#fff5b0"/>
+      <stop offset="35%" stop-color="#ffda30"/>
+      <stop offset="65%" stop-color="#f09000"/>
+      <stop offset="100%" stop-color="#a05000"/>
     </radialGradient>
-    <filter id="etGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(200,120,0,0.4)"/>
+    <radialGradient id="etCustardGloss" cx="35%" cy="28%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,255,180,0.9)"/>
+      <stop offset="50%" stop-color="rgba(255,220,80,0.5)"/>
+      <stop offset="100%" stop-color="rgba(255,180,0,0)"/>
+    </radialGradient>
+    <filter id="etShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(160,100,0,0.42)"/>
     </filter>
-    <filter id="etGloss">
+    <filter id="etWobble">
       <feGaussianBlur stdDeviation="1.5" result="blur"/>
       <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
 
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
+  <!-- Pastry bowl — flaky shell -->
+  <ellipse cx="32" cy="39" rx="22" ry="18" fill="url(#etPastry)" filter="url(#etShadow)"/>
 
-  <!-- Pastry bowl (flaky shell) -->
-  <ellipse cx="32" cy="38" rx="22" ry="18" fill="url(#etPastry)" filter="url(#etGlow)"/>
+  <!-- Flaky crust ridges on pastry rim -->
+  <path d="M12 38 Q14 34 16 38 Q18 34 20 38 Q22 34 24 38 Q26 34 28 38 Q30 34 32 38 Q34 34 36 38 Q38 34 40 38 Q42 34 44 38 Q46 34 48 38 Q50 34 52 38" stroke="rgba(140,80,30,0.45)" stroke-width="1.2" fill="none"/>
 
-  <!-- Flaky crust ridges -->
-  <path d="M12 38 Q14 34 16 38 Q18 34 20 38 Q22 34 24 38 Q26 34 28 38 Q30 34 32 38 Q34 34 36 38 Q38 34 40 38 Q42 34 44 38 Q46 34 48 38 Q50 34 52 38" stroke="rgba(160,90,30,0.4)" stroke-width="1.2" fill="none"/>
+  <!-- Ultra-gloss wobbly custard center -->
+  <ellipse cx="32" cy="35" rx="16" ry="13" fill="url(#etCustard)" filter="url(#etWobble)"/>
+  <ellipse cx="32" cy="33" rx="13" ry="10" fill="url(#etCustardGloss)"/>
+  <ellipse cx="30" cy="30" rx="5" ry="4" fill="rgba(255,255,200,0.6)"/>
 
-  <!-- Ultra-glossy custard top (jiggly SSS effect) -->
-  <ellipse cx="32" cy="34" rx="16" ry="13" fill="url(#etCustard)" filter="url(#etGloss)"/>
-  <ellipse cx="32" cy="32" rx="13" ry="10" fill="#ffe066"/>
-
-  <!-- Custard gloss shine -->
-  <ellipse cx="26" cy="28" rx="7" ry="5" fill="url(#etShine)"/>
-  <ellipse cx="28" cy="30" rx="4" ry="3" fill="rgba(255,255,255,0.5)"/>
+  <!-- SSS shine -->
+  ${sssShine()}
 
   <!-- Beady eyes on pastry rim -->
-  ${jellycatEye(24, 36, 4)}
-  ${jellycatEye(40, 36, 4)}
+  ${eye(24, 37, 4)}
+  ${eye(40, 37, 4)}
 
   <!-- Blush -->
-  ${blushCheeks(32, 42, 7, 4)}
+  ${blush(32, 42)}
 
   <!-- Smile -->
-  ${jellycatMouth(27, 46, 10)}
+  ${smile(27, 46, 10)}
 
   <!-- Boots -->
-  ${corduroyBoot(21, 54, 8, 11, '#6a4c2a')}
-  ${corduroyBoot(35, 54, 8, 11, '#6a4c2a')}
+  ${boots(21, 55, '#5c3a1a')}
+  ${boots(35, 55, '#5c3a1a')}
 </svg>`,
-    name:'Egg Tartie', rarity:'rare', weight:11
+    name: 'Egg Tartie', type: 'Egg Tart', rarity: 'rare', weight: 9
   },
 
   // ── CHAR SIU BAO — Epic ────────────────────────────────────
-  // Fluffy cracked bun revealing caramelized BBQ sauce
+  // Fluffy white steamed bun, cracked top revealing sticky red BBQ sauce
   charsiu: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
     <radialGradient id="csBun" cx="38%" cy="32%" r="62%">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="40%" stop-color="#f8f0e4"/>
-      <stop offset="75%" stop-color="#e8d0b0"/>
+      <stop offset="35%" stop-color="#f8f0e4"/>
+      <stop offset="70%" stop-color="#e8d0b0"/>
       <stop offset="100%" stop-color="#c8a070"/>
     </radialGradient>
-    <radialGradient id="csSauce" cx="40%" cy="35%" r="55%">
-      <stop offset="0%" stop-color="#ff6040"/>
-      <stop offset="40%" stop-color="#d43010"/>
+    <radialGradient id="csSauce" cx="42%" cy="35%" r="58%">
+      <stop offset="0%" stop-color="#ff5030"/>
+      <stop offset="40%" stop-color="#d42808"/>
       <stop offset="75%" stop-color="#8a1800"/>
-      <stop offset="100%" stop-color="#4a0800"/>
+      <stop offset="100%" stop-color="#3a0800"/>
     </radialGradient>
-    <radialGradient id="csShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <radialGradient id="csSauceGloss" cx="35%" cy="28%" r="55%">
+      <stop offset="0%" stop-color="rgba(255,200,100,0.7)"/>
+      <stop offset="50%" stop-color="rgba(255,140,40,0.3)"/>
+      <stop offset="100%" stop-color="rgba(255,100,0,0)"/>
     </radialGradient>
-    <filter id="csGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="5" flood-color="rgba(150,40,0,0.4)"/>
+    <filter id="csShadow" x="-25%" y="-25%" width="150%" height="160%">
+      <feDropShadow dx="1" dy="5" stdDeviation="5" flood-color="rgba(140,30,0,0.45)"/>
     </filter>
     <filter id="csSauceGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(200,60,0,0.6)"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(200,50,0,0.65)"/>
     </filter>
   </defs>
 
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
-
-  <!-- Fluffy bun body -->
-  <ellipse cx="32" cy="34" rx="23" ry="22" fill="url(#csBun)" filter="url(#csGlow)"/>
+  <!-- Fluffy white bun body -->
+  <ellipse cx="32" cy="34" rx="23" ry="22" fill="url(#csBun)" filter="url(#csShadow)"/>
 
   <!-- Crack split at top -->
-  <path d="M26 14 Q28 20 27 26 Q30 24 32 26 Q34 24 37 26 Q36 20 38 14" fill="#c8a070" opacity="0.7"/>
+  <path d="M26 14 Q28 20 27 27 Q30 25 32 27 Q34 25 37 27 Q36 20 38 14" fill="#c8a070" opacity="0.72"/>
 
   <!-- Glossy BBQ sauce peeking through crack -->
-  <ellipse cx="32" cy="20" rx="8" ry="6" fill="url(#csSauce)" filter="url(#csSauceGlow)"/>
-  <ellipse cx="30" cy="18" rx="3" ry="2" fill="rgba(255,200,100,0.5)"/>
+  <ellipse cx="32" cy="21" rx="8" ry="6" fill="url(#csSauce)" filter="url(#csSauceGlow)"/>
+  <ellipse cx="30" cy="19" rx="3" ry="2" fill="rgba(255,200,100,0.5)"/>
 
-  <!-- Fluffy texture lines on bun surface -->
-  <path d="M14 30 Q18 28 22 30" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
-  <path d="M40 28 Q44 30 48 28" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
+  <!-- Fluffy surface texture lines -->
+  <path d="M14 29 Q18 27 22 29" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
+  <path d="M40 27 Q44 29 48 27" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
 
-  <!-- Shine -->
-  <ellipse cx="22" cy="24" rx="9" ry="7" fill="url(#csShine)"/>
+  <!-- SSS shine -->
+  ${sssShine()}
 
-  <!-- Beady eyes -->
-  ${jellycatEye(23, 34, 4.5)}
-  ${jellycatEye(41, 34, 4.5)}
+  <!-- Winking face -->
+  ${eye(23, 34, 4.5)}
+  ${eye(41, 34, 4.5)}
 
-  <!-- Blush (slightly pink from BBQ glaze) -->
-  ${blushCheeks(32, 40, 7, 4)}
+  <!-- Blush — slightly pink from BBQ glaze -->
+  ${blush(32, 40)}
 
-  <!-- Smile -->
-  ${jellycatMouth(26, 43, 12)}
-
-  <!-- Boots -->
-  ${corduroyBoot(20, 54, 8, 12, '#5a3a1a')}
-  ${corduroyBoot(36, 54, 8, 12, '#5a3a1a')}
-</svg>`,
-    name:'Char Siu Bao', rarity:'epic', weight:6
-  },
-
-  // ── PHO PHIL — Epic ───────────────────────────────────────
-  // Clear rice noodle broth, cute face floating in clear soup
-  phophil: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="phNoodle" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="rgba(255,250,240,0.9)"/>
-      <stop offset="50%" stop-color="rgba(230,220,200,0.75)"/>
-      <stop offset="100%" stop-color="rgba(180,160,130,0.65)"/>
-    </radialGradient>
-    <radialGradient id="phShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="phGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(200,180,100,0.3)"/>
-    </filter>
-    <linearGradient id="phBroth" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(255,220,120,0.2)"/>
-      <stop offset="100%" stop-color="rgba(200,160,60,0.35)"/>
-    </linearGradient>
-  </defs>
-
-  <ellipse cx="32" cy="60" rx="20" ry="5" fill="rgba(0,0,0,0.2)"/>
-
-  <!-- Clear noodle broth (SSS soup base) -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#phNoodle)" filter="url(#phGlow)"/>
-
-  <!-- Broth depth layer -->
-  <ellipse cx="32" cy="38" rx="19" ry="17" fill="url(#phBroth)"/>
-
-  <!-- Rice noodle strands (wavy lines) -->
-  <path d="M14 30 Q20 28 18 34 Q22 30 26 34 Q30 28 34 34 Q38 30 42 34 Q46 28 50 32" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-  <path d="M12 38 Q18 36 16 42 Q20 38 24 42 Q28 36 32 42 Q36 38 40 42 Q44 36 48 40 Q52 38 54 36" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none" stroke-linecap="round"/>
-
-  <!-- Steam wisps -->
-  <path d="M22 12 Q24 8 22 4" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M32 10 Q34 6 32 2" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M42 12 Q44 8 42 4" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-
-  <!-- Shine (through the clear soup) -->
-  <ellipse cx="24" cy="26" rx="8" ry="6" fill="url(#phShine)"/>
-
-  <!-- Beady eyes (floating in soup) -->
-  ${jellycatEye(23, 34, 4.5)}
-  ${jellycatEye(41, 34, 4.5)}
-
-  <!-- Blush -->
-  ${blushCheeks(32, 40, 7, 4)}
-
-  <!-- Smile -->
-  ${jellycatMouth(26, 43, 12)}
-
-  <!-- Tiny boots -->
-  ${corduroyBoot(21, 54, 7, 10, '#6a5030')}
-  ${corduroyBoot(36, 54, 7, 10, '#6a5030')}
-</svg>`,
-    name:'Pho Phil', rarity:'epic', weight:5
-  },
-
-  // ── DIMSUM DRAGON — Legendary ──────────────────────────────
-  // Jade green glazed noodle dragon, golden lucky coin
-  dragon: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="drSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#c8f0d8"/>
-      <stop offset="40%" stop-color="#5dd9a0"/>
-      <stop offset="75%" stop-color="#2a9d70"/>
-      <stop offset="100%" stop-color="#1a6a48"/>
-    </radialGradient>
-    <radialGradient id="drGold" cx="35%" cy="30%" r="60%">
-      <stop offset="0%" stop-color="#ffffc0"/>
-      <stop offset="35%" stop-color="#ffd700"/>
-      <stop offset="70%" stop-color="#d4a017"/>
-      <stop offset="100%" stop-color="#8a6000"/>
-    </radialGradient>
-    <radialGradient id="drShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="drGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="5" flood-color="rgba(30,160,80,0.5)"/>
-    </filter>
-    <filter id="drGoldGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(255,200,0,0.7)"/>
-    </filter>
-  </defs>
-
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
-
-  <!-- Dragon body (jade noodle coil) -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#drSSS)" filter="url(#drGlow)"/>
-
-  <!-- Noodle coil lines -->
-  <path d="M12 36 Q16 28 24 30 Q32 24 40 30 Q48 28 52 36" stroke="rgba(20,100,60,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M14 42 Q20 36 28 38 Q36 34 44 38 Q50 36 52 42" stroke="rgba(20,100,60,0.3)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
-
-  <!-- Cute dragon spikes on top -->
-  <path d="M22 14 L24 20 L26 14 L28 20 L30 14 L32 20 L34 14 L36 20 L38 14 L40 20 L42 14" stroke="#2a9d70" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-
-  <!-- Golden lucky coin embedded -->
-  <circle cx="32" cy="32" r="10" fill="url(#drGold)" filter="url(#drGoldGlow)"/>
-  <circle cx="32" cy="32" r="7" fill="none" stroke="rgba(200,150,0,0.5)" stroke-width="1"/>
-  <text x="32" y="36" text-anchor="middle" font-size="10" font-weight="900" fill="#7a4a00" font-family="sans-serif">福</text>
-
-  <!-- Shine -->
-  <ellipse cx="22" cy="24" rx="9" ry="7" fill="url(#drShine)"/>
-
-  <!-- Dragon eyes (slightly fierce but cute) -->
-  <ellipse cx="23" cy="32" rx="4.5" ry="5" fill="#1a1a1a"/>
-  <ellipse cx="41" cy="32" rx="4.5" ry="5" fill="#1a1a1a"/>
-  <ellipse cx="21" cy="30" rx="2" ry="2" fill="rgba(255,255,255,0.9)"/>
-  <ellipse cx="39" cy="30" rx="2" ry="2" fill="rgba(255,255,255,0.9)"/>
-  <circle cx="24" cy="33" r="1.5" fill="#1a1a1a"/>
-  <circle cx="42" cy="33" r="1.5" fill="#1a1a1a"/>
-
-  <!-- Blush -->
-  ${blushCheeks(32, 40, 7, 4)}
-
-  <!-- Dragon smile -->
-  ${jellycatMouth(25, 43, 14)}
+  <!-- Embroidered smile -->
+  ${smile(26, 43, 12)}
 
   <!-- Boots -->
-  ${corduroyBoot(20, 54, 8, 12, '#1a5c4c')}
-  ${corduroyBoot(36, 54, 8, 12, '#1a5c4c')}
+  ${boots(20, 55, '#4a3010')}
+  ${boots(36, 55, '#4a3010')}
 </svg>`,
-    name:'Dim Sum Dragon', rarity:'legendary', weight:2
+    name: 'Char Siu Bao', type: 'BBQ Pork Bun', rarity: 'epic', weight: 5
   },
 
-  // ── GOLDEN PHOENIX — Jackpot ───────────────────────────────
-  // Golden笼屉 phoenix, ultimate rarity, maximum sparkle
-  phoenix: {
+  // ── GOLDEN JIN-DEUI — Legendary / Jackpot ────────────────
+  // Fried Sesame Ball — golden sphere, white sesame seed bumps,
+  // hollow squishy core, tiny glowing bamboo ring crown, sparkles
+  jin: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="phxSSS" cx="38%" cy="32%" r="62%">
+    <radialGradient id="jinSSS" cx="38%" cy="32%" r="62%">
       <stop offset="0%" stop-color="#ffffd0"/>
       <stop offset="30%" stop-color="#ffd700"/>
-      <stop offset="60%" stop-color="#f0a000"/>
-      <stop offset="100%" stop-color="#8a5000"/>
+      <stop offset="65%" stop-color="#d4a017"/>
+      <stop offset="100%" stop-color="#7a5000"/>
     </radialGradient>
-    <radialGradient id="phxShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <radialGradient id="jinCore" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,200,80,0.4)"/>
+      <stop offset="100%" stop-color="rgba(255,150,0,0)"/>
     </radialGradient>
-    <radialGradient id="phxEmber" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,120,0,0.6)"/>
-      <stop offset="100%" stop-color="rgba(255,60,0,0)"/>
+    <radialGradient id="jinBamboo" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#c8a060"/>
+      <stop offset="100%" stop-color="#6a4010"/>
     </radialGradient>
-    <filter id="phxGlow" x="-40%" y="-40%" width="180%" height="180%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(255,150,0,0.6)"/>
+    <filter id="jinShadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="rgba(200,140,0,0.55)"/>
     </filter>
-    <filter id="phxStarGlow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="rgba(255,215,0,0.9)"/>
+    <filter id="jinGoldGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="rgba(255,200,0,0.75)"/>
+    </filter>
+    <filter id="jinStarGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="rgba(255,220,0,0.9)"/>
     </filter>
   </defs>
 
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.3)"/>
+  <!-- Shadow -->
+  <ellipse cx="32" cy="59" rx="17" ry="5" fill="rgba(0,0,0,0.3)"/>
 
-  <!-- Ember glow underneath -->
-  <ellipse cx="32" cy="50" rx="16" ry="10" fill="url(#phxEmber)" filter="url(#phxGlow)"/>
+  <!-- Hollow core glow inside sphere -->
+  <ellipse cx="32" cy="36" rx="12" ry="12" fill="url(#jinCore)"/>
 
-  <!-- Golden笼屉 bamboo steaming basket body -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#phxSSS)" filter="url(#phxGlow)"/>
+  <!-- Golden sesame ball body -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#jinSSS)" filter="url(#jinShadow)"/>
 
-  <!-- Basket weave pattern -->
-  <path d="M12 28 Q32 24 52 28" stroke="rgba(200,150,0,0.3)" stroke-width="1" fill="none"/>
-  <path d="M11 34 Q32 30 53 34" stroke="rgba(200,150,0,0.3)" stroke-width="1" fill="none"/>
-  <path d="M11 40 Q32 36 53 40" stroke="rgba(200,150,0,0.3)" stroke-width="1" fill="none"/>
+  <!-- Sesame seed bumps -->
+  <ellipse cx="18" cy="22" rx="3.5" ry="2.5" fill="#f5f0d0" transform="rotate(-20,18,22)"/>
+  <ellipse cx="28" cy="16" rx="3" ry="2" fill="#f5f0d0" transform="rotate(15,28,16)"/>
+  <ellipse cx="40" cy="17" rx="3.5" ry="2.5" fill="#f5f0d0" transform="rotate(25,40,17)"/>
+  <ellipse cx="48" cy="26" rx="3" ry="2" fill="#f5f0d0" transform="rotate(-10,48,26)"/>
+  <ellipse cx="46" cy="40" rx="3" ry="2" fill="#f5f0d0" transform="rotate(20,46,40)"/>
+  <ellipse cx="38" cy="50" rx="3" ry="2" fill="#f5f0d0" transform="rotate(-15,38,50)"/>
+  <ellipse cx="24" cy="50" rx="3.5" ry="2.5" fill="#f5f0d0" transform="rotate(10,24,50)"/>
+  <ellipse cx="14" cy="38" rx="3" ry="2" fill="#f5f0d0" transform="rotate(-5,14,38)"/>
+  <ellipse cx="22" cy="28" rx="2.5" ry="1.8" fill="#f5f0d0" transform="rotate(5,22,28)"/>
+  <ellipse cx="42" cy="28" rx="2.5" ry="1.8" fill="#f5f0d0" transform="rotate(-8,42,28)"/>
 
-  <!-- Phoenix crest plumes -->
-  <path d="M20 16 Q18 10 22 8 Q24 12 24 16" fill="#ffd700"/>
-  <path d="M27 14 Q27 8 30 6 Q31 11 29 14" fill="#ffb800"/>
-  <path d="M32 13 Q32 7 34 5 Q36 10 34 14" fill="#ffd700"/>
-  <path d="M37 14 Q39 8 42 7 Q41 12 39 15" fill="#ffb800"/>
-  <path d="M42 17 Q46 12 48 14 Q45 18 42 18" fill="#ffd700"/>
+  <!-- Bamboo steamer ring crown -->
+  <ellipse cx="32" cy="12" rx="10" ry="4" fill="none" stroke="url(#jinBamboo)" stroke-width="4"/>
+  <line x1="22" y1="12" x2="22" y2="16" stroke="#6a4010" stroke-width="2"/>
+  <line x1="32" y1="12" x2="32" y2="16" stroke="#6a4010" stroke-width="2"/>
+  <line x1="42" y1="12" x2="42" y2="16" stroke="#6a4010" stroke-width="2"/>
 
-  <!-- Shine -->
-  <ellipse cx="22" cy="24" rx="10" ry="7" fill="url(#phxShine)"/>
+  <!-- SSS shine — large golden highlight -->
+  <ellipse cx="22" cy="24" rx="10" ry="7" fill="rgba(255,255,200,0.65)"/>
+  <ellipse cx="20" cy="22" rx="5" ry="3.5" fill="rgba(255,255,255,0.4)"/>
 
   <!-- Crown jewel eyes -->
-  <circle cx="23" cy="32" r="5" fill="#1a1a1a"/>
-  <circle cx="41" cy="32" r="5" fill="#1a1a1a"/>
-  <circle cx="21" cy="30" r="2.5" fill="rgba(255,255,255,0.95)"/>
-  <circle cx="39" cy="30" r="2.5" fill="rgba(255,255,255,0.95)"/>
-  <circle cx="23" cy="33" r="2" fill="#8a6000"/>
-  <circle cx="41" cy="33" r="2" fill="#8a6000"/>
+  <circle cx="24" cy="35" r="5" fill="#111"/>
+  <circle cx="22" cy="33" r="2.2" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="40" cy="35" r="5" fill="#111"/>
+  <circle cx="38" cy="33" r="2.2" fill="rgba(255,255,255,0.9)"/>
 
   <!-- Blush -->
-  ${blushCheeks(32, 40, 7, 4)}
+  ${blush(32, 41)}
 
-  <!-- Grand embroidered smile -->
-  ${jellycatMouth(24, 43, 16)}
+  <!-- Grand smile -->
+  ${smile(25, 45, 14)}
 
-  <!-- Sparkle particles -->
-  <g filter="url(#phxStarGlow)">
-    <path d="M8 18 L9 15 L10 18 L13 19 L10 20 L9 23 L8 20 L5 19 Z" fill="#ffd700"/>
-    <path d="M54 14 L55 11 L56 14 L59 15 L56 16 L55 19 L54 16 L51 15 Z" fill="#ffd700"/>
-    <path d="M32 4 L32.8 6 L35 6 L33 7.5 L34 10 L32 8.5 L30 10 L31 7.5 L29 6 L31.2 6 Z" fill="#ffd700"/>
-    <path d="M6 42 L6.6 44 L9 44 L7 45.5 L8 48 L6 46.5 L4 48 L5 45.5 L3 44 L5.4 44 Z" fill="#ffd700" opacity="0.8"/>
-    <path d="M58 40 L58.6 42 L61 42 L59 43.5 L60 46 L58 44.5 L56 46 L57 43.5 L55 42 L57.4 42 Z" fill="#ffd700" opacity="0.8"/>
+  <!-- Sparkle star bursts -->
+  <g filter="url(#jinStarGlow)">
+    <path d="M7 18 L8 15 L9 18 L12 19 L9 20 L8 23 L7 20 L4 19 Z" fill="#ffd700"/>
+    <path d="M55 14 L56 11 L57 14 L60 15 L57 16 L56 19 L55 16 L52 15 Z" fill="#ffd700"/>
+    <path d="M32 3 L32.7 5.5 L35 5.5 L33 7.2 L34 10 L32 8.2 L30 10 L31 7.2 L29 5.5 L31.3 5.5 Z" fill="#ffd700"/>
+    <path d="M5 42 L5.6 44.5 L8 44.5 L6 46.2 L7 49 L5 47.2 L3 49 L4 46.2 L2 44.5 L4.4 44.5 Z" fill="#ffd700" opacity="0.8"/>
+    <path d="M59 40 L59.6 42.5 L62 42.5 L60 44.2 L61 47 L59 45.2 L57 47 L58 44.2 L56 42.5 L58.4 42.5 Z" fill="#ffd700" opacity="0.8"/>
   </g>
 
   <!-- Boots -->
-  ${corduroyBoot(20, 54, 8, 12, '#8a5000')}
-  ${corduroyBoot(36, 54, 8, 12, '#8a5000')}
+  ${boots(20, 55, '#6a4010')}
+  ${boots(36, 55, '#6a4010')}
 </svg>`,
-    name:'Golden Phoenix', rarity:'jackpot', weight:1
-  },
-
-  // ── STEAMY THE LOTUS — Uncommon ───────────────────────────
-  // Lotus leaf-wrapped sticky rice, peeking cute face
-  lotus: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="ltSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#d0f0c0"/>
-      <stop offset="40%" stop-color="#7acc60"/>
-      <stop offset="75%" stop-color="#4a9040"/>
-      <stop offset="100%" stop-color="#2a5820"/>
-    </radialGradient>
-    <radialGradient id="ltRice" cx="40%" cy="35%" r="55%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="40%" stop-color="#f0ead0"/>
-      <stop offset="75%" stop-color="#d4c890"/>
-      <stop offset="100%" stop-color="#a09050"/>
-    </radialGradient>
-    <radialGradient id="ltShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="ltGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(40,120,20,0.4)"/>
-    </filter>
-  </defs>
-
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
-
-  <!-- Lotus leaf wrapping -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#ltSSS)" filter="url(#ltGlow)"/>
-
-  <!-- Leaf vein lines -->
-  <path d="M32 14 L32 58" stroke="rgba(30,80,20,0.3)" stroke-width="1"/>
-  <path d="M32 36 Q20 30 14 36" stroke="rgba(30,80,20,0.25)" stroke-width="0.8" fill="none"/>
-  <path d="M32 36 Q44 30 50 36" stroke="rgba(30,80,20,0.25)" stroke-width="0.8" fill="none"/>
-
-  <!-- Rice mound peeking out of leaf wrap -->
-  <ellipse cx="32" cy="28" rx="13" ry="10" fill="url(#ltRice)"/>
-  <ellipse cx="32" cy="26" rx="10" ry="7" fill="#f5f0e0"/>
-
-  <!-- Leaf wrap opening at top -->
-  <path d="M20 22 Q24 18 28 22 Q32 18 36 22 Q40 18 44 22" stroke="#3a8030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-
-  <!-- Shine -->
-  <ellipse cx="23" cy="26" rx="8" ry="6" fill="url(#ltShine)"/>
-
-  <!-- Beady eyes -->
-  ${jellycatEye(24, 34, 4.5)}
-  ${jellycatEye(40, 34, 4.5)}
-
-  <!-- Blush -->
-  ${blushCheeks(32, 40, 7, 4)}
-
-  <!-- Smile -->
-  ${jellycatMouth(26, 43, 12)}
-
-  <!-- Boots -->
-  ${corduroyBoot(21, 54, 8, 11, '#3a5c2a')}
-  ${corduroyBoot(35, 54, 8, 11, '#3a5c2a')}
-</svg>`,
-    name:'Steamy Lotus', rarity:'uncommon', weight:13
-  },
-
-  // ── MANGO PUDDING — Uncommon ───────────────────────────────
-  // SSS mango gel cups, super glossy, bright yellow-orange
-  mango: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="mgSSS" cx="38%" cy="32%" r="62%">
-      <stop offset="0%" stop-color="#fff5a0"/>
-      <stop offset="40%" stop-color="#ffcc30"/>
-      <stop offset="75%" stop-color="#f08000"/>
-      <stop offset="100%" stop-color="#a05000"/>
-    </radialGradient>
-    <radialGradient id="mgShine" cx="30%" cy="25%" r="50%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="mgGlow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(240,140,0,0.4)"/>
-    </filter>
-    <filter id="mgGloss">
-      <feGaussianBlur stdDeviation="1.5" result="blur"/>
-      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-    </filter>
-  </defs>
-
-  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.2)"/>
-
-  <!-- Clear pudding cup -->
-  <path d="M14 30 Q14 54 32 56 Q50 54 50 30 Z" fill="rgba(200,220,240,0.35)" stroke="rgba(150,180,210,0.4)" stroke-width="1"/>
-
-  <!-- Mango SSS gel body -->
-  <ellipse cx="32" cy="36" rx="18" ry="18" fill="url(#mgSSS)" filter="url(#mgGlow)"/>
-
-  <!-- Ultra glossy top (jiggly custard) -->
-  <ellipse cx="32" cy="32" rx="14" ry="11" fill="#ffe060" filter="url(#mgGloss)"/>
-  <ellipse cx="32" cy="30" rx="11" ry="8" fill="#fff090"/>
-
-  <!-- Gloss shine -->
-  <ellipse cx="25" cy="26" rx="7" ry="5" fill="url(#mgShine)"/>
-  <ellipse cx="27" cy="28" rx="4" ry="3" fill="rgba(255,255,255,0.6)"/>
-
-  <!-- Beady eyes -->
-  ${jellycatEye(24, 35, 4.5)}
-  ${jellycatEye(40, 35, 4.5)}
-
-  <!-- Blush (mango pink) -->
-  ${blushCheeks(32, 41, 7, 4)}
-
-  <!-- Smile -->
-  ${jellycatMouth(26, 44, 12)}
-
-  <!-- Tiny boots -->
-  ${corduroyBoot(21, 55, 7, 10, '#8a5010')}
-  ${corduroyBoot(36, 55, 7, 10, '#8a5010')}
-</svg>`,
-    name:'Mango Pudding', rarity:'uncommon', weight:12
+    name: 'Golden Jin-Deui', type: 'Sesame Ball', rarity: 'legendary', weight: 2
   }
 };
 
@@ -1034,7 +706,7 @@ function buildGrid(){
 }
 function buildCollection(){
   const row=document.getElementById('collectionRow'); row.innerHTML='';
-  SYMBOL_KEYS.forEach(key=>{const div=document.createElement('div'); div.className='col-item'+(state.collection[key]?' collected':''); div.id='col-'+key; div.innerHTML=SYMBOLS[key].svg; div.title=SYMBOLS[key].name; row.appendChild(div);});
+  SYMBOL_KEYS.forEach(key=>{const div=document.createElement('div'); div.className='col-item'+(state.collection[key]?' collected':''); div.id='col-'+key; div.innerHTML=SYMBOLS[key].svg; div.title=`${SYMBOLS[key].name} — ${SYMBOLS[key].type}`; row.appendChild(div);});
   const total=SYMBOL_KEYS.filter(k=>state.collection[k]).length;
   document.getElementById('collectProgress').textContent=`${total}/${SYMBOL_KEYS.length} Collected`;
   if(total===SYMBOL_KEYS.length && !localStorage.getItem(STORAGE_KEYS.bonusUsed)){setTimeout(()=>showBonus(),500);}
@@ -1063,7 +735,7 @@ function generateResult(){
   lines.push([grid[4],grid[8],grid[12],grid[16],grid[20]]);
   const lineMatches=lines.map((line,li)=>{const symCount={}; line.forEach(s=>symCount[s]=(symCount[s]||0)+1); let bestKey=null,bestCount=0,bestPos=[]; Object.entries(symCount).forEach(([k,v])=>{if(v>bestCount){bestCount=v;bestKey=k;}}); if(bestCount>=3){line.forEach((s,pi)=>{if(s===bestKey)bestPos.push(pi);});} return {key:bestKey,count:bestCount,positions:bestPos};});
   let totalWin=0,winningCells=new Set(),jackpot=false,nearMiss=false;
-  lineMatches.forEach((lm,li)=>{if(lm.count>=3){const payTable={3:50,4:200,5:500}; let win=payTable[lm.count]||50; if(lm.key==='phoenix'&&lm.count>=3){win=5000;jackpot=true;} totalWin+=win; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}});
+  lineMatches.forEach((lm,li)=>{if(lm.count>=3){const payTable={3:50,4:200,5:500}; let win=payTable[lm.count]||50; if(lm.key==='jin'&&lm.count>=3){win=5000;jackpot=true;} totalWin+=win; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}});
   if(!jackpot&&totalWin===0){lineMatches.forEach((lm,li)=>{if(lm.count===2){nearMiss=true; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}}); if(nearMiss)totalWin=3+Math.floor(Math.random()*3);}
   if(totalWin===0&&Math.random()<0.7)totalWin=5+Math.floor(Math.random()*10);
   return {grid,totalWin,winningCells:Array.from(winningCells),jackpot,nearMiss};
@@ -1106,7 +778,7 @@ async function doSpin(){
 }
 function setStatus(msg,cls){const el=document.getElementById('statusMsg');el.className=cls;el.textContent=msg;}
 
-// ── EFFECTS ───────────────────────────────────────────────────
+// ── EFFECTS ──────────────────────────────────────────────────
 function coinRain(amount){const count=Math.min(amount,30); for(let i=0;i<count;i++){setTimeout(()=>{const el=document.createElement('div');el.className='coin-rain';el.textContent='🪙';el.style.left=(Math.random()*88)+'vw';el.style.animationDuration=(1.5+Math.random())+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),3000);},i*50);}}
 function confetti(){const colors=['#ff6b9d','#5dd9c1','#b4a0ff','#ffe066','#7ec8e3','#ff9f1c','#ffd700','#ff85ad']; for(let i=0;i<60;i++){setTimeout(()=>{const el=document.createElement('div');el.className='confetti-piece';el.style.left=(Math.random()*88)+'vw';el.style.top=(Math.random()*30)+'vh';el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.animationDuration=(2+Math.random()*1.5)+'s';el.style.width=(8+Math.random()*8)+'px';el.style.height=(8+Math.random()*8)+'px';el.style.borderRadius=Math.random()>0.5?'50%':'3px';document.body.appendChild(el);setTimeout(()=>el.remove(),4000);},i*30);}}
 function flashScreen(){const el=document.createElement('div');el.className='jackpot-flash';document.body.appendChild(el);setTimeout(()=>el.remove(),1500);}
