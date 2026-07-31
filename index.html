@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Squishy Slots</title>
+<title>Yum Sum Squishies</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -14,15 +14,14 @@
 --mint:#5dd9c1;--mint-dark:#2a9d8f;--lav:#b4a0ff;--lav-dark:#7c6ad9;
 --butter:#ffe066;--blue:#7ec8e3;--peach:#ffb347;
 --gold:#ffd700;--gold-dark:#b8960b;--gold-light:#fff0a0;
---shadow:0 8px 32px rgba(0,0,0,0.6);
 }
 html,body{
   min-height:100vh;
   background:var(--bg);
   background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(107,91,204,0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 100%, rgba(255,107,157,0.1) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(30,30,60,0.8) 0%, transparent 100%);
+    radial-gradient(ellipse at 20% 0%, rgba(107,91,204,0.18) 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, rgba(255,107,157,0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 50%, rgba(30,30,60,0.9) 0%, transparent 100%);
   font-family:'Nunito',sans-serif;color:#fff;overflow-x:hidden
 }
 body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100px}
@@ -42,8 +41,7 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 .coin-icon{
   width:36px;height:36px;
   background:linear-gradient(145deg,#fff0a0,#ffd700,#b8860b);
-  border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
   font-size:18px;font-weight:900;color:#7a4a00;
   box-shadow:0 2px 8px rgba(255,215,0,0.5), inset 0 2px 4px rgba(255,255,255,0.4);
 }
@@ -61,92 +59,77 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 #streakText{font-size:14px;font-weight:800;color:var(--peach)}
 
 /* MACHINE CONTAINER — 3D PERSPECTIVE */
-.machine-container{
-  perspective:1000px;
-  width:100%;max-width:420px;
-}
+.machine-container{perspective:1200px;width:100%;max-width:420px}
 
 /* SLOT MACHINE — 3D TRANSFORM */
 .machine{
   background:linear-gradient(160deg,#2a2a5a 0%,#1e1e3a 40%,#181830 100%);
-  border-radius:32px;
-  padding:24px 16px 20px;
-  width:100%;
+  border-radius:32px;padding:24px 16px 20px;width:100%;
   box-shadow:
     0 20px 60px rgba(0,0,0,0.7),
     0 0 0 1px rgba(255,255,255,0.06),
     inset 0 1px 0 rgba(255,255,255,0.1),
     inset 0 -2px 0 rgba(0,0,0,0.3);
-  transform:rotateX(2deg);
+  transform:rotateX(3deg);
   transform-style:preserve-3d;
   position:relative;
 }
-/* Chrome edge strip on top */
 .machine::before{
-  content:'';
-  position:absolute;top:0;left:10%;right:10%;height:3px;
+  content:'';position:absolute;top:0;left:10%;right:10%;height:3px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,0.15),rgba(255,255,255,0.3),rgba(255,255,255,0.15),transparent);
   border-radius:0 0 3px 3px;
 }
 
 .machine-title{
-  text-align:center;font-size:26px;font-weight:900;letter-spacing:3px;margin-bottom:16px;
+  text-align:center;font-size:22px;font-weight:900;letter-spacing:3px;margin-bottom:14px;
   background:linear-gradient(135deg,#ffd700 0%,#ff9f1c 30%,#ff6b9d 60%,#b4a0ff 100%);
   -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-  filter:drop-shadow(0 2px 4px rgba(255,107,157,0.4));
+  filter:drop-shadow(0 2px 6px rgba(255,107,157,0.5));
 }
 
 /* 3D SLOT GRID */
 .slot-grid-wrap{
-  background:linear-gradient(180deg,#0a0a18 0%,#111 100%);
-  border-radius:24px;
-  padding:10px;
-  border:3px solid #333;
+  background:linear-gradient(180deg,#080810 0%,#0d0d1a 100%);
+  border-radius:24px;padding:10px;
+  border:3px solid #222;
   box-shadow:
-    inset 0 4px 20px rgba(0,0,0,0.9),
-    inset 0 0 0 1px rgba(255,255,255,0.03),
-    0 0 0 1px rgba(0,0,0,0.5);
+    inset 0 6px 24px rgba(0,0,0,0.95),
+    inset 0 0 0 1px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(0,0,0,0.4);
 }
-.slot-grid{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:6px;
-}
+.slot-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+
 .slot-cell{
   aspect-ratio:1;
-  background:linear-gradient(145deg,#1a1a2e,#0f0f1e);
-  border-radius:14px;
-  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#141428,#0c0c1e);
+  border-radius:16px;display:flex;align-items:center;justify-content:center;
   overflow:hidden;position:relative;
-  border:2px solid #2a2a4a;
+  border:2px solid #1e1e3a;
   box-shadow:
-    inset 0 2px 4px rgba(0,0,0,0.6),
-    0 1px 0 rgba(255,255,255,0.05);
-  transition:border-color 0.2s, box-shadow 0.2s;
+    inset 0 3px 8px rgba(0,0,0,0.8),
+    inset 0 0 0 1px rgba(255,255,255,0.02),
+    0 2px 0 rgba(255,255,255,0.03);
 }
-.slot-cell svg{
-  width:82%;height:82%;
-  filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
-  transition:transform 0.15s;
-}
-/* Glass overlay on each cell */
+/* Jellycat glass face — glossy overlay */
 .slot-cell::after{
-  content:'';
-  position:absolute;inset:0;border-radius:12px;
-  background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,transparent 50%);
+  content:'';position:absolute;inset:0;border-radius:14px;
+  background:linear-gradient(145deg,rgba(255,255,255,0.08) 0%,transparent 40%,rgba(255,255,255,0.04) 100%);
   pointer-events:none;
 }
+.slot-cell svg{width:88%;height:88%;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.7))}
 .slot-cell.winner{
   border-color:var(--gold);
-  box-shadow:inset 0 2px 4px rgba(0,0,0,0.6),0 0 20px rgba(255,215,0,0.6),0 0 40px rgba(255,215,0,0.3);
+  box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 24px rgba(255,215,0,0.7),0 0 48px rgba(255,215,0,0.3);
   animation:winBounce3d 0.5s ease-in-out infinite alternate;
 }
 @keyframes winBounce3d{
   from{transform:scale(1) translateY(0)}
-  to{transform:scale(1.08) translateY(-3px)}
+  to{transform:scale(1.08) translateY(-4px)}
 }
 .slot-cell.nearmiss{
   border-color:var(--peach);
   animation:shake3d 0.4s ease;
-  box-shadow:inset 0 2px 4px rgba(0,0,0,0.6),0 0 15px rgba(255,179,71,0.4);
+  box-shadow:inset 0 3px 8px rgba(0,0,0,0.6),0 0 16px rgba(255,179,71,0.5);
 }
 @keyframes shake3d{
   0%,100%{transform:translateX(0)}
@@ -157,658 +140,830 @@ body{display:flex;flex-direction:column;align-items:center;padding:20px 8px 100p
 }
 
 /* PAYTABLE */
-.paytable{margin-top:14px;font-size:11px;color:#888;text-align:center;line-height:1.8}
+.paytable{margin-top:14px;font-size:10px;color:#777;text-align:center;line-height:1.9}
 .paytable span{color:var(--butter);font-weight:800}
 
-/* SPIN BUTTON — 3D SQUISHY */
-.spin-wrap{text-align:center;margin-top:18px;perspective:400px}
+/* SPIN BUTTON */
+.spin-wrap{text-align:center;margin-top:18px;perspective:500px}
 #spinBtn{
   width:92%;max-width:340px;height:76px;border:none;border-radius:38px;
   background:linear-gradient(160deg,#ff85ad 0%,#ff6b9d 30%,#d44a80 70%,#b33d6a 100%);
-  color:#fff;font-family:'Nunito',sans-serif;font-size:30px;font-weight:900;
-  letter-spacing:4px;cursor:pointer;
-  position:relative;
+  color:#fff;font-family:'Nunito',sans-serif;font-size:28px;font-weight:900;
+  letter-spacing:4px;cursor:pointer;position:relative;
   box-shadow:
     0 8px 0 #8a2250,
-    0 12px 20px rgba(212,74,128,0.5),
+    0 12px 24px rgba(212,74,128,0.5),
     inset 0 2px 0 rgba(255,255,255,0.25),
     inset 0 -2px 0 rgba(0,0,0,0.15);
   transform:translateY(0);
   transition:transform 0.08s, box-shadow 0.08s;
-  text-shadow:0 2px 4px rgba(0,0,0,0.3);
-  overflow:hidden;
+  text-shadow:0 2px 4px rgba(0,0,0,0.3);overflow:hidden;
 }
-/* Glossy shine */
 #spinBtn::before{
-  content:'';
-  position:absolute;top:4px;left:15%;right:15%;height:40%;
-  background:linear-gradient(180deg,rgba(255,255,255,0.3),transparent);
-  border-radius:50% 50% 40% 40%;
-  pointer-events:none;
+  content:'';position:absolute;top:4px;left:15%;right:15%;height:40%;
+  background:linear-gradient(180deg,rgba(255,255,255,0.28),transparent);
+  border-radius:50% 50% 40% 40%;pointer-events:none;
 }
-#spinBtn:hover{
-  transform:translateY(-3px);
-  box-shadow:
-    0 11px 0 #8a2250,
-    0 16px 28px rgba(212,74,128,0.6),
-    inset 0 2px 0 rgba(255,255,255,0.3),
-    inset 0 -2px 0 rgba(0,0,0,0.15);
-}
-#spinBtn:active,#spinBtn.pressed{
-  transform:translateY(6px);
-  box-shadow:
-    0 2px 0 #8a2250,
-    0 4px 10px rgba(212,74,128,0.4),
-    inset 0 2px 0 rgba(255,255,255,0.1),
-    inset 0 -1px 0 rgba(0,0,0,0.2);
-}
+#spinBtn:hover{transform:translateY(-3px);box-shadow:0 11px 0 #8a2250,0 16px 32px rgba(212,74,128,0.65),inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -2px 0 rgba(0,0,0,0.15)}
+#spinBtn:active,#spinBtn.pressed{transform:translateY(6px);box-shadow:0 2px 0 #8a2250,0 4px 12px rgba(212,74,128,0.4),inset 0 2px 0 rgba(255,255,255,0.1),inset 0 -1px 0 rgba(0,0,0,0.2)}
 #spinBtn:disabled{opacity:0.5;cursor:not-allowed;transform:none}
-#spinBtn.pulse{
-  animation:pulse3d 2s ease-in-out infinite;
-}
-@keyframes pulse3d{
-  0%,100%{box-shadow:0 8px 0 #8a2250,0 12px 20px rgba(212,74,128,0.5),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15)}
-  50%{box-shadow:0 8px 0 #8a2250,0 12px 40px rgba(255,107,157,0.8),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15)}
-}
-#spinBtn.free-spin{
-  background:linear-gradient(160deg,#7ee8d9 0%,#5dd9c1 30%,#2a9d8f 70%,#1e7a6d 100%);
-  box-shadow:0 8px 0 #1a5c4c,0 12px 20px rgba(45,180,155,0.4),inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -2px 0 rgba(0,0,0,0.15);
-}
-#spinBtn.free-spin::before{
-  background:linear-gradient(180deg,rgba(255,255,255,0.35),transparent);
-}
-.spin-cost{
-  display:block;font-size:12px;font-weight:700;margin-top:2px;opacity:0.85;letter-spacing:1px
-}
+#spinBtn.pulse{animation:pulse3d 2s ease-in-out infinite}
+@keyframes pulse3d{0%,100%{box-shadow:0 8px 0 #8a2250,0 12px 24px rgba(212,74,128,0.5),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15)}50%{box-shadow:0 8px 0 #8a2250,0 12px 44px rgba(255,107,157,0.85),inset 0 2px 0 rgba(255,255,255,0.25),inset 0 -2px 0 rgba(0,0,0,0.15)}}
+#spinBtn.free-spin{background:linear-gradient(160deg,#7ee8d9 0%,#5dd9c1 30%,#2a9d8f 70%,#1e7a6d 100%);box-shadow:0 8px 0 #1a5c4c,0 12px 24px rgba(45,180,155,0.4),inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -2px 0 rgba(0,0,0,0.15)}
+#spinBtn.free-spin::before{background:linear-gradient(180deg,rgba(255,255,255,0.35),transparent)}
+.spin-cost{display:block;font-size:12px;font-weight:700;margin-top:2px;opacity:0.85;letter-spacing:1px}
 
 /* STATUS */
 .status-area{min-height:52px;display:flex;align-items:center;justify-content:center;margin-top:14px}
 #statusMsg{font-size:22px;font-weight:900;text-align:center;transition:opacity 0.3s;letter-spacing:1px}
-.win-text{
-  color:var(--gold)!important;
-  text-shadow:0 0 20px var(--gold),0 0 40px rgba(255,215,0,0.5)
-}
+.win-text{color:var(--gold)!important;text-shadow:0 0 20px var(--gold),0 0 40px rgba(255,215,0,0.5)}
 .nearmiss-text{color:var(--peach)!important;text-shadow:0 0 15px rgba(255,179,71,0.6)}
-.jackpot-text{
-  color:var(--gold)!important;font-size:30px!important;
-  text-shadow:0 0 30px var(--gold),0 0 60px rgba(255,215,0,0.8);
-  animation:jackpotGlow 0.4s ease-in-out infinite alternate;
-}
-@keyframes jackpotGlow{
-  from{text-shadow:0 0 20px var(--gold),0 0 40px rgba(255,215,0,0.4)}
-  to{text-shadow:0 0 40px var(--gold),0 0 80px rgba(255,215,0,0.8),0 0 120px rgba(255,159,71,0.4)}
-}
+.jackpot-text{color:var(--gold)!important;font-size:30px!important;text-shadow:0 0 30px var(--gold),0 0 60px rgba(255,215,0,0.8);animation:jackpotGlow 0.4s ease-in-out infinite alternate}
+@keyframes jackpotGlow{from{text-shadow:0 0 20px var(--gold),0 0 40px rgba(255,215,0,0.4)}to{text-shadow:0 0 40px var(--gold),0 0 80px rgba(255,215,0,0.8),0 0 120px rgba(255,159,71,0.4)}}
 
 /* FOOTER */
-.footer{
-  position:fixed;bottom:0;left:0;right:0;
-  background:linear-gradient(to top,rgba(13,13,26,0.98) 60%,transparent);
-  padding:20px 16px 28px;
-  display:flex;flex-direction:column;align-items:center;gap:10px;
-  backdrop-filter:blur(10px);
-}
+.footer{position:fixed;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(13,13,26,0.98) 60%,transparent);padding:20px 16px 28px;display:flex;flex-direction:column;align-items:center;gap:10px;backdrop-filter:blur(10px)}
 .timer-row{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:#888}
 .timer-row svg{width:18px;height:18px}
 .free-timer{color:var(--mint)}
-.collection-row{
-  display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:440px;
-}
-.col-item{
-  width:40px;height:40px;
-  background:linear-gradient(145deg,#1e1e3a,#141428);
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  border:2px solid #2a2a4a;
-  transition:all 0.3s;
-  box-shadow:inset 0 1px 3px rgba(0,0,0,0.4);
-}
-.col-item.collected{
-  border-color:var(--lav);
-  box-shadow:inset 0 1px 3px rgba(0,0,0,0.4),0 0 10px rgba(180,160,255,0.3);
-}
-.col-item svg{width:26px;height:26px;opacity:0.15;transition:opacity 0.3s}
+.collection-row{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:440px}
+.col-item{width:40px;height:40px;background:linear-gradient(145deg,#1e1e3a,#141428);border-radius:10px;display:flex;align-items:center;justify-content:center;border:2px solid #2a2a4a;transition:all 0.3s;box-shadow:inset 0 1px 3px rgba(0,0,0,0.4)}
+.col-item.collected{border-color:var(--lav);box-shadow:inset 0 1px 3px rgba(0,0,0,0.4),0 0 10px rgba(180,160,255,0.3)}
+.col-item svg{width:28px;height:28px;opacity:0.12;transition:opacity 0.3s}
 .col-item.collected svg{opacity:1}
 .collect-progress{font-size:12px;font-weight:800;color:var(--lav)}
 .btn-row{display:flex;gap:10px}
-.footer-btn{
-  padding:10px 22px;border:none;border-radius:22px;cursor:pointer;
-  font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;
-  transition:transform 0.1s,box-shadow 0.1s;
-}
+.footer-btn{padding:10px 22px;border:none;border-radius:22px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;transition:transform 0.1s,box-shadow 0.1s}
 .footer-btn:hover{transform:translateY(-2px)}
-.share-btn{
-  background:linear-gradient(135deg,#7ee8d9,#5dd9c1);
-  color:#0d2e28;box-shadow:0 4px 12px rgba(93,217,193,0.3);
-}
-.lead-btn{
-  background:linear-gradient(135deg,#c4a8ff,#9b7ce8);
-  color:#fff;box-shadow:0 4px 12px rgba(155,124,232,0.3);
-}
+.share-btn{background:linear-gradient(135deg,#7ee8d9,#5dd9c1);color:#0d2e28;box-shadow:0 4px 12px rgba(93,217,193,0.3)}
+.lead-btn{background:linear-gradient(135deg,#c4a8ff,#9b7ce8);color:#fff;box-shadow:0 4px 12px rgba(155,124,232,0.3)}
 
 /* OVERLAYS */
-.overlay{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,0.88);
-  display:flex;align-items:center;justify-content:center;z-index:100;
-  opacity:0;pointer-events:none;transition:opacity 0.3s;
-  backdrop-filter:blur(8px);
-}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.88);display:flex;align-items:center;justify-content:center;z-index:100;opacity:0;pointer-events:none;transition:opacity 0.3s;backdrop-filter:blur(8px)}
 .overlay.active{opacity:1;pointer-events:all}
-.modal{
-  background:linear-gradient(160deg,#2a2a5a,#1e1e3a);
-  border-radius:28px;padding:32px 24px;
-  max-width:360px;width:90%;text-align:center;
-  box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 1px 0 rgba(255,255,255,0.1);
-  border:1px solid rgba(255,255,255,0.08);
-}
-.modal h2{
-  font-size:24px;font-weight:900;margin-bottom:16px;
-  background:linear-gradient(135deg,#ff9f1c,#ff6b9d,#b4a0ff);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-}
+.modal{background:linear-gradient(160deg,#2a2a5a,#1e1e3a);border-radius:28px;padding:32px 24px;max-width:360px;width:90%;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,0.8),inset 0 1px 0 rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.08)}
+.modal h2{font-size:24px;font-weight:900;margin-bottom:16px;background:linear-gradient(135deg,#ff9f1c,#ff6b9d,#b4a0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .modal p{font-size:14px;color:#aaa;line-height:1.7;margin-bottom:16px}
-.modal-close{
-  background:linear-gradient(160deg,#ff85ad,#ff6b9d);
-  color:#fff;border:none;padding:14px 36px;border-radius:28px;
-  font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;
-  box-shadow:0 4px 0 #b33d6a,0 6px 16px rgba(255,107,157,0.4);
-  transition:transform 0.1s,box-shadow 0.1s;
-}
+.modal-close{background:linear-gradient(160deg,#ff85ad,#ff6b9d);color:#fff;border:none;padding:14px 36px;border-radius:28px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:800;cursor:pointer;box-shadow:0 4px 0 #b33d6a,0 6px 16px rgba(255,107,157,0.4);transition:transform 0.1s,box-shadow 0.1s}
 .modal-close:hover{transform:translateY(-2px);box-shadow:0 6px 0 #b33d6a,0 8px 20px rgba(255,107,157,0.5)}
 .modal-close:active{transform:translateY(3px);box-shadow:0 1px 0 #b33d6a}
-
-/* LEADERBOARD */
 .leader-list{list-style:none;text-align:left;margin:16px 0}
-.leader-list li{
-  display:flex;align-items:center;gap:12px;
-  padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);
-  font-size:14px;font-weight:700;
-}
-.leader-rank{
-  width:30px;height:30px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:12px;font-weight:900;flex-shrink:0;
-}
+.leader-list li{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14px;font-weight:700}
+.leader-rank{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:900;flex-shrink:0}
 .leader-rank.r1{background:linear-gradient(135deg,#ffd700,#ff9f1c);color:#7a4a00}
 .leader-rank.r2{background:linear-gradient(135deg,#e0e0e0,#a0a0a0);color:#333}
 .leader-rank.r3{background:linear-gradient(135deg,#cd7f32,#a0522d);color:#fff}
 .leader-bal{color:var(--butter);margin-left:auto;font-weight:800}
 
 /* COIN RAIN */
-.coin-rain{
-  position:fixed;top:-40px;pointer-events:none;z-index:200;font-size:30px;
-  animation:coinFall3d 1.8s ease-in forwards;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-}
-@keyframes coinFall3d{
-  0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}
-  80%{opacity:1}
-  100%{transform:translateY(110vh) rotate(720deg) scale(0.8);opacity:0}
-}
-
-/* JACKPOT FLASH */
-.jackpot-flash{
-  position:fixed;inset:0;
-  background:radial-gradient(circle,rgba(255,215,0,0.7),rgba(255,107,157,0.3),transparent 70%);
-  z-index:150;opacity:0;pointer-events:none;
-  animation:flashIn3d 1.2s forwards;
-}
+.coin-rain{position:fixed;top:-40px;pointer-events:none;z-index:200;font-size:30px;animation:coinFall3d 1.8s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5))}
+@keyframes coinFall3d{0%{transform:translateY(0) rotate(0deg) scale(1);opacity:1}80%{opacity:1}100%{transform:translateY(110vh) rotate(720deg) scale(0.8);opacity:0}}
+.jackpot-flash{position:fixed;inset:0;background:radial-gradient(circle,rgba(255,215,0,0.7),rgba(255,107,157,0.3),transparent 70%);z-index:150;opacity:0;pointer-events:none;animation:flashIn3d 1.2s forwards}
 @keyframes flashIn3d{0%{opacity:1}100%{opacity:0}}
+.confetti-piece{position:fixed;width:12px;height:12px;border-radius:3px;z-index:160;animation:confettiFall3d 2.5s ease-in forwards;filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4))}
+@keyframes confettiFall3d{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(1080deg) scale(0.6);opacity:0}}
+.slot-cell.spinning svg{animation:spinCycle3d 0.12s linear infinite;filter:drop-shadow(0 0 10px rgba(255,255,255,0.3))}
+@keyframes spinCycle3d{0%{transform:translateY(-100%) scale(0.88);opacity:0.4}50%{transform:translateY(0) scale(1.06);opacity:1}100%{transform:translateY(100%) scale(0.88);opacity:0.4}}
+.nearmiss-float{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:900;color:var(--peach);animation:floatUp3d 0.9s ease-out forwards;white-space:nowrap;z-index:10;text-shadow:0 0 10px rgba(255,179,71,0.8)}
+@keyframes floatUp3d{0%{opacity:1;top:-14px;transform:translateX(-50%) scale(0.8)}50%{opacity:1;transform:translateX(-50%) scale(1.1)}100%{opacity:0;top:-50px;transform:translateX(-50%) scale(0.9)}}
 
-/* CONFETTI */
-.confetti-piece{
-  position:fixed;width:12px;height:12px;border-radius:3px;z-index:160;
-  animation:confettiFall3d 2.5s ease-in forwards;
-  filter:drop-shadow(0 4px 8px rgba(0,0,0,0.4));
-}
-@keyframes confettiFall3d{
-  0%{transform:translateY(0) rotate(0deg);opacity:1}
-  100%{transform:translateY(110vh) rotate(1080deg) scale(0.6);opacity:0}
-}
-
-/* SPINNING ANIMATION */
-.slot-cell.spinning svg{
-  animation:spinCycle3d 0.12s linear infinite;
-  filter:drop-shadow(0 0 8px rgba(255,255,255,0.2));
-}
-@keyframes spinCycle3d{
-  0%{transform:translateY(-100%) scale(0.9);opacity:0.5}
-  50%{transform:translateY(0) scale(1.05);opacity:1}
-  100%{transform:translateY(100%) scale(0.9);opacity:0.5}
-}
-
-/* NEAR MISS FLOAT */
-.nearmiss-float{
-  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  font-size:13px;font-weight:900;color:var(--peach);
-  animation:floatUp3d 0.9s ease-out forwards;
-  white-space:nowrap;z-index:10;
-  text-shadow:0 0 10px rgba(255,179,71,0.8);
-}
-@keyframes floatUp3d{
-  0%{opacity:1;top:-14px;transform:translateX(-50%) scale(0.8)}
-  50%{opacity:1;transform:translateX(-50%) scale(1.1)}
-  100%{opacity:0;top:-50px;transform:translateX(-50%) scale(0.9)}
-}
-
-/* RESPONSIVE */
-@media(max-width:380px){
-  .machine-title{font-size:20px}
-  #spinBtn{font-size:24px;height:64px}
-  .col-item{width:34px;height:34px}
-  .col-item svg{width:22px;height:22px}
-  #coinBalance{font-size:22px}
-}
+@media(max-width:380px){.machine-title{font-size:18px}#spinBtn{font-size:22px;height:64px}.col-item{width:34px;height:34px}.col-item svg{width:22px;height:22px}#coinBalance{font-size:22px}}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <div class="header">
   <div class="coin-wrap">
     <div class="coin-icon">$</div>
     <span id="coinBalance">1,000</span>
   </div>
   <div class="streak-badge">
-    <svg viewBox="0 0 24 24" fill="none">
-      <path d="M12 2C8 6 6 10 8 14c1 2 3 3 4 4 1-1 3-2 4-4 2-4 0-8-4-12z" fill="#ff9f1c"/>
-      <path d="M12 8c-2 2.5-3.5 5-2.5 7.5.5 1.25 1.5 2 2.5 2.5.5-.5 1.5-1.25 2.5-2.5 1-2.5-.5-5-2.5-7.5z" fill="#ffd700"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 6 6 10 8 14c1 2 3 3 4 4 1-1 3-2 4-4 2-4 0-8-4-12z" fill="#ff9f1c"/><path d="M12 8c-2 2.5-3.5 5-2.5 7.5.5 1.25 1.5 2 2.5 2.5.5-.5 1.5-1.25 2.5-2.5 1-2.5-.5-5-2.5-7.5z" fill="#ffd700"/></svg>
     <span id="streakText">Day 1</span>
   </div>
 </div>
 
-<!-- SLOT MACHINE — 3D PERSPECTIVE -->
 <div class="machine-container">
   <div class="machine">
-    <div class="machine-title">SQUISHY SLOTS</div>
+    <div class="machine-title">YUM SUM SQUISHIES</div>
     <div class="slot-grid-wrap">
       <div class="slot-grid" id="slotGrid"></div>
     </div>
     <div class="paytable">
       <span>3 Match = 50</span> &nbsp;|&nbsp; <span>4 Match = 200</span> &nbsp;|&nbsp; <span>5 Match = 500</span><br>
-      <span>JACKPOT (3x Gold) = 5000</span> &nbsp;|&nbsp; <span>Near Miss = 3–5 coins</span>
+      <span>JACKPOT (3x Golden) = 5000</span> &nbsp;|&nbsp; <span>Near Miss = 3–5 coins</span>
     </div>
   </div>
 </div>
 
-<!-- SPIN BUTTON -->
 <div class="spin-wrap">
   <button id="spinBtn" class="pulse" onclick="doSpin()">
-    SPIN!
+    SQUEEZE!
     <span class="spin-cost">10 coins</span>
   </button>
 </div>
 
-<!-- STATUS -->
-<div class="status-area">
-  <div id="statusMsg"></div>
-</div>
+<div class="status-area"><div id="statusMsg"></div></div>
 
-<!-- FOOTER -->
 <div class="footer">
   <div class="timer-row">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-      <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
     <span class="free-timer" id="freeTimerLabel">Free spin in </span>
     <span class="free-timer" id="freeTimer">–:––:––</span>
   </div>
   <div class="collection-row" id="collectionRow"></div>
-  <div class="collect-progress" id="collectProgress">0/9 Squishies</div>
+  <div class="collect-progress" id="collectProgress">0/9 Collected</div>
   <div class="btn-row">
     <button class="footer-btn share-btn" onclick="shareScore()">Share</button>
     <button class="footer-btn lead-btn" onclick="showLeaderboard()">Top Scores</button>
   </div>
 </div>
 
-<!-- MODALS -->
-<div class="overlay" id="jackpotOverlay">
-  <div class="modal">
-    <h2>JACKPOT!!!</h2>
-    <p id="jackpotMsg">You won 5,000 coins!</p>
-    <button class="modal-close" onclick="closeJackpot()">AMAZING!</button>
-  </div>
-</div>
-
-<div class="overlay" id="bonusOverlay">
-  <div class="modal">
-    <h2>Bonus Round!</h2>
-    <p>You collected all 9 Squishies! Here are 3 FREE SPINS!</p>
-    <button class="modal-close" onclick="closeBonus()">LET'S GO!</button>
-  </div>
-</div>
-
-<div class="overlay" id="leaderOverlay">
-  <div class="modal">
-    <h2>Top Scores</h2>
-    <ul class="leader-list" id="leaderList"></ul>
-    <p id="currentBalance"></p>
-    <button class="modal-close" onclick="closeLeaderboard()">Close</button>
-  </div>
-</div>
+<div class="overlay" id="jackpotOverlay"><div class="modal"><h2>JACKPOT!!!</h2><p id="jackpotMsg">You won 5,000 coins!</p><button class="modal-close" onclick="closeJackpot()">AMAZING!</button></div></div>
+<div class="overlay" id="bonusOverlay"><div class="modal"><h2>Bonus Round!</h2><p>You collected all 9 Squishies! 3 FREE SPINS!</p><button class="modal-close" onclick="closeBonus()">LET'S GO!</button></div></div>
+<div class="overlay" id="leaderOverlay"><div class="modal"><h2>Top Scores</h2><ul class="leader-list" id="leaderList"></ul><p id="currentBalance"></p><button class="modal-close" onclick="closeLeaderboard()">Close</button></div></div>
 
 <script>
-// ============================================================
-// 3D SVG SYMBOLS — Each has depth, lighting, highlight, shadow
-// ============================================================
+// ================================================================
+// YUM SUM SQUISHIES — Jellycat-style Dim Sum Characters
+// Each is built with: SSS gel body, beady safety eyes, embroidered
+// smile, ribbed corduroy boots, blush cheeks, subsurface glow
+// ================================================================
+
+// Helper: generate Jellycat eye (beaded plastic safety eye)
+function jellycatEye(cx, cy, r, highlight=true) {
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#1a1a1a"/>
+  <circle cx="${cx-r*0.3}" cy="${cy-r*0.3}" r="${r*0.45}" fill="rgba(255,255,255,0.9)"/>
+  ${highlight ? `<circle cx="${cx-r*0.5}" cy="${cy-r*0.5}" r="${r*0.2}" fill="rgba(255,255,255,0.6)"/>` : ''}`;
+}
+
+// Helper: embroidered smile (Jellycat stitched mouth)
+function jellycatMouth(x, y, w) {
+  return `<path d="M${x} ${y} Q${x+w*0.5} ${y+w*0.35} ${x+w} ${y}" stroke="#2a1a0a" stroke-width="1.8" fill="none" stroke-linecap="round"/>`;
+}
+
+// Helper: blush cheeks
+function blushCheeks(cx, cy, w, h) {
+  return `<ellipse cx="${cx-w}" cy="${cy}" rx="${w*0.5}" ry="${h*0.5}" fill="rgba(255,130,140,0.45)"/>
+  <ellipse cx="${cx+w}" cy="${cy}" rx="${w*0.5}" ry="${h*0.5}" fill="rgba(255,130,140,0.45)"/>`;
+}
+
+// Helper: corduroy boot (ribbed capsule)
+function corduroyBoot(x, y, w, h, color) {
+  let s = `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w/2}" fill="${color}"/>`;
+  // Rib lines
+  for(let i=0; i<3; i++){
+    const lx = x + w*(0.25 + i*0.25);
+    s += `<line x1="${lx}" y1="${y+1}" x2="${lx}" y2="${y+h-1}" stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>`;
+  }
+  return s;
+}
+
 const SYMBOLS = {
-  slime: {
+  // ── BAO-BAO the Big Bun — Common ──────────────────────────
+  // Translucent maltose gel Xiaolongbao, pinched pleated top, corduroy boots
+  baobao: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="slimeGrad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#e0c8ff"/>
-      <stop offset="60%" stop-color="#c8a2ff"/>
-      <stop offset="100%" stop-color="#8a5ccc"/>
+    <radialGradient id="baoSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#fff8f0"/>
+      <stop offset="40%" stop-color="#fce4d6"/>
+      <stop offset="75%" stop-color="#f5c8a8"/>
+      <stop offset="100%" stop-color="#d4956a"/>
     </radialGradient>
-    <radialGradient id="slimeShine" cx="30%" cy="25%" r="40%">
+    <radialGradient id="baoShine" cx="30%" cy="25%" r="50%">
       <stop offset="0%" stop-color="rgba(255,255,255,0.7)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
-    <filter id="slimeShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(80,30,120,0.5)"/>
+    <filter id="baoGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(210,120,60,0.35)"/>
     </filter>
+    <filter id="baoInnerGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <linearGradient id="baoPleat" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="rgba(200,140,90,0.4)"/>
+      <stop offset="50%" stop-color="rgba(255,220,190,0.3)"/>
+      <stop offset="100%" stop-color="rgba(200,140,90,0.4)"/>
+    </linearGradient>
   </defs>
-  <!-- Shadow underneath -->
-  <ellipse cx="32" cy="54" rx="20" ry="8" fill="rgba(0,0,0,0.3)"/>
-  <!-- Main body blob -->
-  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#slimeGrad)" filter="url(#slimeShadow)"/>
-  <!-- Inner lighter face -->
-  <ellipse cx="32" cy="34" rx="17" ry="17" fill="#d9b8ff"/>
-  <!-- Shine highlight -->
-  <ellipse cx="26" cy="26" rx="9" ry="7" fill="url(#slimeShine)"/>
-  <!-- Eyes -->
-  <ellipse cx="23" cy="32" rx="5" ry="6" fill="#fff"/>
-  <ellipse cx="39" cy="32" rx="5" ry="6" fill="#fff"/>
-  <circle cx="24" cy="33" r="3" fill="#4a2070"/>
-  <circle cx="40" cy="33" r="3" fill="#4a2070"/>
-  <!-- Cute mouth -->
-  <ellipse cx="32" cy="43" rx="4" ry="2.5" fill="#9944cc"/>
-  <!-- Cheek blush -->
-  <ellipse cx="16" cy="38" rx="4" ry="3" fill="rgba(255,150,200,0.35)"/>
-  <ellipse cx="48" cy="38" rx="4" ry="3" fill="rgba(255,150,200,0.35)"/>
-  <!-- Bubble highlights -->
-  <circle cx="14" cy="26" r="3" fill="rgba(255,255,255,0.25)"/>
-  <circle cx="10" cy="34" r="1.5" fill="rgba(255,255,255,0.2)"/>
+
+  <!-- Shadow -->
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
+
+  <!-- Soup glow from inside (SSS effect) -->
+  <ellipse cx="32" cy="42" rx="14" ry="10" fill="rgba(255,200,100,0.2)" filter="url(#baoInnerGlow)"/>
+
+  <!-- Main bun body -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#baoSSS)" filter="url(#baoGlow)"/>
+
+  <!-- Translucent gel overlay (top gloss) -->
+  <ellipse cx="32" cy="34" rx="18" ry="16" fill="rgba(255,248,240,0.3)"/>
+
+  <!-- Pinched pleat lines at top -->
+  <path d="M24 18 Q26 22 28 18 Q30 22 32 18 Q34 22 36 18 Q38 22 40 18" stroke="url(#baoPleat)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Shine highlight (Jellycat glossy face) -->
+  <ellipse cx="24" cy="26" rx="9" ry="7" fill="url(#baoShine)"/>
+
+  <!-- Beady safety eyes -->
+  ${jellycatEye(24, 34, 4.5)}
+  ${jellycatEye(40, 34, 4.5)}
+
+  <!-- Blush cheeks -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Embroidered smile -->
+  ${jellycatMouth(26, 43, 12)}
+
+  <!-- Corduroy boots dangling -->
+  ${corduroyBoot(20, 54, 8, 12, '#7a5c3a')}
+  ${corduroyBoot(36, 54, 8, 12, '#7a5c3a')}
 </svg>`,
-    name:'Slime', rarity:'common', weight:18
+    name:'Bao-Bao', rarity:'common', weight:18
   },
-  heart: {
+
+  // ── HAR-GOW PIP — Common ───────────────────────────────────
+  // Crystal frosted shrimp dumpling, orange shrimp glow visible through gel
+  hargow: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="heartGrad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#ffd6e0"/>
-      <stop offset="55%" stop-color="#ffb3c6"/>
-      <stop offset="100%" stop-color="#e0507a"/>
+    <radialGradient id="hgSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,240,230,0.95)"/>
+      <stop offset="40%" stop-color="rgba(245,220,205,0.88)"/>
+      <stop offset="75%" stop-color="rgba(220,180,160,0.8)"/>
+      <stop offset="100%" stop-color="rgba(180,130,100,0.75)"/>
     </radialGradient>
-    <radialGradient id="heartShine" cx="30%" cy="25%" r="45%">
+    <radialGradient id="hgShine" cx="30%" cy="25%" r="50%">
       <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
-    <filter id="heartShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(180,40,80,0.45)"/>
+    <filter id="hgGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(200,120,60,0.3)"/>
     </filter>
+    <radialGradient id="shrimpGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,160,60,0.7)"/>
+      <stop offset="100%" stop-color="rgba(255,120,40,0)"/>
+    </radialGradient>
   </defs>
-  <ellipse cx="32" cy="56" rx="18" ry="6" fill="rgba(0,0,0,0.25)"/>
-  <path d="M32 56 C12 38 6 22 18 13 C25 8 32 16 32 20 C32 16 39 8 46 13 C58 22 52 38 32 56Z" fill="url(#heartGrad)" filter="url(#heartShadow)"/>
-  <path d="M32 50 C16 35 12 24 21 17 C27 13 32 19 32 23 C32 19 37 13 43 17 C52 24 48 35 32 50Z" fill="#ffc8d6"/>
-  <ellipse cx="23" cy="27" rx="5" ry="4" fill="url(#heartShine)"/>
-  <ellipse cx="23" cy="29" rx="4" ry="5" fill="#fff"/>
-  <ellipse cx="41" cy="29" rx="4" ry="5" fill="#fff"/>
-  <circle cx="24" cy="30" r="2.2" fill="#7a1030"/>
-  <circle cx="42" cy="30" r="2.2" fill="#7a1030"/>
-  <path d="M28 38 Q32 43 36 38" stroke="#c01860" stroke-width="2.2" fill="none" stroke-linecap="round"/>
-</svg>`,
-    name:'Heart', rarity:'common', weight:18
-  },
-  cloud: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="cloudGrad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#e8f8f4"/>
-      <stop offset="60%" stop-color="#b8e0d2"/>
-      <stop offset="100%" stop-color="#6aab9e"/>
-    </radialGradient>
-    <radialGradient id="cloudShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="cloudShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(40,100,90,0.4)"/>
-    </filter>
-  </defs>
-  <ellipse cx="32" cy="56" rx="20" ry="6" fill="rgba(0,0,0,0.2)"/>
-  <ellipse cx="32" cy="36" rx="22" ry="16" fill="url(#cloudGrad)" filter="url(#cloudShadow)"/>
-  <circle cx="18" cy="30" r="12" fill="#b8e0d2"/>
-  <circle cx="46" cy="30" r="12" fill="#b8e0d2"/>
-  <circle cx="32" cy="24" r="14" fill="#b8e0d2"/>
-  <ellipse cx="32" cy="32" rx="18" ry="14" fill="#cee8e0"/>
-  <ellipse cx="24" cy="26" rx="5" ry="4" fill="url(#cloudShine)"/>
-  <ellipse cx="24" cy="28" rx="4" ry="5" fill="#fff"/>
-  <ellipse cx="40" cy="28" rx="4" ry="5" fill="#fff"/>
-  <circle cx="25" cy="29" r="2.2" fill="#2a6a5e"/>
-  <circle cx="41" cy="29" r="2.2" fill="#2a6a5e"/>
-  <path d="M27 37 Q32 41 37 37" stroke="#3d8a7a" stroke-width="2" fill="none" stroke-linecap="round"/>
-</svg>`,
-    name:'Cloud', rarity:'uncommon', weight:13
-  },
-  star: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="starGrad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#fff8d0"/>
-      <stop offset="55%" stop-color="#ffe566"/>
-      <stop offset="100%" stop-color="#c49010"/>
-    </radialGradient>
-    <radialGradient id="starShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="starShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(180,120,0,0.5)"/>
-    </filter>
-  </defs>
-  <ellipse cx="32" cy="57" rx="16" ry="5" fill="rgba(0,0,0,0.25)"/>
-  <polygon points="32,4 38,24 58,24 42,38 48,58 32,46 16,58 22,38 6,24 26,24" fill="url(#starGrad)" filter="url(#starShadow)"/>
-  <polygon points="32,10 37,24 50,24 40,34 44,48 32,40 20,48 24,34 14,24 27,24" fill="#fff5b0"/>
-  <ellipse cx="24" cy="27" rx="5" ry="4" fill="url(#starShine)"/>
-  <ellipse cx="24" cy="30" rx="4" ry="5" fill="#fff"/>
-  <ellipse cx="38" cy="30" rx="4" ry="5" fill="#fff"/>
-  <circle cx="25" cy="31" r="2.2" fill="#7a5a00"/>
-  <circle cx="39" cy="31" r="2.2" fill="#7a5a00"/>
-  <path d="M28 38 Q32 42 36 38" stroke="#b08000" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-</svg>`,
-    name:'Star', rarity:'uncommon', weight:13
-  },
-  sun: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="sunGrad" cx="35%" cy="35%" r="60%">
-      <stop offset="0%" stop-color="#ffe080"/>
-      <stop offset="55%" stop-color="#ff9f1c"/>
-      <stop offset="100%" stop-color="#c45c00"/>
-    </radialGradient>
-    <radialGradient id="sunShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="sunShadow" x="-30%" y="-30%" width="160%" height="160%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(180,80,0,0.5)"/>
-    </filter>
-  </defs>
-  <ellipse cx="32" cy="58" rx="20" ry="5" fill="rgba(0,0,0,0.2)"/>
-  <g transform="translate(32,32)">
-    <line x1="0" y1="-28" x2="0" y2="-37" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="0" y1="28" x2="0" y2="37" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="-28" y1="0" x2="-37" y2="0" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="28" y1="0" x2="37" y2="0" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="-20" y1="-20" x2="-26" y2="-26" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="20" y1="-20" x2="26" y2="-26" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="-20" y1="20" x2="-26" y2="26" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-    <line x1="20" y1="20" x2="26" y2="26" stroke="#ff9f1c" stroke-width="4" stroke-linecap="round"/>
-  </g>
-  <circle cx="32" cy="32" r="21" fill="url(#sunGrad)" filter="url(#sunShadow)"/>
-  <circle cx="32" cy="32" r="17" fill="#ffb347"/>
-  <ellipse cx="25" cy="26" rx="5" ry="4" fill="url(#sunShine)"/>
-  <circle cx="25" cy="28" r="4.5" fill="#fff"/>
-  <circle cx="39" cy="28" r="4.5" fill="#fff"/>
-  <circle cx="26" cy="29" r="2.2" fill="#7a3800"/>
-  <circle cx="40" cy="29" r="2.2" fill="#7a3800"/>
-  <path d="M27 38 Q32 43 37 38" stroke="#c45c00" stroke-width="2" fill="none" stroke-linecap="round"/>
-</svg>`,
-    name:'Sunny', rarity:'rare', weight:9
-  },
-  moon: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <radialGradient id="moonGrad" cx="35%" cy="30%" r="65%">
-      <stop offset="0%" stop-color="#f0e0ff"/>
-      <stop offset="55%" stop-color="#d4a5ff"/>
-      <stop offset="100%" stop-color="#7a2eb8"/>
-    </radialGradient>
-    <radialGradient id="moonShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="moonShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(80,20,160,0.5)"/>
-    </filter>
-  </defs>
-  <ellipse cx="32" cy="57" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
-  <path d="M40 12 C28 14 18 24 18 38 C18 52 28 60 40 58 C30 56 24 46 24 36 C24 26 30 16 40 12Z" fill="url(#moonGrad)" filter="url(#moonShadow)"/>
-  <path d="M38 16 C28 18 20 27 20 38 C20 50 28 56 38 54 C30 52 25 44 25 36 C25 28 30 20 38 16Z" fill="#e8d0ff"/>
-  <ellipse cx="27" cy="27" rx="5" ry="4" fill="url(#moonShine)"/>
-  <circle cx="29" cy="34" r="4.5" fill="#fff"/>
-  <circle cx="43" cy="34" r="4.5" fill="#fff"/>
-  <circle cx="30" cy="35" r="2.2" fill="#4a1080"/>
-  <circle cx="44" cy="35" r="2.2" fill="#4a1080"/>
-  <path d="M34 44 Q38 47 42 44" stroke="#7a2eb8" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <!-- Stars -->
-  <circle cx="12" cy="16" r="1.5" fill="#fff" opacity="0.8"/>
-  <circle cx="52" cy="12" r="1" fill="#fff" opacity="0.6"/>
-  <circle cx="8" cy="36" r="1" fill="#fff" opacity="0.5"/>
-</svg>`,
-    name:'Moon', rarity:'rare', weight:9
-  },
-  crystal: {
-    svg: `<svg viewBox="0 0 64 64">
-  <defs>
-    <linearGradient id="crysFace1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#c4f0f5"/>
-      <stop offset="100%" stop-color="#7ec8d0"/>
-    </linearGradient>
-    <linearGradient id="crysFace2" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7ec8d0"/>
-      <stop offset="100%" stop-color="#3a9099"/>
-    </linearGradient>
-    <radialGradient id="crysShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
-    </radialGradient>
-    <filter id="crystalShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(30,100,110,0.5)"/>
-    </filter>
-  </defs>
-  <ellipse cx="32" cy="58" rx="16" ry="5" fill="rgba(0,0,0,0.25)"/>
-  <!-- Back faces -->
-  <polygon points="32,6 16,24 16,44" fill="#5ab0bc" filter="url(#crystalShadow)"/>
-  <polygon points="32,6 48,24 48,44" fill="#3a9099"/>
-  <!-- Front face 1 (left) -->
-  <polygon points="32,6 16,24 32,38" fill="url(#crysFace1)"/>
-  <!-- Front face 2 (right) -->
-  <polygon points="32,6 48,24 32,38" fill="url(#crysFace2)"/>
-  <!-- Front face 3 (bottom left) -->
-  <polygon points="16,24 16,44 32,58 32,38" fill="#4aa0a8"/>
-  <!-- Front face 4 (bottom right) -->
-  <polygon points="48,24 48,44 32,58 32,38" fill="#3a8a92"/>
-  <!-- Center line -->
-  <line x1="32" y1="6" x2="32" y2="58" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+
+  <ellipse cx="32" cy="60" rx="17" ry="5" fill="rgba(0,0,0,0.22)"/>
+
+  <!-- Frosted crystal wrapper body -->
+  <ellipse cx="32" cy="36" rx="21" ry="21" fill="url(#hgSSS)" filter="url(#hgGlow)"/>
+
+  <!-- Pleated skirt at bottom (classic Har Gow wrinkle) -->
+  <path d="M12 40 Q16 44 20 40 Q24 44 28 40 Q32 44 36 40 Q40 44 44 40 Q48 44 52 40" stroke="rgba(180,130,100,0.5)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Shrimp glow visible inside -->
+  <ellipse cx="32" cy="34" rx="11" ry="9" fill="url(#shrimpGlow)"/>
+
+  <!-- Crystal frost overlay -->
+  <ellipse cx="32" cy="33" rx="17" ry="15" fill="rgba(255,255,255,0.15)"/>
+
   <!-- Shine -->
-  <ellipse cx="24" cy="20" rx="4" ry="3" fill="url(#crysShine)"/>
-  <!-- Eyes -->
-  <ellipse cx="27" cy="30" r="3.5" fill="#fff"/>
-  <ellipse cx="37" cy="30" r="3.5" fill="#fff"/>
-  <circle cx="28" cy="31" r="1.8" fill="#1a5a62"/>
-  <circle cx="38" cy="31" r="1.8" fill="#1a5a62"/>
-  <path d="M30 38 Q32 40 34 38" stroke="#2a7a7d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <!-- Face highlight lines -->
-  <line x1="16" y1="24" x2="48" y2="24" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+  <ellipse cx="24" cy="26" rx="8" ry="6" fill="url(#hgShine)"/>
+
+  <!-- Big rosy cheeks (extra cute) -->
+  ${blushCheeks(32, 40, 8, 5)}
+
+  <!-- Beady eyes — slightly wider set -->
+  ${jellycatEye(23, 33, 4.5)}
+  ${jellycatEye(41, 33, 4.5)}
+
+  <!-- Happy embroidered smile -->
+  ${jellycatMouth(26, 43, 12)}
+
+  <!-- Tiny corduroy boots -->
+  ${corduroyBoot(20, 54, 8, 11, '#6a4c2a')}
+  ${corduroyBoot(36, 54, 8, 11, '#6a4c2a')}
 </svg>`,
-    name:'Crystal', rarity:'epic', weight:5
+    name:'Har-Gow Pip', rarity:'common', weight:17
   },
-  rainbow: {
+
+  // ── SIU-MAI SAM — Rare ─────────────────────────────────────
+  // Open-topped yellow wrapper, crab roe sprinkles, chunky shape
+  siumai: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="rainbowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#ff6b6b"/>
-      <stop offset="20%" stop-color="#ffd700"/>
-      <stop offset="40%" stop-color="#51cf66"/>
-      <stop offset="60%" stop-color="#339af0"/>
-      <stop offset="80%" stop-color="#cc5de8"/>
-      <stop offset="100%" stop-color="#ff6b6b"/>
-    </linearGradient>
-    <radialGradient id="rainbowShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
+    <radialGradient id="smSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#fff5d0"/>
+      <stop offset="40%" stop-color="#fce890"/>
+      <stop offset="75%" stop-color="#e8c840"/>
+      <stop offset="100%" stop-color="#c49020"/>
+    </radialGradient>
+    <radialGradient id="smShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,200,0.8)"/>
+      <stop offset="100%" stop-color="rgba(255,255,200,0)"/>
+    </radialGradient>
+    <filter id="smGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(200,160,0,0.35)"/>
+    </filter>
+    <radialGradient id="smMeat" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d46060"/>
+      <stop offset="60%" stop-color="#b84040"/>
+      <stop offset="100%" stop-color="#8a2020"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
+
+  <!-- Main body — chunky open-topped shape -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#smSSS)" filter="url(#smGlow)"/>
+
+  <!-- Open top depression (cabbage wrap opening) -->
+  <ellipse cx="32" cy="28" rx="14" ry="10" fill="url(#smMeat)"/>
+  <ellipse cx="32" cy="27" rx="11" ry="7" fill="#c84040"/>
+
+  <!-- Crab roe sprinkles (orange dots on yellow wrapper) -->
+  <circle cx="16" cy="36" r="2" fill="#ff8c00" opacity="0.8"/>
+  <circle cx="20" cy="42" r="1.5" fill="#ff8c00" opacity="0.7"/>
+  <circle cx="44" cy="38" r="2" fill="#ff8c00" opacity="0.8"/>
+  <circle cx="48" cy="32" r="1.5" fill="#ff8c00" opacity="0.7"/>
+  <circle cx="14" cy="44" r="1.5" fill="#ff8c00" opacity="0.6"/>
+  <circle cx="50" cy="44" r="1.5" fill="#ff8c00" opacity="0.6"/>
+  <circle cx="40" cy="44" r="1.5" fill="#ff8c00" opacity="0.7"/>
+
+  <!-- Wrapper frilly edge -->
+  <path d="M11 38 Q14 42 17 38 Q20 42 23 38 Q26 42 29 38 Q32 42 35 38 Q38 42 41 38 Q44 42 47 38 Q50 42 53 38" stroke="rgba(200,160,0,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Shine -->
+  <ellipse cx="24" cy="28" rx="8" ry="6" fill="url(#smShine)"/>
+
+  <!-- Beady eyes -->
+  ${jellycatEye(24, 34, 4.5)}
+  ${jellycatEye(40, 34, 4.5)}
+
+  <!-- Blush -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Smile -->
+  ${jellycatMouth(26, 43, 12)}
+
+  <!-- Corduroy boots -->
+  ${corduroyBoot(20, 54, 8, 12, '#7a5c3a')}
+  ${corduroyBoot(36, 54, 8, 12, '#7a5c3a')}
+</svg>`,
+    name:'Siu-Mai Sam', rarity:'rare', weight:12
+  },
+
+  // ── EGG TARTIE — Rare ─────────────────────────────────────
+  // Flaky pastry bowl, ultra-jiggly gloss custard heart
+  eggtart: {
+    svg: `<svg viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="etCustard" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#fff5b0"/>
+      <stop offset="40%" stop-color="#ffda30"/>
+      <stop offset="75%" stop-color="#f0900"/>
+      <stop offset="100%" stop-color="#c06000"/>
+    </radialGradient>
+    <radialGradient id="etPastry" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#f5deb3"/>
+      <stop offset="40%" stop-color="#d4a05a"/>
+      <stop offset="75%" stop-color="#a06830"/>
+      <stop offset="100%" stop-color="#6a3a10"/>
+    </radialGradient>
+    <radialGradient id="etShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
-    <filter id="rainbowShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="rgba(100,0,150,0.4)"/>
+    <filter id="etGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(200,120,0,0.4)"/>
+    </filter>
+    <filter id="etGloss">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
   </defs>
-  <ellipse cx="32" cy="57" rx="20" ry="6" fill="rgba(0,0,0,0.2)"/>
-  <ellipse cx="32" cy="36" rx="22" ry="20" fill="url(#rainbowGrad)" filter="url(#rainbowShadow)"/>
-  <ellipse cx="32" cy="34" rx="17" ry="16" fill="rgba(255,255,255,0.2)"/>
-  <ellipse cx="24" cy="27" rx="5" ry="4" fill="url(#rainbowShine)"/>
-  <ellipse cx="24" cy="29" r="4" fill="#fff"/>
-  <ellipse cx="38" cy="29" r="4" fill="#fff"/>
-  <circle cx="25" cy="30" r="2" fill="#4a1060"/>
-  <circle cx="39" cy="30" r="2" fill="#4a1060"/>
-  <path d="M28 39 Q32 44 36 39" stroke="rgba(255,255,255,0.8)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
+
+  <!-- Pastry bowl (flaky shell) -->
+  <ellipse cx="32" cy="38" rx="22" ry="18" fill="url(#etPastry)" filter="url(#etGlow)"/>
+
+  <!-- Flaky crust ridges -->
+  <path d="M12 38 Q14 34 16 38 Q18 34 20 38 Q22 34 24 38 Q26 34 28 38 Q30 34 32 38 Q34 34 36 38 Q38 34 40 38 Q42 34 44 38 Q46 34 48 38 Q50 34 52 38" stroke="rgba(160,90,30,0.4)" stroke-width="1.2" fill="none"/>
+
+  <!-- Ultra-glossy custard top (jiggly SSS effect) -->
+  <ellipse cx="32" cy="34" rx="16" ry="13" fill="url(#etCustard)" filter="url(#etGloss)"/>
+  <ellipse cx="32" cy="32" rx="13" ry="10" fill="#ffe066"/>
+
+  <!-- Custard gloss shine -->
+  <ellipse cx="26" cy="28" rx="7" ry="5" fill="url(#etShine)"/>
+  <ellipse cx="28" cy="30" rx="4" ry="3" fill="rgba(255,255,255,0.5)"/>
+
+  <!-- Beady eyes on pastry rim -->
+  ${jellycatEye(24, 36, 4)}
+  ${jellycatEye(40, 36, 4)}
+
+  <!-- Blush -->
+  ${blushCheeks(32, 42, 7, 4)}
+
+  <!-- Smile -->
+  ${jellycatMouth(27, 46, 10)}
+
+  <!-- Boots -->
+  ${corduroyBoot(21, 54, 8, 11, '#6a4c2a')}
+  ${corduroyBoot(35, 54, 8, 11, '#6a4c2a')}
 </svg>`,
-    name:'Rainbow', rarity:'epic', weight:4
+    name:'Egg Tartie', rarity:'rare', weight:11
   },
-  golden: {
+
+  // ── CHAR SIU BAO — Epic ────────────────────────────────────
+  // Fluffy cracked bun revealing caramelized BBQ sauce
+  charsiu: {
     svg: `<svg viewBox="0 0 64 64">
   <defs>
-    <radialGradient id="goldGrad" cx="35%" cy="30%" r="65%">
+    <radialGradient id="csBun" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#f8f0e4"/>
+      <stop offset="75%" stop-color="#e8d0b0"/>
+      <stop offset="100%" stop-color="#c8a070"/>
+    </radialGradient>
+    <radialGradient id="csSauce" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ff6040"/>
+      <stop offset="40%" stop-color="#d43010"/>
+      <stop offset="75%" stop-color="#8a1800"/>
+      <stop offset="100%" stop-color="#4a0800"/>
+    </radialGradient>
+    <radialGradient id="csShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="csGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="5" flood-color="rgba(150,40,0,0.4)"/>
+    </filter>
+    <filter id="csSauceGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(200,60,0,0.6)"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
+
+  <!-- Fluffy bun body -->
+  <ellipse cx="32" cy="34" rx="23" ry="22" fill="url(#csBun)" filter="url(#csGlow)"/>
+
+  <!-- Crack split at top -->
+  <path d="M26 14 Q28 20 27 26 Q30 24 32 26 Q34 24 37 26 Q36 20 38 14" fill="#c8a070" opacity="0.7"/>
+
+  <!-- Glossy BBQ sauce peeking through crack -->
+  <ellipse cx="32" cy="20" rx="8" ry="6" fill="url(#csSauce)" filter="url(#csSauceGlow)"/>
+  <ellipse cx="30" cy="18" rx="3" ry="2" fill="rgba(255,200,100,0.5)"/>
+
+  <!-- Fluffy texture lines on bun surface -->
+  <path d="M14 30 Q18 28 22 30" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
+  <path d="M40 28 Q44 30 48 28" stroke="rgba(200,170,130,0.3)" stroke-width="1" fill="none"/>
+
+  <!-- Shine -->
+  <ellipse cx="22" cy="24" rx="9" ry="7" fill="url(#csShine)"/>
+
+  <!-- Beady eyes -->
+  ${jellycatEye(23, 34, 4.5)}
+  ${jellycatEye(41, 34, 4.5)}
+
+  <!-- Blush (slightly pink from BBQ glaze) -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Smile -->
+  ${jellycatMouth(26, 43, 12)}
+
+  <!-- Boots -->
+  ${corduroyBoot(20, 54, 8, 12, '#5a3a1a')}
+  ${corduroyBoot(36, 54, 8, 12, '#5a3a1a')}
+</svg>`,
+    name:'Char Siu Bao', rarity:'epic', weight:6
+  },
+
+  // ── PHO PHIL — Epic ───────────────────────────────────────
+  // Clear rice noodle broth, cute face floating in clear soup
+  phophil: {
+    svg: `<svg viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="phNoodle" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="rgba(255,250,240,0.9)"/>
+      <stop offset="50%" stop-color="rgba(230,220,200,0.75)"/>
+      <stop offset="100%" stop-color="rgba(180,160,130,0.65)"/>
+    </radialGradient>
+    <radialGradient id="phShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="phGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(200,180,100,0.3)"/>
+    </filter>
+    <linearGradient id="phBroth" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,220,120,0.2)"/>
+      <stop offset="100%" stop-color="rgba(200,160,60,0.35)"/>
+    </linearGradient>
+  </defs>
+
+  <ellipse cx="32" cy="60" rx="20" ry="5" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Clear noodle broth (SSS soup base) -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#phNoodle)" filter="url(#phGlow)"/>
+
+  <!-- Broth depth layer -->
+  <ellipse cx="32" cy="38" rx="19" ry="17" fill="url(#phBroth)"/>
+
+  <!-- Rice noodle strands (wavy lines) -->
+  <path d="M14 30 Q20 28 18 34 Q22 30 26 34 Q30 28 34 34 Q38 30 42 34 Q46 28 50 32" stroke="rgba(255,255,255,0.25)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+  <path d="M12 38 Q18 36 16 42 Q20 38 24 42 Q28 36 32 42 Q36 38 40 42 Q44 36 48 40 Q52 38 54 36" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none" stroke-linecap="round"/>
+
+  <!-- Steam wisps -->
+  <path d="M22 12 Q24 8 22 4" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M32 10 Q34 6 32 2" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M42 12 Q44 8 42 4" stroke="rgba(255,255,255,0.2)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Shine (through the clear soup) -->
+  <ellipse cx="24" cy="26" rx="8" ry="6" fill="url(#phShine)"/>
+
+  <!-- Beady eyes (floating in soup) -->
+  ${jellycatEye(23, 34, 4.5)}
+  ${jellycatEye(41, 34, 4.5)}
+
+  <!-- Blush -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Smile -->
+  ${jellycatMouth(26, 43, 12)}
+
+  <!-- Tiny boots -->
+  ${corduroyBoot(21, 54, 7, 10, '#6a5030')}
+  ${corduroyBoot(36, 54, 7, 10, '#6a5030')}
+</svg>`,
+    name:'Pho Phil', rarity:'epic', weight:5
+  },
+
+  // ── DIMSUM DRAGON — Legendary ──────────────────────────────
+  // Jade green glazed noodle dragon, golden lucky coin
+  dragon: {
+    svg: `<svg viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="drSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#c8f0d8"/>
+      <stop offset="40%" stop-color="#5dd9a0"/>
+      <stop offset="75%" stop-color="#2a9d70"/>
+      <stop offset="100%" stop-color="#1a6a48"/>
+    </radialGradient>
+    <radialGradient id="drGold" cx="35%" cy="30%" r="60%">
       <stop offset="0%" stop-color="#ffffc0"/>
-      <stop offset="30%" stop-color="#ffd700"/>
+      <stop offset="35%" stop-color="#ffd700"/>
       <stop offset="70%" stop-color="#d4a017"/>
       <stop offset="100%" stop-color="#8a6000"/>
     </radialGradient>
-    <radialGradient id="goldShine" cx="30%" cy="25%" r="45%">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
-      <stop offset="50%" stop-color="rgba(255,255,200,0.3)"/>
+    <radialGradient id="drShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
       <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
     </radialGradient>
-    <filter id="goldShadow" x="-20%" y="-20%" width="140%" height="150%">
-      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="rgba(180,120,0,0.6)"/>
+    <filter id="drGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="5" flood-color="rgba(30,160,80,0.5)"/>
+    </filter>
+    <filter id="drGoldGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="rgba(255,200,0,0.7)"/>
     </filter>
   </defs>
-  <ellipse cx="32" cy="56" rx="20" ry="7" fill="rgba(0,0,0,0.35)"/>
-  <!-- Outer glow ring -->
-  <ellipse cx="32" cy="34" rx="26" ry="26" fill="none" stroke="#ffd700" stroke-width="1" opacity="0.3"/>
-  <ellipse cx="32" cy="34" rx="22" ry="22" fill="url(#goldGrad)" filter="url(#goldShadow)"/>
-  <ellipse cx="32" cy="32" rx="18" ry="18" fill="#ffd700"/>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.25)"/>
+
+  <!-- Dragon body (jade noodle coil) -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#drSSS)" filter="url(#drGlow)"/>
+
+  <!-- Noodle coil lines -->
+  <path d="M12 36 Q16 28 24 30 Q32 24 40 30 Q48 28 52 36" stroke="rgba(20,100,60,0.4)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M14 42 Q20 36 28 38 Q36 34 44 38 Q50 36 52 42" stroke="rgba(20,100,60,0.3)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+  <!-- Cute dragon spikes on top -->
+  <path d="M22 14 L24 20 L26 14 L28 20 L30 14 L32 20 L34 14 L36 20 L38 14 L40 20 L42 14" stroke="#2a9d70" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Golden lucky coin embedded -->
+  <circle cx="32" cy="32" r="10" fill="url(#drGold)" filter="url(#drGoldGlow)"/>
+  <circle cx="32" cy="32" r="7" fill="none" stroke="rgba(200,150,0,0.5)" stroke-width="1"/>
+  <text x="32" y="36" text-anchor="middle" font-size="10" font-weight="900" fill="#7a4a00" font-family="sans-serif">福</text>
+
   <!-- Shine -->
-  <ellipse cx="24" cy="24" rx="9" ry="7" fill="url(#goldShine)"/>
-  <ellipse cx="22" cy="28" rx="5" ry="6" fill="#fff"/>
-  <ellipse cx="38" cy="28" rx="5" ry="6" fill="#fff"/>
-  <circle cx="23" cy="29" r="3" fill="#5a3800"/>
-  <circle cx="39" cy="29" r="3" fill="#5a3800"/>
-  <!-- Big smile -->
-  <path d="M24 40 Q32 48 40 40" stroke="#8a6000" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <!-- Sparkle particles -->
-  <circle cx="10" cy="16" r="2.5" fill="#ffd700" opacity="0.9"/>
-  <circle cx="54" cy="12" r="2" fill="#ffd700" opacity="0.8"/>
-  <circle cx="6" cy="38" r="1.5" fill="#ffd700" opacity="0.7"/>
-  <circle cx="58" cy="42" r="2" fill="#ffd700" opacity="0.8"/>
-  <circle cx="32" cy="8" r="1.5" fill="#ffd700" opacity="0.6"/>
-  <!-- Star sparkles -->
-  <path d="M8 20 L9 17 L10 20 L13 21 L10 22 L9 25 L8 22 L5 21 Z" fill="#fff8c0" opacity="0.8"/>
-  <path d="M54 16 L55 13 L56 16 L59 17 L56 18 L55 21 L54 18 L51 17 Z" fill="#fff8c0" opacity="0.7"/>
+  <ellipse cx="22" cy="24" rx="9" ry="7" fill="url(#drShine)"/>
+
+  <!-- Dragon eyes (slightly fierce but cute) -->
+  <ellipse cx="23" cy="32" rx="4.5" ry="5" fill="#1a1a1a"/>
+  <ellipse cx="41" cy="32" rx="4.5" ry="5" fill="#1a1a1a"/>
+  <ellipse cx="21" cy="30" rx="2" ry="2" fill="rgba(255,255,255,0.9)"/>
+  <ellipse cx="39" cy="30" rx="2" ry="2" fill="rgba(255,255,255,0.9)"/>
+  <circle cx="24" cy="33" r="1.5" fill="#1a1a1a"/>
+  <circle cx="42" cy="33" r="1.5" fill="#1a1a1a"/>
+
+  <!-- Blush -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Dragon smile -->
+  ${jellycatMouth(25, 43, 14)}
+
+  <!-- Boots -->
+  ${corduroyBoot(20, 54, 8, 12, '#1a5c4c')}
+  ${corduroyBoot(36, 54, 8, 12, '#1a5c4c')}
 </svg>`,
-    name:'Golden', rarity:'jackpot', weight:1
+    name:'Dim Sum Dragon', rarity:'legendary', weight:2
+  },
+
+  // ── GOLDEN PHOENIX — Jackpot ───────────────────────────────
+  // Golden笼屉 phoenix, ultimate rarity, maximum sparkle
+  phoenix: {
+    svg: `<svg viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="phxSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#ffffd0"/>
+      <stop offset="30%" stop-color="#ffd700"/>
+      <stop offset="60%" stop-color="#f0a000"/>
+      <stop offset="100%" stop-color="#8a5000"/>
+    </radialGradient>
+    <radialGradient id="phxShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.95)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <radialGradient id="phxEmber" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,120,0,0.6)"/>
+      <stop offset="100%" stop-color="rgba(255,60,0,0)"/>
+    </radialGradient>
+    <filter id="phxGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(255,150,0,0.6)"/>
+    </filter>
+    <filter id="phxStarGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="0" stdDeviation="3" flood-color="rgba(255,215,0,0.9)"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.3)"/>
+
+  <!-- Ember glow underneath -->
+  <ellipse cx="32" cy="50" rx="16" ry="10" fill="url(#phxEmber)" filter="url(#phxGlow)"/>
+
+  <!-- Golden笼屉 bamboo steaming basket body -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#phxSSS)" filter="url(#phxGlow)"/>
+
+  <!-- Basket weave pattern -->
+  <path d="M12 28 Q32 24 52 28" stroke="rgba(200,150,0,0.3)" stroke-width="1" fill="none"/>
+  <path d="M11 34 Q32 30 53 34" stroke="rgba(200,150,0,0.3)" stroke-width="1" fill="none"/>
+  <path d="M11 40 Q32 36 53 40" stroke="rgba(200,150,0,0.3)" stroke-width="1" fill="none"/>
+
+  <!-- Phoenix crest plumes -->
+  <path d="M20 16 Q18 10 22 8 Q24 12 24 16" fill="#ffd700"/>
+  <path d="M27 14 Q27 8 30 6 Q31 11 29 14" fill="#ffb800"/>
+  <path d="M32 13 Q32 7 34 5 Q36 10 34 14" fill="#ffd700"/>
+  <path d="M37 14 Q39 8 42 7 Q41 12 39 15" fill="#ffb800"/>
+  <path d="M42 17 Q46 12 48 14 Q45 18 42 18" fill="#ffd700"/>
+
+  <!-- Shine -->
+  <ellipse cx="22" cy="24" rx="10" ry="7" fill="url(#phxShine)"/>
+
+  <!-- Crown jewel eyes -->
+  <circle cx="23" cy="32" r="5" fill="#1a1a1a"/>
+  <circle cx="41" cy="32" r="5" fill="#1a1a1a"/>
+  <circle cx="21" cy="30" r="2.5" fill="rgba(255,255,255,0.95)"/>
+  <circle cx="39" cy="30" r="2.5" fill="rgba(255,255,255,0.95)"/>
+  <circle cx="23" cy="33" r="2" fill="#8a6000"/>
+  <circle cx="41" cy="33" r="2" fill="#8a6000"/>
+
+  <!-- Blush -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Grand embroidered smile -->
+  ${jellycatMouth(24, 43, 16)}
+
+  <!-- Sparkle particles -->
+  <g filter="url(#phxStarGlow)">
+    <path d="M8 18 L9 15 L10 18 L13 19 L10 20 L9 23 L8 20 L5 19 Z" fill="#ffd700"/>
+    <path d="M54 14 L55 11 L56 14 L59 15 L56 16 L55 19 L54 16 L51 15 Z" fill="#ffd700"/>
+    <path d="M32 4 L32.8 6 L35 6 L33 7.5 L34 10 L32 8.5 L30 10 L31 7.5 L29 6 L31.2 6 Z" fill="#ffd700"/>
+    <path d="M6 42 L6.6 44 L9 44 L7 45.5 L8 48 L6 46.5 L4 48 L5 45.5 L3 44 L5.4 44 Z" fill="#ffd700" opacity="0.8"/>
+    <path d="M58 40 L58.6 42 L61 42 L59 43.5 L60 46 L58 44.5 L56 46 L57 43.5 L55 42 L57.4 42 Z" fill="#ffd700" opacity="0.8"/>
+  </g>
+
+  <!-- Boots -->
+  ${corduroyBoot(20, 54, 8, 12, '#8a5000')}
+  ${corduroyBoot(36, 54, 8, 12, '#8a5000')}
+</svg>`,
+    name:'Golden Phoenix', rarity:'jackpot', weight:1
+  },
+
+  // ── STEAMY THE LOTUS — Uncommon ───────────────────────────
+  // Lotus leaf-wrapped sticky rice, peeking cute face
+  lotus: {
+    svg: `<svg viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ltSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#d0f0c0"/>
+      <stop offset="40%" stop-color="#7acc60"/>
+      <stop offset="75%" stop-color="#4a9040"/>
+      <stop offset="100%" stop-color="#2a5820"/>
+    </radialGradient>
+    <radialGradient id="ltRice" cx="40%" cy="35%" r="55%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="40%" stop-color="#f0ead0"/>
+      <stop offset="75%" stop-color="#d4c890"/>
+      <stop offset="100%" stop-color="#a09050"/>
+    </radialGradient>
+    <radialGradient id="ltShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.8)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="ltGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(40,120,20,0.4)"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.22)"/>
+
+  <!-- Lotus leaf wrapping -->
+  <ellipse cx="32" cy="36" rx="22" ry="22" fill="url(#ltSSS)" filter="url(#ltGlow)"/>
+
+  <!-- Leaf vein lines -->
+  <path d="M32 14 L32 58" stroke="rgba(30,80,20,0.3)" stroke-width="1"/>
+  <path d="M32 36 Q20 30 14 36" stroke="rgba(30,80,20,0.25)" stroke-width="0.8" fill="none"/>
+  <path d="M32 36 Q44 30 50 36" stroke="rgba(30,80,20,0.25)" stroke-width="0.8" fill="none"/>
+
+  <!-- Rice mound peeking out of leaf wrap -->
+  <ellipse cx="32" cy="28" rx="13" ry="10" fill="url(#ltRice)"/>
+  <ellipse cx="32" cy="26" rx="10" ry="7" fill="#f5f0e0"/>
+
+  <!-- Leaf wrap opening at top -->
+  <path d="M20 22 Q24 18 28 22 Q32 18 36 22 Q40 18 44 22" stroke="#3a8030" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Shine -->
+  <ellipse cx="23" cy="26" rx="8" ry="6" fill="url(#ltShine)"/>
+
+  <!-- Beady eyes -->
+  ${jellycatEye(24, 34, 4.5)}
+  ${jellycatEye(40, 34, 4.5)}
+
+  <!-- Blush -->
+  ${blushCheeks(32, 40, 7, 4)}
+
+  <!-- Smile -->
+  ${jellycatMouth(26, 43, 12)}
+
+  <!-- Boots -->
+  ${corduroyBoot(21, 54, 8, 11, '#3a5c2a')}
+  ${corduroyBoot(35, 54, 8, 11, '#3a5c2a')}
+</svg>`,
+    name:'Steamy Lotus', rarity:'uncommon', weight:13
+  },
+
+  // ── MANGO PUDDING — Uncommon ───────────────────────────────
+  // SSS mango gel cups, super glossy, bright yellow-orange
+  mango: {
+    svg: `<svg viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="mgSSS" cx="38%" cy="32%" r="62%">
+      <stop offset="0%" stop-color="#fff5a0"/>
+      <stop offset="40%" stop-color="#ffcc30"/>
+      <stop offset="75%" stop-color="#f08000"/>
+      <stop offset="100%" stop-color="#a05000"/>
+    </radialGradient>
+    <radialGradient id="mgShine" cx="30%" cy="25%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.9)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+    <filter id="mgGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="1" dy="4" stdDeviation="4" flood-color="rgba(240,140,0,0.4)"/>
+    </filter>
+    <filter id="mgGloss">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="32" cy="60" rx="18" ry="5" fill="rgba(0,0,0,0.2)"/>
+
+  <!-- Clear pudding cup -->
+  <path d="M14 30 Q14 54 32 56 Q50 54 50 30 Z" fill="rgba(200,220,240,0.35)" stroke="rgba(150,180,210,0.4)" stroke-width="1"/>
+
+  <!-- Mango SSS gel body -->
+  <ellipse cx="32" cy="36" rx="18" ry="18" fill="url(#mgSSS)" filter="url(#mgGlow)"/>
+
+  <!-- Ultra glossy top (jiggly custard) -->
+  <ellipse cx="32" cy="32" rx="14" ry="11" fill="#ffe060" filter="url(#mgGloss)"/>
+  <ellipse cx="32" cy="30" rx="11" ry="8" fill="#fff090"/>
+
+  <!-- Gloss shine -->
+  <ellipse cx="25" cy="26" rx="7" ry="5" fill="url(#mgShine)"/>
+  <ellipse cx="27" cy="28" rx="4" ry="3" fill="rgba(255,255,255,0.6)"/>
+
+  <!-- Beady eyes -->
+  ${jellycatEye(24, 35, 4.5)}
+  ${jellycatEye(40, 35, 4.5)}
+
+  <!-- Blush (mango pink) -->
+  ${blushCheeks(32, 41, 7, 4)}
+
+  <!-- Smile -->
+  ${jellycatMouth(26, 44, 12)}
+
+  <!-- Tiny boots -->
+  ${corduroyBoot(21, 55, 7, 10, '#8a5010')}
+  ${corduroyBoot(36, 55, 7, 10, '#8a5010')}
+</svg>`,
+    name:'Mango Pudding', rarity:'uncommon', weight:12
   }
 };
 
@@ -817,491 +972,164 @@ const RARITY_WEIGHTS = {};
 SYMBOL_KEYS.forEach(k => RARITY_WEIGHTS[k] = SYMBOLS[k].weight);
 const TOTAL_WEIGHT = Object.values(RARITY_WEIGHTS).reduce((a,b)=>a+b,0);
 
-// ============================================================
-// AUDIO ENGINE
-// ============================================================
+// ── AUDIO ──────────────────────────────────────────────────────
 let audioCtx = null;
-function getAudio(){
-  if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-  return audioCtx;
-}
+function getAudio(){if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); return audioCtx;}
 function playTone(freq,type,dur,vol=0.3,startTime=0){
-  const ctx=getAudio();
-  const osc=ctx.createOscillator();
-  const gain=ctx.createGain();
-  osc.connect(gain);gain.connect(ctx.destination);
-  osc.type=type;osc.frequency.value=freq;
+  const ctx=getAudio(), osc=ctx.createOscillator(), gain=ctx.createGain();
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.type=type; osc.frequency.value=freq;
   const t=ctx.currentTime+startTime;
   gain.gain.setValueAtTime(0,t);
   gain.gain.linearRampToValueAtTime(vol,t+0.01);
   gain.gain.exponentialRampToValueAtTime(0.001,t+dur);
-  osc.start(t);osc.stop(t+dur+0.05);
+  osc.start(t); osc.stop(t+dur+0.05);
 }
 function playNoise(dur,vol=0.15,startTime=0){
-  const ctx=getAudio();
-  const buf=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate);
-  const data=buf.getChannelData(0);
-  for(let i=0;i<data.length;i++) data[i]=Math.random()*2-1;
-  const src=ctx.createBufferSource();
-  src.buffer=buf;
-  const gain=ctx.createGain();
-  const filter=ctx.createBiquadFilter();
-  filter.type='highpass';filter.frequency.value=1000;
-  src.connect(filter);filter.connect(gain);gain.connect(ctx.destination);
+  const ctx=getAudio(), buf=ctx.createBuffer(1,ctx.sampleRate*dur,ctx.sampleRate), d=buf.getChannelData(0);
+  for(let i=0;i<d.length;i++) d[i]=Math.random()*2-1;
+  const src=ctx.createBufferSource(), gain=ctx.createGain(), filter=ctx.createBiquadFilter();
+  filter.type='highpass'; filter.frequency.value=1000;
+  src.buffer=buf; src.connect(filter); filter.connect(gain); gain.connect(ctx.destination);
   const t=ctx.currentTime+startTime;
   gain.gain.setValueAtTime(0,t);
   gain.gain.linearRampToValueAtTime(vol,t+0.01);
   gain.gain.exponentialRampToValueAtTime(0.001,t+dur);
-  src.start(t);src.stop(t+dur);
+  src.start(t); src.stop(t+dur);
 }
-function soundWhoosh(){playNoise(0.3,0.2);playTone(400,'sine',0.3,0.1)}
-function soundTick(){
-  const ctx=getAudio();
-  const buf=ctx.createBuffer(1,ctx.sampleRate*0.03,ctx.sampleRate);
-  const d=buf.getChannelData(0);
-  for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*0.3));
-  const src=ctx.createBufferSource();src.buffer=buf;
-  const g=ctx.createGain();g.gain.value=0.12;
-  src.connect(g);g.connect(ctx.destination);src.start();
-}
-function soundThud(){playTone(80,'sine',0.15,0.4);playTone(60,'sine',0.1,0.2)}
-function soundCoin(){
-  for(let i=0;i<6;i++) setTimeout(()=>{playTone(800+i*200,'sine',0.1,0.2)},i*60);
-}
-function soundJackpot(){
-  [523,659,784,1047].forEach((f,i)=>setTimeout(()=>{playTone(f,'sine',0.4,0.3)},i*150));
-  setTimeout(()=>{[1047,1319,1568,2093].forEach((f,i)=>setTimeout(()=>playTone(f,'square',0.3,0.15),i*100))},600);
-}
-function soundNearMiss(){
-  playTone(200,'sine',0.3,0.2);
-  setTimeout(()=>playTone(180,'sine',0.4,0.15),200);
-}
+function soundWhoosh(){playNoise(0.3,0.2); playTone(400,'sine',0.3,0.1)}
+function soundTick(){const ctx=getAudio(), buf=ctx.createBuffer(1,ctx.sampleRate*0.03,ctx.sampleRate), d=buf.getChannelData(0); for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(d.length*0.3)); const src=ctx.createBufferSource(); src.buffer=buf; const g=ctx.createGain(); g.gain.value=0.12; src.connect(g); g.connect(ctx.destination); src.start();}
+function soundThud(){playTone(80,'sine',0.15,0.4); playTone(60,'sine',0.1,0.2)}
+function soundCoin(){for(let i=0;i<6;i++) setTimeout(()=>playTone(800+i*200,'sine',0.1,0.2),i*60);}
+function soundJackpot(){[523,659,784,1047].forEach((f,i)=>setTimeout(()=>playTone(f,'sine',0.4,0.3),i*150)); setTimeout(()=>[1047,1319,1568,2093].forEach((f,i)=>setTimeout(()=>playTone(f,'square',0.3,0.15),i*100)),600);}
+function soundNearMiss(){playTone(200,'sine',0.3,0.2); setTimeout(()=>playTone(180,'sine',0.4,0.15),200);}
 function soundClick(){playTone(600,'sine',0.05,0.25)}
 
-// ============================================================
-// GAME STATE
-// ============================================================
-const STORAGE_KEYS = {
-  balance:'squishy_balance', lastSpin:'squishy_lastSpin',
-  streak:'squishy_streak', lastVisit:'squishy_lastVisit',
-  collection:'squishy_collection', biggestWin:'squishy_biggestWin',
-  leaderboard:'squishy_leaderboard', bonusUsed:'squishy_bonusUsed'
-};
-
-let state = {
-  balance: 1000, freeSpinReady: false, bonusSpins: 0,
-  spinning: false, collection: {}, dailyStreak: 1, biggestWin: 0
-};
-
-const COL_CELLS = [[0,5,10,15,20],[1,6,11,16,21],[2,7,12,17,22],[3,8,13,18,23],[4,9,14,19,24]];
+// ── STATE ────────────────────────────────────────────────────
+const STORAGE_KEYS = {balance:'ysq_balance',lastSpin:'ysq_lastSpin',streak:'ysq_streak',lastVisit:'ysq_lastVisit',collection:'ysq_collection',biggestWin:'ysq_biggestWin',leaderboard:'ysq_leaderboard',bonusUsed:'ysq_bonusUsed'};
+let state = {balance:1000,freeSpinReady:false,bonusSpins:0,spinning:false,collection:{},dailyStreak:1,biggestWin:0};
+const COL_CELLS=[[0,5,10,15,20],[1,6,11,16,21],[2,7,12,17,22],[3,8,13,18,23],[4,9,14,19,24]];
 
 function loadState(){
-  state.balance = parseInt(localStorage.getItem(STORAGE_KEYS.balance))||1000;
-  state.biggestWin = parseInt(localStorage.getItem(STORAGE_KEYS.biggestWin))||0;
-  const lastVisit = localStorage.getItem(STORAGE_KEYS.lastVisit);
-  const now = new Date();
-  if(lastVisit){
-    const gap = (now - new Date(lastVisit))/1000/3600;
-    if(gap>=24){ state.dailyStreak = 1; }
-    else if(gap>=1){ state.dailyStreak = parseInt(localStorage.getItem(STORAGE_KEYS.streak))||1; }
-  }
-  const col = localStorage.getItem(STORAGE_KEYS.collection);
-  state.collection = col ? JSON.parse(col) : {};
-  const lastSpin = localStorage.getItem(STORAGE_KEYS.lastSpin);
-  if(lastSpin){
-    const elapsed = (now - new Date(lastSpin))/1000;
-    state.freeSpinReady = elapsed >= 14400;
-  } else { state.freeSpinReady = true; }
+  state.balance=parseInt(localStorage.getItem(STORAGE_KEYS.balance))||1000;
+  state.biggestWin=parseInt(localStorage.getItem(STORAGE_KEYS.biggestWin))||0;
+  const lastVisit=localStorage.getItem(STORAGE_KEYS.lastVisit);
+  const now=new Date();
+  if(lastVisit){const gap=(now-new Date(lastVisit))/1000/3600; if(gap>=24)state.dailyStreak=1; else if(gap>=1)state.dailyStreak=parseInt(localStorage.getItem(STORAGE_KEYS.streak))||1;}
+  state.collection=JSON.parse(localStorage.getItem(STORAGE_KEYS.collection)||'{}');
+  const lastSpin=localStorage.getItem(STORAGE_KEYS.lastSpin);
+  if(lastSpin){const elapsed=(now-new Date(lastSpin))/1000; state.freeSpinReady=elapsed>=14400;} else state.freeSpinReady=true;
 }
-function saveBalance(){ localStorage.setItem(STORAGE_KEYS.balance, state.balance); }
-function saveCollection(){ localStorage.setItem(STORAGE_KEYS.collection, JSON.stringify(state.collection)); }
-function saveStreak(){
-  localStorage.setItem(STORAGE_KEYS.streak, state.dailyStreak);
-  localStorage.setItem(STORAGE_KEYS.lastVisit, new Date().toISOString());
-}
-function saveLastSpin(){ localStorage.setItem(STORAGE_KEYS.lastSpin, new Date().toISOString()); }
-function saveBiggestWin(){ localStorage.setItem(STORAGE_KEYS.biggestWin, state.biggestWin); }
-function updateLeaderboard(score){
-  let lb = JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]');
-  lb.push({score, date: new Date().toLocaleDateString()});
-  lb.sort((a,b)=>b.score-a.score);
-  localStorage.setItem(STORAGE_KEYS.leaderboard, JSON.stringify(lb.slice(0,20)));
-}
+function saveBalance(){localStorage.setItem(STORAGE_KEYS.balance,state.balance)}
+function saveCollection(){localStorage.setItem(STORAGE_KEYS.collection,JSON.stringify(state.collection))}
+function saveStreak(){localStorage.setItem(STORAGE_KEYS.streak,state.dailyStreak); localStorage.setItem(STORAGE_KEYS.lastVisit,new Date().toISOString())}
+function saveLastSpin(){localStorage.setItem(STORAGE_KEYS.lastSpin,new Date().toISOString())}
+function saveBiggestWin(){localStorage.setItem(STORAGE_KEYS.biggestWin,state.biggestWin)}
+function updateLeaderboard(score){let lb=JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]'); lb.push({score,date:new Date().toLocaleDateString()}); lb.sort((a,b)=>b.score-a.score); localStorage.setItem(STORAGE_KEYS.leaderboard,JSON.stringify(lb.slice(0,20)));}
 
-// ============================================================
-// UI BUILDING
-// ============================================================
+// ── UI ────────────────────────────────────────────────────────
 function buildGrid(){
-  const grid = document.getElementById('slotGrid');
-  grid.innerHTML = '';
-  for(let i=0;i<25;i++){
-    const cell = document.createElement('div');
-    cell.className = 'slot-cell';
-    cell.id = 'cell'+i;
-    cell.innerHTML = SYMBOLS.slime.svg;
-    grid.appendChild(cell);
-  }
+  const grid=document.getElementById('slotGrid'); grid.innerHTML='';
+  for(let i=0;i<25;i++){const cell=document.createElement('div'); cell.className='slot-cell'; cell.id='cell'+i; cell.innerHTML=SYMBOLS.baobao.svg; grid.appendChild(cell);}
 }
-
 function buildCollection(){
-  const row = document.getElementById('collectionRow');
-  row.innerHTML = '';
-  SYMBOL_KEYS.forEach(key => {
-    const div = document.createElement('div');
-    div.className = 'col-item' + (state.collection[key] ? ' collected' : '');
-    div.id = 'col-'+key;
-    div.innerHTML = SYMBOLS[key].svg;
-    div.title = SYMBOLS[key].name;
-    row.appendChild(div);
-  });
-  const total = SYMBOL_KEYS.filter(k=>state.collection[k]).length;
-  document.getElementById('collectProgress').textContent = `${total}/9 Squishies`;
-  if(total===9 && !localStorage.getItem(STORAGE_KEYS.bonusUsed)){
-    setTimeout(()=>showBonus(),500);
-  }
+  const row=document.getElementById('collectionRow'); row.innerHTML='';
+  SYMBOL_KEYS.forEach(key=>{const div=document.createElement('div'); div.className='col-item'+(state.collection[key]?' collected':''); div.id='col-'+key; div.innerHTML=SYMBOLS[key].svg; div.title=SYMBOLS[key].name; row.appendChild(div);});
+  const total=SYMBOL_KEYS.filter(k=>state.collection[k]).length;
+  document.getElementById('collectProgress').textContent=`${total}/${SYMBOL_KEYS.length} Collected`;
+  if(total===SYMBOL_KEYS.length && !localStorage.getItem(STORAGE_KEYS.bonusUsed)){setTimeout(()=>showBonus(),500);}
 }
-
-function updateBalanceUI(animate=true){
-  const el = document.getElementById('coinBalance');
-  el.textContent = state.balance.toLocaleString();
-  if(animate){
-    el.classList.remove('pop');
-    void el.offsetWidth;
-    el.classList.add('pop');
-  }
-}
-
-function updateStreakUI(){ document.getElementById('streakText').textContent = 'Day '+state.dailyStreak; }
-
+function updateBalanceUI(animate=true){const el=document.getElementById('coinBalance'); el.textContent=state.balance.toLocaleString(); if(animate){el.classList.remove('pop'); void el.offsetWidth; el.classList.add('pop');}}
+function updateStreakUI(){document.getElementById('streakText').textContent='Day '+state.dailyStreak}
 function updateSpinButton(){
-  const btn = document.getElementById('spinBtn');
-  if(state.bonusSpins > 0){
-    btn.classList.add('free-spin');
-    btn.querySelector('.spin-cost').textContent = `FREE (${state.bonusSpins})`;
-  } else if(state.freeSpinReady){
-    btn.classList.add('free-spin');
-    btn.querySelector('.spin-cost').textContent = 'FREE SPIN!';
-  } else {
-    btn.classList.remove('free-spin');
-    btn.querySelector('.spin-cost').textContent = '10 coins';
-  }
+  const btn=document.getElementById('spinBtn');
+  if(state.bonusSpins>0){btn.classList.add('free-spin'); btn.querySelector('.spin-cost').textContent=`FREE (${state.bonusSpins})`;}
+  else if(state.freeSpinReady){btn.classList.add('free-spin'); btn.querySelector('.spin-cost').textContent='FREE SPIN!';}
+  else{btn.classList.remove('free-spin'); btn.querySelector('.spin-cost').textContent='10 coins';}
 }
 
-// ============================================================
-// SLOT LOGIC
-// ============================================================
-function pickSymbol(){
-  let r = Math.random() * TOTAL_WEIGHT;
-  for(const key of SYMBOL_KEYS){
-    r -= RARITY_WEIGHTS[key];
-    if(r<=0) return key;
-  }
-  return 'slime';
-}
-
-function lineCellIndices(lineIdx, posInLine){
-  if(lineIdx < 5) return lineIdx * 5 + posInLine;
-  else if(lineIdx < 10) return COL_CELLS[lineIdx-5][posInLine];
-  else if(lineIdx === 10) return posInLine * 6;
-  else return 4 + posInLine * 4;
-}
+// ── SLOT LOGIC ────────────────────────────────────────────────
+function pickSymbol(){let r=Math.random()*TOTAL_WEIGHT; for(const key of SYMBOL_KEYS){r-=RARITY_WEIGHTS[key]; if(r<=0)return key;} return SYMBOL_KEYS[0];}
+function lineCellIndices(lineIdx,posInLine){if(lineIdx<5)return lineIdx*5+posInLine; else if(lineIdx<10)return COL_CELLS[lineIdx-5][posInLine]; else if(lineIdx===10)return posInLine*6; else return 4+posInLine*4;}
 
 function generateResult(){
-  const pool = [];
-  SYMBOL_KEYS.forEach(k => { for(let i=0;i<RARITY_WEIGHTS[k];i++) pool.push(k); });
-  const pick = () => pool[Math.floor(Math.random()*pool.length)];
-  const grid = Array.from({length:25}, ()=>pick());
-
-  const lines = [];
-  for(let r=0;r<5;r++) lines.push([grid[r*5],grid[r*5+1],grid[r*5+2],grid[r*5+3],grid[r*5+4]]);
-  for(let c=0;c<5;c++) lines.push([grid[c],grid[5+c],grid[10+c],grid[15+c],grid[20+c]]);
+  const pool=[]; SYMBOL_KEYS.forEach(k=>{for(let i=0;i<RARITY_WEIGHTS[k];i++)pool.push(k);});
+  const pick=()=>pool[Math.floor(Math.random()*pool.length)];
+  const grid=Array.from({length:25},()=>pick());
+  const lines=[];
+  for(let r=0;r<5;r++)lines.push([grid[r*5],grid[r*5+1],grid[r*5+2],grid[r*5+3],grid[r*5+4]]);
+  for(let c=0;c<5;c++)lines.push([grid[c],grid[5+c],grid[10+c],grid[15+c],grid[20+c]]);
   lines.push([grid[0],grid[6],grid[12],grid[18],grid[24]]);
   lines.push([grid[4],grid[8],grid[12],grid[16],grid[20]]);
-
-  const lineMatches = lines.map((line, li) => {
-    const symCount = {};
-    line.forEach(s => symCount[s] = (symCount[s]||0)+1);
-    let bestKey = null, bestCount = 0, bestPos = [];
-    Object.entries(symCount).forEach(([k,v]) => { if(v > bestCount){ bestCount = v; bestKey = k; } });
-    if(bestCount >= 3){
-      line.forEach((s,pi) => { if(s === bestKey) bestPos.push(pi); });
-    }
-    return {key: bestKey, count: bestCount, positions: bestPos};
-  });
-
-  let totalWin = 0, winningCells = new Set(), jackpot = false, nearMiss = false;
-
-  lineMatches.forEach((lm, li) => {
-    if(lm.count >= 3){
-      const payTable = {3:50, 4:200, 5:500};
-      let win = payTable[lm.count] || 50;
-      if(lm.key === 'golden' && lm.count >= 3){ win = 5000; jackpot = true; }
-      totalWin += win;
-      lm.positions.forEach(pos => winningCells.add(lineCellIndices(li, pos)));
-    }
-  });
-
-  if(!jackpot && totalWin === 0){
-    lineMatches.forEach((lm, li) => {
-      if(lm.count === 2){
-        nearMiss = true;
-        lm.positions.forEach(pos => winningCells.add(lineCellIndices(li, pos)));
-      }
-    });
-    if(nearMiss) totalWin = 3 + Math.floor(Math.random()*3);
-  }
-
-  if(totalWin === 0 && Math.random() < 0.7){
-    totalWin = 5 + Math.floor(Math.random()*10);
-  }
-
-  return {grid, totalWin, winningCells: Array.from(winningCells), jackpot, nearMiss};
+  const lineMatches=lines.map((line,li)=>{const symCount={}; line.forEach(s=>symCount[s]=(symCount[s]||0)+1); let bestKey=null,bestCount=0,bestPos=[]; Object.entries(symCount).forEach(([k,v])=>{if(v>bestCount){bestCount=v;bestKey=k;}}); if(bestCount>=3){line.forEach((s,pi)=>{if(s===bestKey)bestPos.push(pi);});} return {key:bestKey,count:bestCount,positions:bestPos};});
+  let totalWin=0,winningCells=new Set(),jackpot=false,nearMiss=false;
+  lineMatches.forEach((lm,li)=>{if(lm.count>=3){const payTable={3:50,4:200,5:500}; let win=payTable[lm.count]||50; if(lm.key==='phoenix'&&lm.count>=3){win=5000;jackpot=true;} totalWin+=win; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}});
+  if(!jackpot&&totalWin===0){lineMatches.forEach((lm,li)=>{if(lm.count===2){nearMiss=true; lm.positions.forEach(pos=>winningCells.add(lineCellIndices(li,pos)));}}); if(nearMiss)totalWin=3+Math.floor(Math.random()*3);}
+  if(totalWin===0&&Math.random()<0.7)totalWin=5+Math.floor(Math.random()*10);
+  return {grid,totalWin,winningCells:Array.from(winningCells),jackpot,nearMiss};
 }
 
-// ============================================================
-// SPIN ANIMATION
-// ============================================================
+// ── SPIN ──────────────────────────────────────────────────────
 async function doSpin(){
   if(state.spinning) return;
   soundClick();
-  const isFreeSpin = state.bonusSpins > 0 || state.freeSpinReady;
-
-  if(!isFreeSpin && state.balance < 10){
-    setStatus('Not enough coins!','nearmiss-text'); return;
-  }
-
-  if(!isFreeSpin){
-    state.balance -= 10;
-    saveLastSpin();
-  } else {
-    state.bonusSpins = Math.max(0, state.bonusSpins - 1);
-    if(state.bonusSpins === 0 && state.freeSpinReady) state.freeSpinReady = false;
-  }
-
-  state.spinning = true;
-  const btn = document.getElementById('spinBtn');
-  btn.disabled = true;
-  btn.classList.remove('pulse');
-  btn.classList.add('pressed');
-  setTimeout(() => btn.classList.remove('pressed'), 100);
-  updateBalanceUI();
-  updateSpinButton();
-
-  const result = generateResult();
-  const colStopTimes = [700, 1000, 1300, 1600, 1900];
-
+  const isFreeSpin=state.bonusSpins>0||state.freeSpinReady;
+  if(!isFreeSpin&&state.balance<10){setStatus('Not enough coins!','nearmiss-text'); return;}
+  if(!isFreeSpin){state.balance-=10;saveLastSpin();} else {state.bonusSpins=Math.max(0,state.bonusSpins-1); if(state.bonusSpins===0&&state.freeSpinReady)state.freeSpinReady=false;}
+  state.spinning=true;
+  const btn=document.getElementById('spinBtn');
+  btn.disabled=true; btn.classList.remove('pulse'); btn.classList.add('pressed');
+  setTimeout(()=>btn.classList.remove('pressed'),100);
+  updateBalanceUI(); updateSpinButton();
+  const result=generateResult();
+  const colStopTimes=[700,1000,1300,1600,1900];
   soundWhoosh();
-  let tickInterval = setInterval(soundTick, 60);
-  for(let i=0;i<25;i++) document.getElementById('cell'+i).classList.add('spinning');
-
-  for(let col=0; col<5; col++){
-    await new Promise(res => setTimeout(res, col===0 ? colStopTimes[0] : colStopTimes[col]-colStopTimes[col-1]));
-    COL_CELLS[col].forEach(cellIdx => {
-      const el = document.getElementById('cell'+cellIdx);
-      el.classList.remove('spinning');
-      el.innerHTML = SYMBOLS[result.grid[cellIdx]].svg;
-    });
+  let tickInterval=setInterval(soundTick,60);
+  for(let i=0;i<25;i++)document.getElementById('cell'+i).classList.add('spinning');
+  for(let col=0;col<5;col++){
+    await new Promise(res=>setTimeout(res,col===0?colStopTimes[0]:colStopTimes[col]-colStopTimes[col-1]));
+    COL_CELLS[col].forEach(cellIdx=>{const el=document.getElementById('cell'+cellIdx); el.classList.remove('spinning'); el.innerHTML=SYMBOLS[result.grid[cellIdx]].svg;});
     soundThud();
-    COL_CELLS[col].forEach(cellIdx => {
-      state.collection[result.grid[cellIdx]] = (state.collection[result.grid[cellIdx]]||0)+1;
-    });
+    COL_CELLS[col].forEach(cellIdx=>{state.collection[result.grid[cellIdx]]=(state.collection[result.grid[cellIdx]]||0)+1;});
   }
-
   clearInterval(tickInterval);
-  await new Promise(res => setTimeout(res, 300));
-
-  result.winningCells.forEach(idx => {
-    const el = document.getElementById('cell'+idx);
-    if(result.jackpot) el.classList.add('winner');
-    else if(result.nearMiss){
-      el.classList.add('nearmiss');
-      const float = document.createElement('div');
-      float.className = 'nearmiss-float';
-      float.textContent = result.totalWin > 0 ? 'SO CLOSE!' : '';
-      el.appendChild(float);
-      setTimeout(() => { el.classList.remove('nearmiss'); float.remove(); }, 900);
-    }
-  });
-
-  if(result.jackpot){
-    soundJackpot();
-    state.balance += result.totalWin;
-    if(state.balance > state.biggestWin) state.biggestWin = state.balance;
-    saveBiggestWin(); updateBalanceUI();
-    showJackpot(result.totalWin); confetti(); flashScreen();
-  } else if(result.totalWin > 0){
-    if(result.nearMiss){ soundNearMiss(); setStatus(`+${result.totalWin} coins!`,'nearmiss-text'); }
-    else { soundCoin(); setStatus(`+${result.totalWin} coins!`,'win-text'); }
-    state.balance += result.totalWin;
-    if(state.balance > state.biggestWin) state.biggestWin = state.balance;
-    saveBiggestWin(); updateBalanceUI();
-    coinRain(result.totalWin);
-  } else {
-    setStatus('No match...','');
-  }
-
-  saveBalance(); saveCollection();
-  updateLeaderboard(state.balance);
-  buildCollection();
-
-  setTimeout(()=>{
-    for(let i=0;i<25;i++) document.getElementById('cell'+i).classList.remove('winner','nearmiss');
-    state.spinning = false;
-    btn.disabled = false;
-    btn.classList.add('pulse');
-    updateSpinButton();
-  }, 2200);
-
-  const now = new Date();
-  const lastVisit = localStorage.getItem(STORAGE_KEYS.lastVisit);
-  if(lastVisit){
-    const gap = (now - new Date(lastVisit))/1000/3600;
-    if(gap >= 1 && gap < 24) state.dailyStreak++;
-    else if(gap >= 24) state.dailyStreak = 1;
-  }
-  saveStreak(); updateStreakUI();
-  startFreeTimer();
+  await new Promise(res=>setTimeout(res,300));
+  result.winningCells.forEach(idx=>{const el=document.getElementById('cell'+idx); if(result.jackpot)el.classList.add('winner'); else if(result.nearMiss){el.classList.add('nearmiss'); const float=document.createElement('div'); float.className='nearmiss-float'; float.textContent=result.totalWin>0?'SO CLOSE!':''; el.appendChild(float); setTimeout(()=>{el.classList.remove('nearmiss');float.remove();},900);}});
+  if(result.jackpot){soundJackpot();state.balance+=result.totalWin;if(state.balance>state.biggestWin)state.biggestWin=state.balance;saveBiggestWin();updateBalanceUI();showJackpot(result.totalWin);confetti();flashScreen();}
+  else if(result.totalWin>0){if(result.nearMiss){soundNearMiss();setStatus(`+${result.totalWin} coins!`,'nearmiss-text');}else{soundCoin();setStatus(`+${result.totalWin} coins!`,'win-text');}state.balance+=result.totalWin;if(state.balance>state.biggestWin)state.biggestWin=state.balance;saveBiggestWin();updateBalanceUI();coinRain(result.totalWin);}
+  else setStatus('No match...','');
+  saveBalance();saveCollection();updateLeaderboard(state.balance);buildCollection();
+  setTimeout(()=>{for(let i=0;i<25;i++)document.getElementById('cell'+i).classList.remove('winner','nearmiss');state.spinning=false;btn.disabled=false;btn.classList.add('pulse');updateSpinButton();},2200);
+  const now=new Date(),lastVisit=localStorage.getItem(STORAGE_KEYS.lastVisit);
+  if(lastVisit){const gap=(now-new Date(lastVisit))/1000/3600; if(gap>=1&&gap<24)state.dailyStreak++; else if(gap>=24)state.dailyStreak=1;}
+  saveStreak();updateStreakUI();startFreeTimer();
 }
+function setStatus(msg,cls){const el=document.getElementById('statusMsg');el.className=cls;el.textContent=msg;}
 
-function setStatus(msg, cls){
-  const el = document.getElementById('statusMsg');
-  el.className = cls; el.textContent = msg;
-}
+// ── EFFECTS ───────────────────────────────────────────────────
+function coinRain(amount){const count=Math.min(amount,30); for(let i=0;i<count;i++){setTimeout(()=>{const el=document.createElement('div');el.className='coin-rain';el.textContent='🪙';el.style.left=(Math.random()*88)+'vw';el.style.animationDuration=(1.5+Math.random())+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),3000);},i*50);}}
+function confetti(){const colors=['#ff6b9d','#5dd9c1','#b4a0ff','#ffe066','#7ec8e3','#ff9f1c','#ffd700','#ff85ad']; for(let i=0;i<60;i++){setTimeout(()=>{const el=document.createElement('div');el.className='confetti-piece';el.style.left=(Math.random()*88)+'vw';el.style.top=(Math.random()*30)+'vh';el.style.background=colors[Math.floor(Math.random()*colors.length)];el.style.animationDuration=(2+Math.random()*1.5)+'s';el.style.width=(8+Math.random()*8)+'px';el.style.height=(8+Math.random()*8)+'px';el.style.borderRadius=Math.random()>0.5?'50%':'3px';document.body.appendChild(el);setTimeout(()=>el.remove(),4000);},i*30);}}
+function flashScreen(){const el=document.createElement('div');el.className='jackpot-flash';document.body.appendChild(el);setTimeout(()=>el.remove(),1500);}
 
-// ============================================================
-// VISUAL EFFECTS
-// ============================================================
-function coinRain(amount){
-  const count = Math.min(amount, 30);
-  for(let i=0;i<count;i++){
-    setTimeout(()=>{
-      const el = document.createElement('div');
-      el.className = 'coin-rain';
-      el.textContent = '🪙';
-      el.style.left = (Math.random()*88) + 'vw';
-      el.style.animationDuration = (1.5 + Math.random()*1) + 's';
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(), 3000);
-    }, i*50);
-  }
-}
+// ── TIMER ─────────────────────────────────────────────────────
+let freeTimerInterval=null;
+function startFreeTimer(){if(freeTimerInterval)clearInterval(freeTimerInterval);const tick=()=>{const lastSpin=localStorage.getItem(STORAGE_KEYS.lastSpin);const timerEl=document.getElementById('freeTimer');if(!lastSpin){timerEl.textContent='READY!';state.freeSpinReady=true;updateSpinButton();return;}const remaining=Math.max(0,14400-(new Date()-new Date(lastSpin))/1000);if(remaining<=0){timerEl.textContent='READY!';state.freeSpinReady=true;updateSpinButton();return;}const h=Math.floor(remaining/3600),m=Math.floor((remaining%3600)/60),s=Math.floor(remaining%60);timerEl.textContent=`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;state.freeSpinReady=false;updateSpinButton();};tick();freeTimerInterval=setInterval(tick,1000);}
 
-function confetti(){
-  const colors = ['#ff6b9d','#5dd9c1','#b4a0ff','#ffe066','#7ec8e3','#ff9f1c','#ffd700','#ff85ad'];
-  for(let i=0;i<60;i++){
-    setTimeout(()=>{
-      const el = document.createElement('div');
-      el.className = 'confetti-piece';
-      el.style.left = (Math.random()*88) + 'vw';
-      el.style.top = (Math.random()*30) + 'vh';
-      el.style.background = colors[Math.floor(Math.random()*colors.length)];
-      el.style.animationDuration = (2 + Math.random()*1.5) + 's';
-      el.style.width = (8 + Math.random()*8) + 'px';
-      el.style.height = (8 + Math.random()*8) + 'px';
-      el.style.borderRadius = Math.random() > 0.5 ? '50%' : '3px';
-      document.body.appendChild(el);
-      setTimeout(()=>el.remove(), 4000);
-    }, i*30);
-  }
-}
+// ── MODALS ────────────────────────────────────────────────────
+function showJackpot(amount){document.getElementById('jackpotMsg').textContent=`You won ${amount.toLocaleString()} coins!`;document.getElementById('jackpotOverlay').classList.add('active');}
+function closeJackpot(){document.getElementById('jackpotOverlay').classList.remove('active');}
+function showBonus(){document.getElementById('bonusOverlay').classList.add('active');state.bonusSpins=3;localStorage.setItem(STORAGE_KEYS.bonusUsed,'true');updateSpinButton();}
+function closeBonus(){document.getElementById('bonusOverlay').classList.remove('active');}
+function showLeaderboard(){const lb=JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]');const top=lb.slice(0,10);const list=document.getElementById('leaderList');list.innerHTML='';if(top.length===0)list.innerHTML='<li style="justify-content:center;color:#888">No scores yet!</li>';top.forEach((entry,i)=>{const li=document.createElement('li');const rankClass=i===0?'r1':i===1?'r2':'r3';li.innerHTML=`<span class="leader-rank ${rankClass}">${i+1}</span><span>${entry.date}</span><span class="leader-bal">${entry.score.toLocaleString()}</span>`;list.appendChild(li);});document.getElementById('currentBalance').textContent=`Balance: ${state.balance.toLocaleString()} coins`;document.getElementById('leaderOverlay').classList.add('active');}
+function closeLeaderboard(){document.getElementById('leaderOverlay').classList.remove('active');}
+function shareScore(){const msg=`🍜 Hit ${state.biggestWin.toLocaleString()} coins on Yum Sum Squishies! Can you beat me?\n\n👉 pandafam4real.github.io/squishy-slots`;if(navigator.clipboard){navigator.clipboard.writeText(msg).then(()=>{const btn=document.querySelector('.share-btn');const orig=btn.textContent;btn.textContent='Copied!';setTimeout(()=>btn.textContent=orig,2000);});}}
 
-function flashScreen(){
-  const el = document.createElement('div');
-  el.className = 'jackpot-flash';
-  document.body.appendChild(el);
-  setTimeout(()=>el.remove(), 1500);
-}
-
-// ============================================================
-// FREE SPIN TIMER
-// ============================================================
-let freeTimerInterval = null;
-function startFreeTimer(){
-  if(freeTimerInterval) clearInterval(freeTimerInterval);
-  const tick = () => {
-    const lastSpin = localStorage.getItem(STORAGE_KEYS.lastSpin);
-    const timerEl = document.getElementById('freeTimer');
-    if(!lastSpin){ timerEl.textContent = 'READY!'; state.freeSpinReady = true; updateSpinButton(); return; }
-    const remaining = Math.max(0, 14400 - (new Date()-new Date(lastSpin))/1000);
-    if(remaining <= 0){ timerEl.textContent = 'READY!'; state.freeSpinReady = true; updateSpinButton(); return; }
-    const h = Math.floor(remaining/3600);
-    const m = Math.floor((remaining%3600)/60);
-    const s = Math.floor(remaining%60);
-    timerEl.textContent = `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-    state.freeSpinReady = false; updateSpinButton();
-  };
-  tick();
-  freeTimerInterval = setInterval(tick, 1000);
-}
-
-// ============================================================
-// MODALS
-// ============================================================
-function showJackpot(amount){
-  document.getElementById('jackpotMsg').textContent = `You won ${amount.toLocaleString()} coins!`;
-  document.getElementById('jackpotOverlay').classList.add('active');
-}
-function closeJackpot(){ document.getElementById('jackpotOverlay').classList.remove('active'); }
-function showBonus(){
-  document.getElementById('bonusOverlay').classList.add('active');
-  state.bonusSpins = 3;
-  localStorage.setItem(STORAGE_KEYS.bonusUsed,'true');
-  updateSpinButton();
-}
-function closeBonus(){ document.getElementById('bonusOverlay').classList.remove('active'); }
-function showLeaderboard(){
-  const lb = JSON.parse(localStorage.getItem(STORAGE_KEYS.leaderboard)||'[]');
-  const top = lb.slice(0,10);
-  const list = document.getElementById('leaderList');
-  list.innerHTML = '';
-  if(top.length === 0) list.innerHTML = '<li style="justify-content:center;color:#888">No scores yet!</li>';
-  top.forEach((entry, i) => {
-    const li = document.createElement('li');
-    const rankClass = i===0?'r1':i===1?'r2':'r3';
-    li.innerHTML = `<span class="leader-rank ${rankClass}">${i+1}</span><span>${entry.date}</span><span class="leader-bal">${entry.score.toLocaleString()}</span>`;
-    list.appendChild(li);
-  });
-  document.getElementById('currentBalance').textContent = `Balance: ${state.balance.toLocaleString()} coins`;
-  document.getElementById('leaderOverlay').classList.add('active');
-}
-function closeLeaderboard(){ document.getElementById('leaderOverlay').classList.remove('active'); }
-
-// ============================================================
-// SOCIAL
-// ============================================================
-function shareScore(){
-  const msg = `🎰 Hit ${state.biggestWin.toLocaleString()} coins on Squishy Slots! Can you beat me?\n\n👉 pandafam4real.github.io/squishy-slots`;
-  if(navigator.clipboard){
-    navigator.clipboard.writeText(msg).then(()=>{
-      const btn = document.querySelector('.share-btn');
-      const orig = btn.textContent; btn.textContent = 'Copied!';
-      setTimeout(()=>btn.textContent = orig, 2000);
-    });
-  }
-}
-
-// ============================================================
-// INIT
-// ============================================================
+// ── INIT ──────────────────────────────────────────────────────
 function init(){
-  loadState();
-  buildGrid();
-  buildCollection();
-  updateBalanceUI(false);
-  updateStreakUI();
-  updateSpinButton();
-  startFreeTimer();
-  for(let i=0;i<25;i++) document.getElementById('cell'+i).innerHTML = SYMBOLS[pickSymbol()].svg;
+  loadState(); buildGrid(); buildCollection();
+  updateBalanceUI(false); updateStreakUI(); updateSpinButton(); startFreeTimer();
+  for(let i=0;i<25;i++)document.getElementById('cell'+i).innerHTML=SYMBOLS[pickSymbol()].svg;
 }
-function pickSymbol(){
-  let r = Math.random() * TOTAL_WEIGHT;
-  for(const key of SYMBOL_KEYS){
-    r -= RARITY_WEIGHTS[key];
-    if(r<=0) return key;
-  }
-  return 'slime';
-}
-
 init();
 </script>
 </body>
